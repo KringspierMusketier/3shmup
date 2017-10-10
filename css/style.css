@@ -1,0 +1,56 @@
+body {
+  overflow: hidden;
+}
+
+#canvas_outer {
+  width: 960px;
+  height: 640px;
+  z-index: 0;
+  display: block;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+#hud {
+  background-color: red;
+}
+
+#canvas_inner {
+  width: 480px;
+  height: 640px;
+  margin: 0 auto;
+  display: block;
+  z-index: 1;
+}
+
+#mainMenu {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  margin: 0;
+  background-color: rgba(0,0,0,0.25);
+}
+
+#mainMenu div {
+  width: 60%;
+  margin: 15% 20% 0%;
+  text-align: center;
+}
+
+#mainMenu h1 {
+  color: #fafafa;
+  text-shadow: -1px -1px 0 #000,
+                1px -1px 0 #000,
+               -1px  1px 0 #000,
+                1px  1px 0 #000;
+   margin-bottom: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.col-sm-2 {
+  overflow: hidden;
+}

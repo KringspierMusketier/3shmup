@@ -1,6 +1,6 @@
-var scene, renderer, camera, controls;
-var height = window.innerHeight;
-var width = window.innerWidth;
+var scene, renderer, camera, controls, gui;
+var height = 640;
+var width = 480;
 var stats = new Stats();
 stats.setMode(0);
 
@@ -23,11 +23,13 @@ function onLoad() {
     controls.enableZoom = true;
     controls.enablePan = true;
 
-    var canvasContainer = document.getElementById('canvas');
+    var canvasContainer = document.getElementById('canvas_inner');
     canvasContainer.appendChild(renderer.domElement);
     
     var statsContainter = document.getElementById('statsBox');
     statsContainter.appendChild(stats.domElement);
+
+    gui = new Gui();
 
     draw();
 };
