@@ -3,7 +3,7 @@ body {
 }
 
 #canvas_outer {
-  width: 960px;
+  width: 720px;
   height: 640px;
   z-index: 0;
   display: block;
