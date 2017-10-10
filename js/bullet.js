@@ -11,6 +11,4 @@ class Bullet {
         this.checkWorldBounds = true;
         this.outOfBoundsKill = true;
     }
-
-
 }
