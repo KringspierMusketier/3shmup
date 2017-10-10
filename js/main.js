@@ -1,13 +1,14 @@
 var scene, renderer, camera, controls, gui;
-var height = 640;
-var width = 480;
+var height = 670;
+var width = 800;
 var stats = new Stats();
 stats.setMode(0);
 
 function onLoad() {
 
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
-    camera.position.set(0, 0, 0);
+    camera.position.set(0, -30, 0);
+    camera.rotation.set(1 / 2 * Math.PI, 0, 0);
     scene = new THREE.Scene();
     scene.add(camera);
 
@@ -16,12 +17,6 @@ function onLoad() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMapSoft = false;
     renderer.setClearColor(0x262626, 1);
-
-
-    //laat je de camera met de muis controlleren
-    controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enableZoom = true;
-    controls.enablePan = true;
 
     var canvasContainer = document.getElementById('canvas_inner');
     canvasContainer.appendChild(renderer.domElement);
@@ -39,16 +34,6 @@ function draw() {
     controls.update();
     stats.end();
     requestAnimationFrame(draw);
-
-    window.addEventListener( 'resize', onWindowResize, false );
+    
     renderer.render(scene, camera);
-};
-
-//resizes window after window size changed
-function onWindowResize() {
-
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-
-    renderer.setSize(window.innerWidth, window.innerHeight);
 };
