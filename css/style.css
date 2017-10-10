@@ -3,7 +3,7 @@ body {
 }
 
 #canvas_outer {
-  width: 720px;
+  width: 960px;
   height: 640px;
   z-index: 0;
   display: block;
@@ -51,6 +51,6 @@ body {
   display: none;
 }
 
-.col-sm-2 {
+.col-sm-3 {
   overflow: hidden;
 }

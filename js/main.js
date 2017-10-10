@@ -1,6 +1,6 @@
 var scene, renderer, camera, controls, gui;
-var height = 670;
-var width = 800;
+var height = 640;
+var width = 480;
 var stats = new Stats();
 stats.setMode(0);
 
@@ -31,7 +31,6 @@ function onLoad() {
 
 function draw() {
     stats.begin();
-    controls.update();
     stats.end();
     requestAnimationFrame(draw);
     
