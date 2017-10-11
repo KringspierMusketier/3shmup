@@ -2,6 +2,7 @@ var scene, renderer, camera, controls, gui, player;
 var height = 640;
 var width = 480;
 var stats = new Stats();
+var debug = false;
 stats.setMode(0);
 
 function onLoad() {
@@ -31,8 +32,6 @@ function onLoad() {
     gui = new Gui();
     player = new Player(0,20);
     camera.lookAt(0,0,0);
-
-    document.addEventListener("keydown", player.onDocumentKeyDown, false);
 
     draw();
 };

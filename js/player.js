@@ -33,19 +33,4 @@ class Player {
 
         this.state = 'dead';
     }
-    onDocumentKeyDown(event) {
-        this.keyCode = event.which;
-        //up
-        if (keyCode == 87)
-            this.direction.z = -1;
-        //down
-        else if (keyCode == 83)
-            this.direction.z = 1;
-        //left
-        else if (keyCode == 65)
-            this.direction.x = -1;
-        //right
-        else if (keyCode == 68)
-            this.direction.x = 1;
-    }
 }
