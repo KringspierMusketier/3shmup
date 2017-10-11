@@ -7,7 +7,7 @@ stats.setMode(0);
 function onLoad() {
 
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.set(0, 15, 0);
+    camera.position.set(0, 50, 0);
     //camera.rotation.set(1 / 2 * Math.PI, 0, 0);
     scene = new THREE.Scene();
     scene.add(camera);
@@ -19,7 +19,7 @@ function onLoad() {
     renderer.setClearColor(0x262626, 1);
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enablePan = true;
+    controls.enablePan = false;
     controls.enableZoom = true;
 
     var canvasContainer = document.getElementById('canvas_inner');
@@ -29,8 +29,10 @@ function onLoad() {
     statsContainter.appendChild(stats.domElement);
 
     gui = new Gui();
-    player = new Player(0,0);
+    player = new Player(0,20);
     camera.lookAt(0,0,0);
+
+    document.addEventListener("keydown", player.onDocumentKeyDown, false);
 
     draw();
 };
