@@ -1,4 +1,4 @@
-var scene, renderer, camera, controls, gui;
+var scene, renderer, camera, controls, gui, player;
 var height = 640;
 var width = 480;
 var stats = new Stats();
@@ -25,6 +25,8 @@ function onLoad() {
     statsContainter.appendChild(stats.domElement);
 
     gui = new Gui();
+    player = new Player(0,0,0);
+    camera.lookAt(0,0,0);
 
     draw();
 };
