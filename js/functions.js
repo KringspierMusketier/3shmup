@@ -7,5 +7,9 @@ function clamp(i, min, max) {
     return num;
 }
 
-
+function assign(mesh) {
+    player.ship = mesh;
+    if (player.ship !== null)
+        console.log("success");
+}
 
