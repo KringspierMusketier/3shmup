@@ -14,5 +14,9 @@ class Input {
             player.moveUp();
         if(keyboard.pressed("down"))
             player.moveDown();
+        if(keyboard.pressed("shift"))
+            player.speed = 0.5;
+        if(!keyboard.pressed("shift"))
+            player.speed = 1.0;
     }
 }
