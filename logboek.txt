@@ -1,2 +1,9 @@
 //10-10-2017
 Begin project
+Besloten om voor een verticale orientatie te gaan voor het spelveld met de HUD grotendeels eromheen. 
+
+//11-10-2017
+Model aangemaakt voor speler-schip en kan worden afgebeeld op het scherm
+
+//12-10-2017
+Modellen kunnen laten manipuleren en rond bewegen
