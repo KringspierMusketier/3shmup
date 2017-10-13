@@ -13,8 +13,8 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function() {
     console.log("Loading complete");
-    loaded = true;
-    player = new Player(0,20);
+    console.log("attempt 2: " + models[0]);
+    player = new Player(0, 20);
 };
 
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {

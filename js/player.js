@@ -1,6 +1,7 @@
 class Player {
     constructor(posX, posZ) {
-        this.ship = new THREE.Object3D();
+        this.ship = models[0];
+        scene.add(this.ship);
     }
 
     moveLeft() {
