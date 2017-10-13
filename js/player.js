@@ -16,5 +16,8 @@ class Player {
     moveDown() {
         this.ship.position.z += 2.0;
     }
+    shoot() {
+        var bullet = new PlayerBullet(this.ship.positionx, this.ship.position.z);
+    }
 }
 
