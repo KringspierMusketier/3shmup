@@ -13,8 +13,8 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function() {
     console.log("Loading complete");
-    console.log("attempt 2: " + models[0]);
     player = new Player(0, 20);
+    draw();
 };
 
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {
@@ -30,7 +30,6 @@ function onLoad() {
     preload = new Preload();
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.set(0, 50, 0);
-    //camera.rotation.set(1 / 2 * Math.PI, 0, 0);
     scene = new THREE.Scene();
     scene.add(camera);
 
@@ -53,12 +52,9 @@ function onLoad() {
     statsContainer.appendChild(stats.domElement);
 
     gui = new Gui();
-    input = new Input();
-    document.addEventListener("keydown", input.onKeyDown, false );
-    document.addEventListener("keyup", input.onKeyUp, false );
     camera.lookAt(0,0,0);
 
-    draw();
+    input = new Input();
 };
 
 function draw() {

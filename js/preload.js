@@ -13,11 +13,9 @@ class Preload {
             mesh.scale.set(0.1,0.1,0.1);
             var object = mesh.clone();
             models.push(object);
-            console.log("Attempt 1: " + models[0]);
-            //scene.add(object);
         });
 
-        /**loader.load('models/playerHitbox_v1_1.json', function(geometry) {
+        loader.load('models/playerHitbox_v1_1.json', function(geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
                 color: new THREE.Color(0xffffff),
                 wireframe: true
@@ -26,7 +24,7 @@ class Preload {
             var object = mesh.clone();
             models.push(object);
             scene.add(object);
-        })**/
+        });
     }
 
 }

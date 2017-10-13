@@ -5,17 +5,17 @@ class Player {
     }
 
     moveLeft() {
-        this.ship.position.x -= 2.0;
+        this.ship.position.x -= 1.0;
     }
 
     moveRight() {
-        this.ship.position.x += 2.0;
+        this.ship.position.x += 1.0;
     }
     moveUp() {
-        this.ship.position.z -= 2.0;
+        this.ship.position.z -= 1.0;
     }
     moveDown() {
-        this.ship.position.z += 2.0;
+        this.ship.position.z += 1.0;
     }
     shoot() {
         var bullet = new PlayerBullet(this.ship.positionx, this.ship.position.z);
