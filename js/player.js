@@ -1,6 +1,8 @@
 class Player {
     constructor(posX, posZ) {
         this.ship = models[0];
+        this.ship.add(models[1]);
+        this.ship.scale.set(0.1,0.1,0.1);
         this.speed = 1.0;
         scene.add(this.ship);
     }

@@ -1,13 +1,9 @@
 function clamp(i, min, max) {
     if (i < min) {
-        num = min;
+        var num = min;
     } else if (num > max) {
-        num = max;
+        var num = max;
     }
     return num;
-}
-
-function assign(mesh) {
-    preload.models.push(mesh);
 }
 

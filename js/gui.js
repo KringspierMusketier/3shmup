@@ -29,6 +29,7 @@ Gui.prototype.hide = function (node) {
 Gui.prototype.startGame = function() {
     this.hide(document.getElementById('mainMenu'));
     this.show(document.getElementById('hud'));
+    this.show(document.getElementById('positions'));
 }
 
 Gui.prototype.showHighscore = function() {

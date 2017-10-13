@@ -62,6 +62,10 @@ function draw() {
     controls.update();
     input.update();
     stats.end();
+
+    document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
+    document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
+
     requestAnimationFrame(draw);
 
     renderer.render(scene, camera);

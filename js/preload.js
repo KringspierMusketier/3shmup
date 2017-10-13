@@ -10,7 +10,6 @@ class Preload {
                 color: new THREE.Color(0x00ff00),
                 wireframe: true
             }))
-            mesh.scale.set(0.1,0.1,0.1);
             var object = mesh.clone();
             models.push(object);
         });
@@ -20,10 +19,8 @@ class Preload {
                 color: new THREE.Color(0xffffff),
                 wireframe: true
             }))
-            mesh.scale.set(0.1,0.1,0.1);
             var object = mesh.clone();
             models.push(object);
-            scene.add(object);
         });
     }
 
