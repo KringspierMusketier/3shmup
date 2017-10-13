@@ -8,8 +8,6 @@ function clamp(i, min, max) {
 }
 
 function assign(mesh) {
-    player.ship = mesh;
-    if (player.ship !== null)
-        console.log("success");
+    preload.models.push(mesh);
 }
 
