@@ -19,6 +19,8 @@ function onLoad() {
     renderer.shadowMapSoft = false;
     renderer.setClearColor(0x262626, 1);
 
+    var clock = new THREE.Clock();
+
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
     controls.enableZoom = true;
