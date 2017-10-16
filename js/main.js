@@ -72,6 +72,7 @@ function draw() {
 
     
 
+    playerBulletMovement();
     requestAnimationFrame(draw);
 
     renderer.render(scene, camera);

@@ -4,6 +4,8 @@ class Player {
         this.ship.add(models[1]);
         this.ship.scale.set(0.1,0.1,0.1);
         this.speed = 0.6;
+        this.speed = 0.8;
+        this.reload = 0;
         scene.add(this.ship);
     }
 
@@ -33,7 +35,11 @@ class Player {
         }
     }
     shoot() {
-        var bullet = new PlayerBullet(this.ship.position.x, this.ship.position.z);
+        this.reload++;
+        if (this.reload > 7) {
+            var bullet = new PlayerBullet(this.ship.position.x, this.ship.position.z);
+            this.reload = 0;
+        }
     }
     update() {
         if (this.ship.rotation.z > 0)
