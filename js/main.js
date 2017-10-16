@@ -66,7 +66,7 @@ function draw() {
 
     document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
     document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
-
+    playerBulletMovement();
     requestAnimationFrame(draw);
 
     renderer.render(scene, camera);

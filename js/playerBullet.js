@@ -14,23 +14,33 @@ extrudeSettings = {
 
 playerBulletList = [];
 
+
 class PlayerBullet{
+
     constructor(posX, posZ) {
 
         this.direction = new THREE.Vector3;
         this.direction.set(0, 0, -1);
-        this.speed = 3;
+        this.clock = new THREE.Clock();
+        this.speed = 2.5;
         //var geo = new THREE.ExtrudeGeometry(bShape, extrudeSettings);
         var geo = new THREE.CubeGeometry(1, 1, 1);
         var mat = new THREE.MeshBasicMaterial(0x551A8B);
         this.pBullet = new THREE.Mesh(geo, mat);
+        this.pBullet.position.set(posX, 0, posZ);
         scene.add(this.pBullet);
-        playerBulletList.push(this.pBullet);
+        playerBulletList.push(this);
         //this.checkWorldBounds = true;
     }
 
+
     movement() {
-        this.pBullet.position.z -= speed * 20 * clock.getDelta();
-        this.pBullet.rotation.add(3, 3, 3);
+        this.pBullet.position.z -= this.speed;
+    }
+}
+
+function playerBulletMovement() {
+    for (var i = 0; i < playerBulletList.length; i++) {
+        playerBulletList[i].movement();
     }
 }
