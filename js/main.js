@@ -1,4 +1,4 @@
-var scene, renderer, camera, controls, gui, player, input, preload, progressBar;
+var scene, renderer, camera, controls, gui, player, input, preload, progressBar, enemy;
 var height = 640;
 var width = 480;
 var stats = new Stats();
@@ -40,10 +40,11 @@ function onLoad() {
     renderer.setClearColor(0x262626, 1);
 
     var clock = new THREE.Clock();
+    clock.start();
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
-    controls.enableZoom = true;
+    controls.enableZoom = false;
 
     var canvasContainer = document.getElementById('canvas_inner');
     canvasContainer.appendChild(renderer.domElement);
@@ -55,6 +56,7 @@ function onLoad() {
     camera.lookAt(0,0,0);
 
     input = new Input();
+    enemy = new Enemy(Math.random(-28,29), -45);
 };
 
 function draw() {
@@ -63,9 +65,12 @@ function draw() {
     input.update();
     player.update();
     stats.end();
+    enemy.update();
 
     document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
     document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
+
+    
 
     requestAnimationFrame(draw);
 

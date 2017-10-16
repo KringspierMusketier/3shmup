@@ -23,7 +23,7 @@ class Enemy {
     }
 
     update() {
-        this.mesh.position.z += 1;
+        this.mesh.position.z += 0.2;
 
         //destroy enemy when out of bounds
         if (this.mesh.position.z > 50) {
