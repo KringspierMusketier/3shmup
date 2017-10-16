@@ -7,6 +7,10 @@ class Player {
         this.speed = 0.8;
         this.reload = 0;
         scene.add(this.ship);
+
+        this.helper = new THREE.BoundingBoxHelper(this.ship, 0xff0000);
+        scene.add(this.helper);
+
     }
 
     moveLeft() {
@@ -46,6 +50,10 @@ class Player {
             this.ship.rotation.z -= 0.04;
         if (this.ship.rotation.z < 0)
             this.ship.rotation.z += 0.04;
+        this.helper.update();
+    }
+    onHit() {
+
     }
 }
 
