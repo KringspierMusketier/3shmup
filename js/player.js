@@ -41,7 +41,7 @@ class Player {
     shoot() {
         this.reload++;
         if (this.reload > 7) {
-            var bullet = new PlayerBullet(this.ship.position.x, this.ship.position.z);
+            var bullet = new PlayerBullet(this.ship.position, this.ship.rotation.z);
             this.reload = 0;
         }
     }
