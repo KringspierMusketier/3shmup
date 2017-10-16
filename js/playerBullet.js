@@ -17,9 +17,10 @@ playerBulletList = [];
 
 class PlayerBullet{
 
-    constructor(posX, posZ) {
-
-        this.shipPos = posZ;
+    constructor(shippos, shiprot) {
+        this.posX = shippos.x;
+        this.posZ = shippos.z;
+        this.shipPosz = posZ;
         this.direction = new THREE.Vector3;
         this.direction.set(0, 0, -1);
         this.clock = new THREE.Clock();
@@ -31,9 +32,9 @@ class PlayerBullet{
         this.mpBullet = new THREE.Mesh(geo, mat);
         this.lpBullet = new THREE.Mesh(geo, mat);
         this.rpBullet = new THREE.Mesh(geo, mat);
-        this.lpBullet.position.set(posX - 2.5, 0, posZ+1);
-        this.mpBullet.position.set(posX, 0, posZ);
-        this.rpBullet.position.set(posX + 2.5, 0, posZ+1);
+        this.lpBullet.position.set(this.posX - 2.5 * Math.cos(shiprot), 0, this.posZ + 1);
+        this.mpBullet.position.set(this.posX, 0, this.posZ);
+        this.rpBullet.position.set(this.posX + 2.5 * Math.cos(shiprot), 0, this.posZ+1);
         this.pBullet.add(this.lpBullet);
         this.pBullet.add(this.rpBullet);
         this.pBullet.add(this.mpBullet);
@@ -46,7 +47,7 @@ class PlayerBullet{
 
     movement() {
         this.pBullet.position.z -= this.speed;
-        if (this.pBullet.position.z < (-45 - this.shipPos)) {
+        if (this.pBullet.position.z < (-45 - this.shipPosz)) {
             scene.remove(this.pBullet);
             playerBulletList[this] = null;
         }
