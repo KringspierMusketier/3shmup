@@ -61,6 +61,7 @@ function draw() {
     stats.begin();
     controls.update();
     input.update();
+    player.update();
     stats.end();
 
     document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
