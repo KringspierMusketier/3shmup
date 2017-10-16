@@ -8,24 +8,32 @@ class Player {
     }
 
     moveLeft() {
-        this.ship.position.x -= this.speed;
-        if (this.ship.rotation.z < 0.5)
-            this.ship.rotation.z += 0.08;
+        if (this.ship.position.x > -28) {
+            this.ship.position.x -= this.speed;
+            if (this.ship.rotation.z < 0.5)
+                this.ship.rotation.z += 0.08;
+        }
     }
 
     moveRight() {
-        this.ship.position.x += this.speed;
-        if (this.ship.rotation.z > -0.5)
-            this.ship.rotation.z -= 0.08;
+        if (this.ship.position.x < 28) {
+            this.ship.position.x += this.speed;
+            if (this.ship.rotation.z > -0.5)
+                this.ship.rotation.z -= 0.08;
+        }
     }
     moveUp() {
-        this.ship.position.z -= this.speed;
+        if (this.ship.position.z > - 35) {
+            this.ship.position.z -= this.speed;
+        }
     }
     moveDown() {
-        this.ship.position.z += this.speed;
+        if (this.ship.position.z < 37) {
+            this.ship.position.z += this.speed;
+        }
     }
     shoot() {
-        var bullet = new PlayerBullet(this.ship.positionx, this.ship.position.z);
+        var bullet = new PlayerBullet(this.ship.position.x, this.ship.position.z);
     }
     update() {
         if (this.ship.rotation.z > 0)
