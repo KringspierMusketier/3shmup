@@ -3,6 +3,7 @@ class Player {
         this.ship = models[0];
         this.ship.add(models[1]);
         this.ship.scale.set(0.1,0.1,0.1);
+        this.speed = 0.6;
         this.speed = 0.8;
         this.reload = 0;
         scene.add(this.ship);
