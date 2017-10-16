@@ -56,7 +56,7 @@ function onLoad() {
     camera.lookAt(0,0,0);
 
     input = new Input();
-    enemy = new Enemy(Math.random(-28,29), -45);
+    enemy = new Enemy(getRndNext(-28, 29), -45);
 };
 
 function draw() {
