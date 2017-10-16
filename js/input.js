@@ -18,5 +18,7 @@ class Input {
             player.speed = 0.5;
         if(!keyboard.pressed("shift"))
             player.speed = 1.0;
+        if (keyboard.pressed("z"))
+            player.shoot();
     }
 }

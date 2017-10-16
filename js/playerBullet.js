@@ -21,8 +21,8 @@ class PlayerBullet extends Bullet {
         var geo = new THREE.ExtrudeGeometry(bShape, extrudeSettings);
         var mat = new THREE.MeshBasicMaterial(0x551A8B);
         this.pBullet = new THREE.Mesh(geo, mat);
-
-        this.checkWorldBounds = true;
+        scene.add(this.pBullet);
+        //this.checkWorldBounds = true;
     }
 
     movement() {
