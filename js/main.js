@@ -13,8 +13,7 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function() {
     console.log("Loading complete");
-    player = new Player(0, 20);
-    draw();
+    gui.show(document.getElementById('mainMenu'));
 };
 
 manager.onProgress = function(url, itemsLoaded, itemsTotal) {
@@ -54,25 +53,17 @@ function onLoad() {
 
     gui = new Gui();
     camera.lookAt(0,0,0);
-
-    input = new Input();
-    enemy = new Enemy(getRndNext(-28, 29), -45);
 };
 
 function draw() {
     stats.begin();
     controls.update();
-    input.update();
-    player.update();
+    game.update();
     stats.end();
-    enemy.update();
 
     document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
     document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
 
-    
-
-    playerBulletMovement();
     requestAnimationFrame(draw);
 
     renderer.render(scene, camera);

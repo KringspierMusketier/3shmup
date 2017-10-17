@@ -7,3 +7,19 @@ Model aangemaakt voor speler-schip en kan worden afgebeeld op het scherm
 
 //12-10-2017
 Modellen kunnen laten manipuleren en rond bewegen
+
+//13-10-2017
+Modellen worden geladen voordat ze worden gerenderd waardoor er geen problemen meer zijn met het asynchroon laden.
+Player-model reageert op keyboard-invoer en kan rondbewegen me de pijltjestoetsen
+Player-model draait toe naar de riching waarin je beweegt en herstelt naar een neutrale positie als je niet horizontaal beweegt
+
+//16-10-2017
+Player-model kan kogels afschieten met de Z-knop, player-model kan niet buiten het speelveld bewegen
+Een basis vijand klasse die rechtdoor naar beneden gaat is toegevoegd en afgebeeld
+
+//17-10-2017
+Collision detectie toegevoegd, vijanden worden vernietigd als ze vaak genoeg worden beschoten, schip reageert als het in contact komt met een vijand
+Collision detectie functies en instantie initializering van gameobjecten verplaatst naar de Game object, die aangeroepen wordt als je de Start Game knop drukt
+De hitbox van het schip is niet het model van het schip zelf, maar een kleinere mesh binnen het schipmesh zelf
+Klasse voor vijandige kogels toegevoegd
+Je kogels en vijanden worden netjes verwijderd als ze buiten het veld komen en de length van de betreffende arrays past zich automatisch aan zodat er niet na een tijdje meer dan duizend lege elements in een array zijn waardoor for loops die door de arrays itereren niet mogelijk eeuwig hoeven te duren

@@ -12,8 +12,7 @@ extrudeSettings = {
     bevelEnabled: false
     };
 
-playerBulletList = [];
-
+    playerBulletList = [];
 
 class PlayerBullet{
 
@@ -37,17 +36,17 @@ class PlayerBullet{
         playerBulletList.push(this);
     }
 
+    destroy() {
+        scene.remove(this.mpBullet);
+        playerBulletList.splice(playerBulletList.indexOf(this), 1);
+    }
 
     movement() {
         this.hitbox.setFromObject(this.mpBullet);
         this.mpBullet.position.z -= this.speed;
-        if (this.mpBullet.position.z < (-35 - this.shipPosz)) {
+        if (this.mpBullet.position.z < -35) {
             this.destroy();
         }
-    }
-    destroy() {
-        scene.remove(this.mpBullet);
-        playerBulletList[this] = null;
     }
 }
 

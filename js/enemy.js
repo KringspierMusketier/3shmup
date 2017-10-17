@@ -25,13 +25,13 @@ class Enemy {
 
     onDeath() {
         scene.remove(this.mesh);
-        enemies[this] = null;
+        enemies.splice(enemies.indexOf(this), 1);
         enemy = new Enemy(getRndNext(-28, 29), -45);
     }
 
     onExit() {
         scene.remove(this.mesh);
-        enemies[this] = null;
+        enemies = enemies.filter(item => item !== this);
         enemy = new Enemy(getRndNext(-28, 29), -45);
     }
 
@@ -42,13 +42,6 @@ class Enemy {
         //destroy enemy when out of bounds
         if (this.mesh.position.z > 50)
             this.onExit();
-        
-        for (var i = 0; i < playerBulletList.length; i++) {
-            if (this.hitbox.intersectsBox(playerBulletList[i].hitbox)) {
-                playerBulletList[i].destroy();
-                this.onHit();
-            }
-        }
 
         if (this.hp <= 0)
             this.onDeath();

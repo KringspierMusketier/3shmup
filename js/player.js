@@ -52,12 +52,10 @@ class Player {
         if (this.ship.rotation.z < 0)
             this.ship.rotation.z += 0.04;
         this.hitbox.setFromObject(this.ship.children[0]);
-
-        if (this.hitbox.intersectsBox(enemy.hitbox))
-            console.log("collision detected");
+            
     }
     onHit() {
-
+        console.log("collision detected");
     }
 }
 
