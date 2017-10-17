@@ -8,7 +8,7 @@ class Game {
     update() {
         input.update();
         player.update();
-        enemy.update();
+        enemyUpdates();
         playerBulletMovement();
 
         //collision checking
@@ -20,6 +20,9 @@ class Game {
                 if (enemies[i].hitbox.intersectsBox(playerBulletList[j].hitbox)) {
                     playerBulletList[j].destroy();
                     enemies[i].onHit();
+                }
+                else {
+                    enemies[i].mesh.material.color.set(0x00ffff);
                 }
             }
         }

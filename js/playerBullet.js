@@ -49,9 +49,3 @@ class PlayerBullet{
         }
     }
 }
-
-function playerBulletMovement() {
-    for (var i = 0; i < playerBulletList.length; i++) {
-        playerBulletList[i].movement();
-    }
-}

@@ -3,7 +3,6 @@ enemies = [];
 class Enemy {
     constructor(posX, posZ) {
         this.hp = 100;
-        this.state = 'alive';
 
         this.geometry = new THREE.CubeGeometry(5,5,5);
         this.material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
@@ -11,10 +10,11 @@ class Enemy {
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.x = posX;
         this.mesh.position.z = posZ;
-        enemies.push(this);
-        scene.add(this.mesh);
 
         this.hitbox = new THREE.Box3();
+
+        scene.add(this.mesh);
+        enemies.push(this);
     }
 
     onHit() {
