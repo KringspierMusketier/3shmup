@@ -2,7 +2,7 @@ keyboard = new THREEx.KeyboardState();
 
 class Input {
     constructor() {
-
+        this.focus = false;
     }
 
     update() {
@@ -14,10 +14,14 @@ class Input {
             player.moveUp();
         if(keyboard.pressed("down"))
             player.moveDown();
-        if(keyboard.pressed("shift"))
-            player.speed = 0.5;
-        if(!keyboard.pressed("shift"))
-            player.speed = 1.0;
+        if(keyboard.pressed("shift") && !this.focus) {
+            player.speed = player.speed / 2;
+            this.focus = true;
+        }
+        if(!keyboard.pressed("shift") && this.focus) {
+            player.speed = player.speed * 2;
+            this.focus = false;
+        }
         if (keyboard.pressed("z"))
             player.shoot();
     }

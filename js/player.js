@@ -3,13 +3,12 @@ class Player {
         this.ship = models[0];
         this.ship.add(models[1]);
         this.ship.scale.set(0.1,0.1,0.1);
-        this.speed = 0.6;
+        this.speed = 0.02;
         this.speed = 0.8;
         this.reload = 0;
         scene.add(this.ship);
 
-        this.helper = new THREE.BoundingBoxHelper(this.ship, 0xff0000);
-        scene.add(this.helper);
+        this.hitbox = new THREE.Box3();
 
     }
 
@@ -41,7 +40,9 @@ class Player {
     shoot() {
         this.reload++;
         if (this.reload > 7) {
-            var bullet = new PlayerBullet(this.ship.position, this.ship.rotation.z);
+            var lBullet = new PlayerBullet(new THREE.Vector3(this.ship.position.x - 2.5, 0, this.ship.position.z), this.ship.rotation.z);
+            var mBullet = new PlayerBullet(this.ship.position, this.ship.rotation.z);
+            var rBullet = new PlayerBullet(new THREE.Vector3(this.ship.position.x + 2.5, 0, this.ship.position.z), this.ship.rotation.z);
             this.reload = 0;
         }
     }
@@ -50,7 +51,10 @@ class Player {
             this.ship.rotation.z -= 0.04;
         if (this.ship.rotation.z < 0)
             this.ship.rotation.z += 0.04;
-        this.helper.update();
+        this.hitbox.setFromObject(this.ship.children[0]);
+
+        if (this.hitbox.intersectsBox(enemy.hitbox))
+            console.log("collision detected");
     }
     onHit() {
 
