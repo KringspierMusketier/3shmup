@@ -30,7 +30,7 @@ class PlayerBullet{
     movement() {
         this.hitbox.setFromObject(this.mpBullet);
         this.mpBullet.position.z -= this.speed;
-        if (this.mpBullet.position.z < -35) {
+        if (this.mpBullet.position.z < -40) {
             this.destroy();
         }
     }

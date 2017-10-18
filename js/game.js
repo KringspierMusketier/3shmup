@@ -2,7 +2,8 @@ class Game {
     constructor() {
         input = new Input();
         player = new Player(0, 20);
-        enemy = new Enemy(getRndNext(-28, 29), -45);
+        enemies.push(new Cube(getRndNext(-28, 29), -45));
+        enemies.push(new Triangle(0, -45));
     }
     //game loop
     update() {
@@ -22,7 +23,7 @@ class Game {
                     enemies[i].onHit();
                 }
                 else {
-                    enemies[i].mesh.material.color.set(0x00ffff);
+                    enemies[i].mesh.material.color.set(enemies[i].basecolor);
                 }
             }
         }
