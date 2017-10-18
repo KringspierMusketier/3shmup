@@ -8,6 +8,11 @@ function playerBulletMovement() {
     }
 }
 
+function enemyBulletUpdate() {
+    for (var i = 0; i < eBullList.length; i++)
+        eBullList[i].update();
+}
+
 function enemyUpdates() {
     for (var i = 0; i < enemies.length; i++)
         enemies[i].update();
