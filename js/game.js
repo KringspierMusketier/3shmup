@@ -29,6 +29,14 @@ class Game {
             }
         }
 
+        for (var i = 0; i < eBullList.length; i++) {
+            if (player.hitbox.intersectsBox(eBullList[i].hitbox)) {
+                player.onHit();
+                eBullList[i].destroy();
+            }
+
+        }
+
         /**for (var i = 0; i < enemyBulletList.length; i++)
             if (player.hitbox.intersectsBox(enemyBulletList[i].hitbox))
                 player.onHit();**/

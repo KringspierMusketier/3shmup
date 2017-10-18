@@ -33,12 +33,12 @@ class EnemyBullet {
         this.direction.set(Math.cos(initialDirection), 0, -Math.sin(initialDirection));
 
         this.speed = initialSpeed;
-        //this.acc = acceleration;
+        this.acc = acceleration;
         this.s3 = new THREE.Vector3();
         this.behavior = bulletBehavior;
-        //this.timer = 0;
+        this.timer = 0;
         this.mesh = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xCCBCFA, wireframe: true }));
-        //this.mesh = eBullMesh[bulletType];
+        this.hitbox = new THREE.Box3();
         this.mesh.position.set(inX, 0,inZ);
         //this.mesh.rotation.y = initialDirection;
         console.log(eBullList.length);
@@ -51,7 +51,8 @@ class EnemyBullet {
    
     
 
-    Move() {
+    movement() {
+        this.hitbox.setFromObject(this.mesh);
         switch (this.behavior) {
             case 0: ///constant drop
 
@@ -103,7 +104,7 @@ class EnemyBullet {
         eBullList.splice(eBullList.indexOf(this), 1);
     }
     update() {
-        this.Move();
+        this.movement();
         if (outOfBound(this.mesh)) {
             this.destroy();
         }
