@@ -2,19 +2,9 @@ enemies = [];
 
 class Enemy {
     constructor(posX, posZ) {
-        this.hp = 100;
-
-        this.geometry = new THREE.CubeGeometry(5,5,5);
-        this.material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
-        this.basecolor = new THREE.Color(0x00ffff);
-        this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.mesh.position.x = posX;
-        this.mesh.position.z = posZ;
-
+        this.hp = 1;
         this.hitbox = new THREE.Box3();
-
-        scene.add(this.mesh);
-        enemies.push(this);
+        this.mesh = new THREE.Object3D();
     }
 
     onHit() {
@@ -26,17 +16,14 @@ class Enemy {
     onDeath() {
         scene.remove(this.mesh);
         enemies.splice(enemies.indexOf(this), 1);
-        enemy = new Enemy(getRndNext(-28, 29), -45);
     }
 
     onExit() {
         scene.remove(this.mesh);
-        enemies = enemies.filter(item => item !== this);
-        enemy = new Enemy(getRndNext(-28, 29), -45);
+        enemies.splice(enemies.indexOf(this), 1);
     }
 
     update() {
-        this.mesh.position.z += 0.2;
         this.hitbox.setFromObject(this.mesh);
 
         //destroy enemy when out of bounds

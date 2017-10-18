@@ -2,7 +2,7 @@ class Game {
     constructor() {
         input = new Input();
         player = new Player(0, 20);
-        enemy = new Enemy(getRndNext(-28, 29), -45);
+        enemies.push(new Cube(getRndNext(-28, 29), -45));
     }
     //game loop
     update() {
@@ -10,6 +10,7 @@ class Game {
         player.update();
         enemyUpdates();
         playerBulletMovement();
+        console.log(enemies.length);
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
