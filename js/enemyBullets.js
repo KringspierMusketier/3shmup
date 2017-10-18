@@ -35,6 +35,7 @@ class EnemyBullet {
         this.acc = acceleration;
         this.s3 = new THREE.Vector3();
         this.behavior = bulletBehavior;
+        this.timer = 0;
         this.bMesh = eBullMesh[bulletType];
         this.bMesh.position.set(xPos, 0, zPos);
         this.bMesh.rotation.y = initialDirection;
@@ -59,7 +60,10 @@ class EnemyBullet {
     behavior_two() //homing bullet /// needs to increase in brightness
     {
         outOfBound()
-
+        this.time++;
+        var tanx = Math.tan(zPos - player.position.z / xPos - player.position.x);
+        var tanz = Math.tan(xPos - player.position.x / zPos - player.position.z);
+        this.direction.add(0.05*tanx, 0, 0.05*tanz);
     }
 
     behavior_three() // boomerang bullet
