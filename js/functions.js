@@ -12,3 +12,8 @@ function enemyUpdates() {
     for (var i = 0; i < enemies.length; i++)
         enemies[i].update();
 }
+
+function particleUpdate() {
+    for (var i = 0; i < particles.length; i++)
+        particles[i].update();
+}

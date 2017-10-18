@@ -11,6 +11,7 @@ class Game {
         player.update();
         enemyUpdates();
         playerBulletMovement();
+        particleUpdate();
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {

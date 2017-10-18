@@ -1,4 +1,4 @@
-var scene, renderer, camera, controls, gui, player, input, preload, progressBar, enemy;
+var scene, renderer, camera, controls, gui, player, input, preload, progressBar;
 var height = 640;
 var width = 480;
 var stats = new Stats();
@@ -36,7 +36,7 @@ function onLoad() {
     renderer.setSize(width, height);
     renderer.shadowMap.enabled = false;
     renderer.shadowMapSoft = false;
-    renderer.setClearColor(0x262626, 1);
+    renderer.setClearColor(0x000000, 1);
 
     var clock = new THREE.Clock();
     clock.start();

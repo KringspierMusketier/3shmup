@@ -36,6 +36,7 @@ class Triangle extends Enemy {
     }
 
     onDeath() {
+        particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
         super.onDeath();
         enemies.push(new Triangle());
     }
