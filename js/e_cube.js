@@ -2,6 +2,7 @@ class Cube extends Enemy {
     constructor() {
         super();
         this.hp = 100;
+        this.reload = 0;
         this.geometry = new THREE.CubeGeometry(5,5,5);
         this.material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
         this.basecolor = new THREE.Color(0x00ffff);
@@ -11,8 +12,17 @@ class Cube extends Enemy {
         scene.add(this.mesh);
     }
 
+    onFire() {
+        this.reload++;
+        if (this.reload > 10) {
+            var lBullet = new EnemyBullet(this, 1, 1, 0.5, 0, 0);
+            this.reload = 0;
+        }
+    }
     update() {
-        super.update();
+
+        this.onFire()
+        super.update();;
         this.mesh.position.z += 0.2;
     }
 
@@ -25,4 +35,5 @@ class Cube extends Enemy {
         super.onExit();
         enemies.push(new Cube());
     }
+
 }

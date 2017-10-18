@@ -10,6 +10,7 @@ class Game {
         input.update();
         player.update();
         enemyUpdates();
+        enemyBulletUpdate();
         playerBulletMovement();
 
         //collision checking

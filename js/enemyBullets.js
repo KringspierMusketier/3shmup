@@ -26,13 +26,13 @@ class EnemyBullet {
 
         //aim at player
         if (bulletBehavior == 1) {
-            var tanx = inZ - player.ship.position.z / inX - player.ship.position.x;
-            initialDirection += Math.tan(tanx);
+            var dist = enemy.mesh.position.distanceTo(player.ship.position);
+            console.log(dist);
         }
         this.direction = new THREE.Vector3();
-        this.direction.set(Math.sin(initialDirection), 0, Math.cos(initialDirection));
+        this.direction.set(Math.cos(initialDirection), 0, -Math.sin(initialDirection));
 
-        this.speed = initialSpeed/100;
+        this.speed = initialSpeed;
         //this.acc = acceleration;
         this.s3 = new THREE.Vector3();
         this.behavior = bulletBehavior;
@@ -40,28 +40,15 @@ class EnemyBullet {
         this.mesh = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xCCBCFA, wireframe: true }));
         //this.mesh = eBullMesh[bulletType];
         this.mesh.position.set(inX, 0,inZ);
-        this.mesh.rotation.y = initialDirection;
-        console.log("bullet is here")
+        //this.mesh.rotation.y = initialDirection;
         console.log(eBullList.length);
         eBullList.push(this);
         
         scene.add(this.mesh);
         console.log("bullet is added to the scene")
+        console.log(initialDirection);
     }
-    outOfBound() {
-        if (this.position.x < boundLeft || this.position.x > boundRight || this.position.z < boundTop || this.position.z > boundBot) {
-            //bulletcontroller.destroy(this);
-            //this = null;
-            //delete this;
-        }
-    }
-    
-    
-
-    destroy() {
-        scene.remove(this.mesh);
-        eBullList.splice(eBullList.indexOf(this), 1);
-    }
+   
     
 
     Move() {
@@ -92,6 +79,7 @@ class EnemyBullet {
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     this.speed += this.acc;
                     this.acc -= 0.03;
+                    break;
                 }
 
             case 4: // re-targetting bullet ///needs flashing
@@ -104,23 +92,22 @@ class EnemyBullet {
                         var tanz = Math.tan(xPos - player.ship.position.x / zPos - player.ship.position.z);
                         this.direction.set(tanx, 0, tanz);
                     }
+                    break;
                 }
         }
     }
 
+
     destroy() {
-        scene.remove(this.mpBullet);
+        scene.remove(this.mesh);
         eBullList.splice(eBullList.indexOf(this), 1);
     }
     update() {
         this.Move();
-        if (this.mesh.position.z > 30) {
+        if (outOfBound(this.mesh)) {
             this.destroy();
         }
     }
-
-
-
 }
 
 
