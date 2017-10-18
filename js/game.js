@@ -3,6 +3,7 @@ class Game {
         input = new Input();
         player = new Player(0, 20);
         enemies.push(new Cube(getRndNext(-28, 29), -45));
+        enemies.push(new Triangle(0, -45));
     }
     //game loop
     update() {
@@ -10,7 +11,6 @@ class Game {
         player.update();
         enemyUpdates();
         playerBulletMovement();
-        console.log(enemies.length);
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
@@ -23,7 +23,7 @@ class Game {
                     enemies[i].onHit();
                 }
                 else {
-                    enemies[i].mesh.material.color.set(0x00ffff);
+                    enemies[i].mesh.material.color.set(enemies[i].basecolor);
                 }
             }
         }
