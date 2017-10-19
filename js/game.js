@@ -24,9 +24,6 @@ class Game {
                     playerBulletList[j].destroy();
                     enemies[i].onHit();
                 }
-                else {
-                    enemies[i].mesh.material.color.set(enemies[i].basecolor);
-                }
             }
         }
 
