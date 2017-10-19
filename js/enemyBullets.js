@@ -25,7 +25,7 @@ class EnemyBullet {
         var inZ = enemy.mesh.position.z; //initial z
 
         //aim at player
-
+        this.mothership = enemy;
         this.direction = new THREE.Vector3();
         this.direction.set(-Math.sin(initialDirection), 0, Math.cos(initialDirection));
         console.log("Vector before 1sformation");
@@ -73,9 +73,8 @@ class EnemyBullet {
             case 2: //homing bullet /// needs to increase in brightness
                 {
                     this.time++;
-                    var tanx = Math.tan(this.mesh.position.z - player.ship.position.z / this.mesh.position.x - player.ship.position.x);
-                    var tanz = Math.tan(this.mesh.position.x - player.ship.position.x / this.mesh.position.z - player.ship.position.z);
-                    this.direction.add(0.05 * tanx, 0, 0.05 * tanz);
+                    this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                    this.direction.multiplyScalar(-1);
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
@@ -94,14 +93,24 @@ class EnemyBullet {
                 {
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
-                    this.speed += this.acc;
-                    if (this.position.z > -15 && this.position.z < -20) {
-                        var tanx = Math.tan(zPos - player.ship.position.z / xPos - player.ship.position.x);
-                        var tanz = Math.tan(xPos - player.ship.position.x / zPos - player.ship.position.z);
-                        this.direction.set(tanx, 0, tanz);
+                    if (this.timer > 100 && this.timer < 120) {
+                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.multiplyScalar(-1);
+                    }
+                    this.timer++;
+                    break;
+                }
+            case 5: // re-targetting bullets all at once.
+                {
+                    this.direction.normalize();
+                    this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
+                    if (this.mothership.timer > 1000 && this.mothership.timer < 1200) {
+                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.multiplyScalar(-1);
                     }
                     break;
                 }
+         
         }
     }
 

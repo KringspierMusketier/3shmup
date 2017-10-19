@@ -15,14 +15,14 @@ class Cube extends Enemy {
     onFire() {
         this.reload++;
         if (this.reload > 10) {
-            var lBullet = new EnemyBullet(this, 1, 1, 0.5, 0, 0);
+            var lBullet = new EnemyBullet(this, 1, 2, 0.5, 0, 0);
             this.reload = 0;
         }
     }
     update() {
 
         this.onFire()
-        super.update();;
+        super.update();
         this.mesh.position.z += 0.2;
     }
 
