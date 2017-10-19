@@ -1,9 +1,12 @@
-var scene, renderer, camera, controls, gui, player, input, preload, progressBar;
+var scene, renderer, camera, controls, gui, input, preload, progressBar;
 var height = 640;
 var width = 480;
+var score = 00000000;
+var lives = 2;
 var stats = new Stats();
 var debug = false;
 var loaded = false;
+var playing = true;
 stats.setMode(0);
 
 var manager = new THREE.LoadingManager();
@@ -58,11 +61,15 @@ function onLoad() {
 function draw() {
     stats.begin();
     controls.update();
-    game.update();
     stats.end();
 
-    document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
-    document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
+    if (playing) {
+        game.update();
+        document.getElementById('posX').innerHTML = ("posX: " + player[0].ship.position.x);
+        document.getElementById('posZ').innerHTML = ("posZ: " + player[0].ship.position.z);
+        document.getElementById('score').innerHTML = ("SC " + score);
+        document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
+    }
 
     requestAnimationFrame(draw);
 

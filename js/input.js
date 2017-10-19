@@ -7,22 +7,25 @@ class Input {
 
     update() {
         if(keyboard.pressed("left"))
-            player.moveLeft();
+            player[0].moveLeft();
         if(keyboard.pressed("right"))
-            player.moveRight();
+            player[0].moveRight();
         if(keyboard.pressed("up"))
-            player.moveUp();
+            player[0].moveUp();
         if(keyboard.pressed("down"))
-            player.moveDown();
+            player[0].moveDown();
         if(keyboard.pressed("shift") && !this.focus) {
-            player.speed = player.speed / 2;
+            player[0].speed = player[0].speed / 2;
             this.focus = true;
         }
         if(!keyboard.pressed("shift") && this.focus) {
-            player.speed = player.speed * 2;
+            player[0].speed = player[0].speed * 2;
             this.focus = false;
         }
         if (keyboard.pressed("z"))
-            player.shoot();
+            player[0].shoot();
+
+        if (keyboard.pressed("r"))
+            restart();
     }
 }

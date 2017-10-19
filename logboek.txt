@@ -23,3 +23,8 @@ Collision detectie functies en instantie initializering van gameobjecten verplaa
 De hitbox van het schip is niet het model van het schip zelf, maar een kleinere mesh binnen het schipmesh zelf
 Klasse voor vijandige kogels toegevoegd
 Je kogels en vijanden worden netjes verwijderd als ze buiten het veld komen en de length van de betreffende arrays past zich automatisch aan zodat er niet na een tijdje meer dan duizend lege elements in een array zijn waardoor for loops die door de arrays itereren niet mogelijk eeuwig hoeven te duren
+
+//18-10-2017
+Main menu opnieuw verwerkt
+Er is nu een explosie van particles wanneer enemies doodgaan
+Vijanden kunnen nu kogels in jouw richting schieten

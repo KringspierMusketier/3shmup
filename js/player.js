@@ -1,3 +1,5 @@
+player = [];
+
 class Player {
     constructor(posX, posZ) {
         this.ship = models[0];
