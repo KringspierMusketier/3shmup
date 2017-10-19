@@ -25,12 +25,19 @@ class EnemyBullet {
         var inZ = enemy.mesh.position.z; //initial z
 
         //aim at player
-        if (bulletBehavior == 1) {
-            var dist = enemy.mesh.position.distanceTo(player.ship.position);
-            console.log(dist);
-        }
+
         this.direction = new THREE.Vector3();
-        this.direction.set(Math.cos(initialDirection), 0, -Math.sin(initialDirection));
+        this.direction.set(-Math.sin(initialDirection), 0, Math.cos(initialDirection));
+        console.log("Vector before 1sformation");
+        console.log(this.direction); 
+        if (bulletBehavior == 1) {
+            this.direction.set(inX - player.ship.position.x, 0, inZ - player.ship.position.z);
+            this.direction.multiplyScalar(-1);
+            
+            this.direction.normalize();
+            //console.log("Vector after 1sformation");
+            //console.log(this.direction);
+        }
 
         this.speed = initialSpeed;
         this.acc = acceleration;
