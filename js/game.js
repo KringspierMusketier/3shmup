@@ -19,12 +19,9 @@ class Game {
         playerBulletMovement();
         particleUpdate();
         input.update();
-<<<<<<< HEAD
         console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
-=======
         timeline(this.timer);
         this.timer++;
->>>>>>> e1974fac996593ba8fcc2b7c15f25abbdc489b31
 
         //intro -14, -16, 45, (14, 66, -45)
         if (this.intro) {
