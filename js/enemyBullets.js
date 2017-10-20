@@ -28,8 +28,6 @@ class EnemyBullet {
         this.mothership = enemy;
         this.direction = new THREE.Vector3();
         this.direction.set(-Math.sin(initialDirection), 0, Math.cos(initialDirection));
-        console.log("Vector before 1sformation");
-        console.log(this.direction); 
         if (bulletBehavior == 1) {
             this.direction.set(inX - player.ship.position.x, 0, inZ - player.ship.position.z);
             this.direction.multiplyScalar(-1);
@@ -48,12 +46,10 @@ class EnemyBullet {
         this.hitbox = new THREE.Box3();
         this.mesh.position.set(inX, 0,inZ);
         //this.mesh.rotation.y = initialDirection;
-        console.log(eBullList.length);
         eBullList.push(this);
         
         scene.add(this.mesh);
         //console.log("bullet is added to the scene")
-        console.log(initialDirection);
     }
    
     

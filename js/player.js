@@ -86,7 +86,7 @@ class Player {
             
     }
     onHit() {
-        console.log("collision detected");
+
     }
 }
 

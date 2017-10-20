@@ -25,14 +25,14 @@ class Preload {
             models.push(object);
         });
 
-        loader.load('models/mediumbad.json'), function (geometry) {
+        /**loader.load('models/mediumbad.json'), function (geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
                 color: new THREE.Color(0xDDDD00),
                 wireframe: true
             }))
             var object = mesh.clone();
             enemyModels.push(object);
-        }
+        }**/
     }
 
 }
