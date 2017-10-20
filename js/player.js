@@ -19,6 +19,8 @@ class Player {
         this.speed = 0.02;
         this.speed = 0.8;
         this.reload = 0;
+        this.ship.position.x = posX;
+        this.ship.position.z = posZ;
         scene.add(this.ship);
 
         this.hitbox = new THREE.Box3();

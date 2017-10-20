@@ -61,11 +61,13 @@ function draw() {
     stats.begin();
     controls.update();
     stats.end();
-    
-    game.update();
-    document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
-    document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
 
+        game.update();
+        document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
+        document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
+        document.getElementById('score').innerHTML = ("SC " + score);
+        document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
+        console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
 
     requestAnimationFrame(draw);
 

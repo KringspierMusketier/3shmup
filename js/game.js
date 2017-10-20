@@ -2,8 +2,10 @@ class Game {
     constructor() {
         input = new Input();
         player = new Player(0,20);
+        player.ship.position.y = 50;        
         enemies.push(new Cube(getRndNext(-28, 29), -45));
         enemies.push(new Triangle(0, -45));
+        this.intro = true;
     }
     //game loop
     update() {
@@ -13,6 +15,11 @@ class Game {
         playerBulletMovement();
         particleUpdate();
         input.update();
+
+        //intro
+        if (player.ship.position.y > 0 && this.intro) {
+            player.ship.position.y -= 1;
+        }
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
