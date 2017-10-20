@@ -1,7 +1,22 @@
+player = [];
+
 class Player {
     constructor(posX, posZ) {
         this.ship = models[0];
         this.ship.add(models[1]);
+
+        this.exhaustgeo = new THREE.CylinderGeometry(5,5,20,8);
+        this.exhaustmat = new THREE.MeshBasicMaterial({color: 0xfe7722, wireframe: true});
+        this.exhaust = new THREE.Mesh(this.exhaustgeo, this.exhaustmat);
+        this.exhaust.rotation.x += 1.5;
+        this.exhaust.position.y += -6;
+        this.exhaust.position.z += 41;
+        this.exhaust2 = this.exhaust.clone();
+        this.exhaust.position.x += -10;
+        this.exhaust2.position.x += 10;
+        this.ship.add(this.exhaust);
+        this.ship.add(this.exhaust2);
+
         this.ship.scale.set(0.1,0.1,0.1);
         this.speed = 0.02;
         this.speed = 0.8;
@@ -52,6 +67,22 @@ class Player {
         if (this.ship.rotation.z < 0)
             this.ship.rotation.z += 0.04;
         this.hitbox.setFromObject(this.ship.children[0]);
+
+        if (this.exhaust.scale.x < 0.01) {
+            this.exhaust.scale.x = 1;
+            this.exhaust.scale.z = 1;
+            this.exhaust.scale.y = 1;
+            this.exhaust2.scale.x = 1;
+            this.exhaust2.scale.z = 1;
+            this.exhaust2.scale.y = 1;
+        }
+
+        this.exhaust.scale.x -= 0.05;
+        this.exhaust.scale.z -= 0.05;
+        this.exhaust.scale.y -= 0.025;
+        this.exhaust2.scale.x -= 0.05;
+        this.exhaust2.scale.z -= 0.05;
+        this.exhaust2.scale.y -= 0.025;
             
     }
     onHit() {

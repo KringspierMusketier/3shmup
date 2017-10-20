@@ -28,6 +28,7 @@ class Cube extends Enemy {
 
     onDeath() {
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
+        score += 100;
         super.onDeath();
         enemies.push(new Cube());
     }

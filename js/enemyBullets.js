@@ -13,7 +13,7 @@ boundLeft = -30;
 boundTop = -40;
 boundBot = 40;
 
-//player bullet shape
+//player[0] bullet shape
 
 
 
@@ -24,14 +24,14 @@ class EnemyBullet {
         var inX = enemy.mesh.position.x; //initial x
         var inZ = enemy.mesh.position.z; //initial z
 
-        //aim at player
+        //aim at player[0]
         this.mothership = enemy;
         this.direction = new THREE.Vector3();
         this.direction.set(-Math.sin(initialDirection), 0, Math.cos(initialDirection));
         console.log("Vector before 1sformation");
         console.log(this.direction); 
         if (bulletBehavior == 1) {
-            this.direction.set(inX - player.ship.position.x, 0, inZ - player.ship.position.z);
+            this.direction.set(inX - player[0].ship.position.x, 0, inZ - player[0].ship.position.z);
             this.direction.multiplyScalar(-1);
             
             this.direction.normalize();
@@ -72,9 +72,17 @@ class EnemyBullet {
 
             case 2: //homing bullet /// needs to increase in brightness
                 {
+<<<<<<< HEAD
+                    this.timer++;
+                    if (this.timer < 100) {
+                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.multiplyScalar(-1);
+                    }
+=======
                     this.time++;
-                    this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                    this.direction.set(this.mesh.position.x - player[0].ship.position.x, 0, this.mesh.position.z - player[0].ship.position.z);
                     this.direction.multiplyScalar(-1);
+>>>>>>> f79ac489872de38351868404099d0c443f9c94fb
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
@@ -94,7 +102,7 @@ class EnemyBullet {
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     if (this.timer > 100 && this.timer < 120) {
-                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.set(this.mesh.position.x - player[0].ship.position.x, 0, this.mesh.position.z - player[0].ship.position.z);
                         this.direction.multiplyScalar(-1);
                     }
                     this.timer++;
@@ -105,7 +113,7 @@ class EnemyBullet {
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     if (this.mothership.timer > 1000 && this.mothership.timer < 1200) {
-                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.set(this.mesh.position.x - player[0].ship.position.x, 0, this.mesh.position.z - player[0].ship.position.z);
                         this.direction.multiplyScalar(-1);
                     }
                     break;

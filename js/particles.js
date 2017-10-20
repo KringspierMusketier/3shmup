@@ -5,7 +5,7 @@ class Explosion {
         this.particleCount = 10;
         this.particles = new THREE.Geometry();
         this.pMaterial = new THREE.PointsMaterial({
-            color:0xFFFFFF,
+            color: 0xbfbfbf,
             size: 0.4
         });
 
