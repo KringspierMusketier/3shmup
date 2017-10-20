@@ -2,6 +2,7 @@ enemies = [];
 
 class Enemy {
     constructor() {
+        this.timer = 0;
         this.hp = 1;
         this.hitbox = new THREE.Box3();
         this.mesh = new THREE.Object3D();
@@ -27,7 +28,7 @@ class Enemy {
 
     update() {
         this.hitbox.setFromObject(this.mesh);
-
+        this.timer++;
         //destroy enemy when out of bounds
         if (this.mesh.position.z > 50 || this.mesh.position.x < -30 || this.mesh.position.x > 30)
             this.onExit();
