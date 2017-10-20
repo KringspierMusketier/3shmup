@@ -32,27 +32,5 @@ function outOfBound(mesh) {
 }
 
 function restart() {
-    playing = false;
-
-    while(scene.children.length > 0) {
-        scene.remove(scene.children[0])
-    }
-
-    enemies = [];
-    eBullList = [];
-    particles = [];
-    playerBulletList = [];
-    player = [];
-    score = 00000000;
-    lives = 2;
-    input = null;
-
-    player.push(new Player(0, 20));
-    player[0].ship.position.x = 0;
-    player[0].ship.position.z = 20;
-    input = new Input();
-    enemies.push(new Cube(getRndNext(-28, 29), -45));
-    enemies.push(new Triangle(0, -45));
-    
-    playing = true;
+    location = location;
 }

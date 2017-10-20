@@ -1,4 +1,4 @@
-var scene, renderer, camera, controls, gui, input, preload, progressBar;
+var scene, renderer, camera, controls, gui, input, preload, progressBar, time;
 var height = 640;
 var width = 480;
 var score = 00000000;
@@ -69,6 +69,7 @@ function draw() {
         document.getElementById('posZ').innerHTML = ("posZ: " + player[0].ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
         document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
+        console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ" + camera.position.z);
     }
 
     requestAnimationFrame(draw);

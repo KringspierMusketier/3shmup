@@ -1,18 +1,26 @@
 class Game {
     constructor() {
         input = new Input();
-        player.push(new Player(0,20));
+        player.push(new Player(0,25));
+        player[0].ship.position.y = 50;
         enemies.push(new Cube(getRndNext(-28, 29), -45));
         enemies.push(new Triangle(0, -45));
+        time = new THREE.Clock();
+        var intro = true;
     }
     //game loop
     update() {
-        player[0].update();
         enemyUpdates();
         enemyBulletUpdate();
         playerBulletMovement();
         particleUpdate();
         input.update();
+        player[0].update();
+
+        //intro
+        if (player.ship.position.y > 0 && intro) {
+            player.ship.position.y -= 1;
+        }
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
