@@ -10,7 +10,7 @@ class Player {
         this.exhaust = new THREE.Mesh(this.exhaustgeo, this.exhaustmat);
         this.exhaust.rotation.x += 1.5;
         this.exhaust.position.y += -6;
-        this.exhaust.position.z += 42;
+        this.exhaust.position.z += 41;
         this.exhaust2 = this.exhaust.clone();
         this.exhaust.position.x += -10;
         this.exhaust2.position.x += 10;
@@ -71,14 +71,18 @@ class Player {
         if (this.exhaust.scale.x < 0.01) {
             this.exhaust.scale.x = 1;
             this.exhaust.scale.z = 1;
+            this.exhaust.scale.y = 1;
             this.exhaust2.scale.x = 1;
             this.exhaust2.scale.z = 1;
+            this.exhaust2.scale.y = 1;
         }
 
         this.exhaust.scale.x -= 0.05;
         this.exhaust.scale.z -= 0.05;
+        this.exhaust.scale.y -= 0.025;
         this.exhaust2.scale.x -= 0.05;
         this.exhaust2.scale.z -= 0.05;
+        this.exhaust2.scale.y -= 0.025;
             
     }
     onHit() {
