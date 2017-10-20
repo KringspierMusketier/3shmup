@@ -36,7 +36,7 @@ function restart() {
 }
 
 function timeline(timer) {
-    switch(timer) {
+    switch (timer) {
         case 120: {
             enemies.push(new Triangle());
             enemies.push(new Cube());

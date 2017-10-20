@@ -1,4 +1,4 @@
-var scene, renderer, player, camera, controls, gui, input, preload, progressBar, timeline;
+var scene, renderer, player, camera, controls, gui, input, preload, progressBar;
 var height = 640;
 var width = 480;
 var score = 00000000;
@@ -61,6 +61,7 @@ function draw() {
     stats.begin();
     controls.update();
     stats.end();
+    
 
         game.update();
         document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
