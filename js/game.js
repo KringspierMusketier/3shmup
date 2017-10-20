@@ -1,6 +1,7 @@
 class Game {
     constructor() {
         input = new Input();
+        this.timer = 0;
         player = new Player(0,20);
         player.ship.position.y = 50;        
         enemies.push(new Cube(getRndNext(-28, 29), -45));
@@ -17,6 +18,8 @@ class Game {
         playerBulletMovement();
         particleUpdate();
         input.update();
+        timeline(this.timer);
+        this.timer++;
 
         //intro -14, -16, 45, (14, 66, -45)
         if (this.intro) {
