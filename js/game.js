@@ -18,6 +18,7 @@ class Game {
         playerBulletMovement();
         particleUpdate();
         input.update();
+        console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
 
         //intro -14, -16, 45, (14, 66, -45)
         if (this.intro) {
