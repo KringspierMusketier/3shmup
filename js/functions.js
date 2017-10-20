@@ -35,16 +35,16 @@ function restart() {
     location = location;
 }
 
-//function timeline(timer) {
-//    switch (timer) {
-//        case 120: {
-//            enemies.push(new Triangle());
-//            enemies.push(new Cube());
-//            break;
-//        }
-//        case 240: {
-//            enemies.push(new Triangle());
-//            enemies.push(new Cube());
-//        }
-//    }
-//}
+function timeline(timer) {
+    switch (timer) {
+        case 120: {
+            enemies.push(new Triangle());
+            enemies.push(new Cube());
+            break;
+        }
+        case 240: {
+            enemies.push(new Triangle());
+            enemies.push(new Cube());
+        }
+    }
+}
