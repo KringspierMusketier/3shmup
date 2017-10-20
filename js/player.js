@@ -3,7 +3,7 @@ class Player {
         this.ship = models[0].clone();
         this.ship.add(models[1].clone());
 
-        this.exhaustgeo = new THREE.CylinderGeometry(5,5,20,8);
+        this.exhaustgeo = new THREE.CylinderGeometry(2,5,20,3);
         this.exhaustmat = new THREE.MeshBasicMaterial({color: 0xfe7722, wireframe: true});
         this.exhaust = new THREE.Mesh(this.exhaustgeo, this.exhaustmat);
         this.exhaust.rotation.x += 1.5;
