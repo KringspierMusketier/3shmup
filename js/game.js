@@ -1,13 +1,13 @@
 class Game {
     constructor() {
         input = new Input();
-        player.push(new Player(0,20));
+        player = new Player(0,20);
         enemies.push(new Cube(getRndNext(-28, 29), -45));
         enemies.push(new Triangle(0, -45));
     }
     //game loop
     update() {
-        player[0].update();
+        player.update();
         enemyUpdates();
         enemyBulletUpdate();
         playerBulletMovement();
@@ -16,8 +16,8 @@ class Game {
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
-            if (player[0].hitbox.intersectsBox(enemies[i].hitbox))
-                player[0].onHit();
+            if (player.hitbox.intersectsBox(enemies[i].hitbox))
+                player.onHit();
 
             for (var j = 0; j < playerBulletList.length; j++) {
                 if (enemies[i].hitbox.intersectsBox(playerBulletList[j].hitbox)) {
@@ -28,8 +28,8 @@ class Game {
         }
 
         for (var i = 0; i < eBullList.length; i++) {
-            if (player[0].hitbox.intersectsBox(eBullList[i].hitbox)) {
-                player[0].onHit();
+            if (player.hitbox.intersectsBox(eBullList[i].hitbox)) {
+                player.onHit();
                 eBullList[i].destroy();
             }
 

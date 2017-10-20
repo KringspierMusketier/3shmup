@@ -3,6 +3,7 @@ bulletModels = [];
 
 class Preload {
     constructor() {
+        //BackGroundPreload();
         var loader = new THREE.JSONLoader(manager);
 
         loader.load('models/playerShip_v1_4.json', function(geometry) {
