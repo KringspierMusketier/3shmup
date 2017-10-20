@@ -11,10 +11,6 @@ class Preload {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
                 color: new THREE.Color(0xDD4444),
                 wireframe: true,
-                wireframeLinewidth: 8,
-                wireframeWidth: 2,
-                wireframewidth: 3,
-                width: 7
             }))
             var object = mesh.clone();
             models.push(object);
