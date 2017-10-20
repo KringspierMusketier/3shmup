@@ -72,17 +72,11 @@ class EnemyBullet {
 
             case 2: //homing bullet /// needs to increase in brightness
                 {
-<<<<<<< HEAD
-                    this.timer++;
+                    this.time++;
                     if (this.timer < 100) {
-                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.set(this.mesh.position.x - player[0].ship.position.x, 0, this.mesh.position.z - player[0].ship.position.z);
                         this.direction.multiplyScalar(-1);
                     }
-=======
-                    this.time++;
-                    this.direction.set(this.mesh.position.x - player[0].ship.position.x, 0, this.mesh.position.z - player[0].ship.position.z);
-                    this.direction.multiplyScalar(-1);
->>>>>>> f79ac489872de38351868404099d0c443f9c94fb
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
