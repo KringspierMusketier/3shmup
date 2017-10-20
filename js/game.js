@@ -5,6 +5,7 @@ class Game {
         player.ship.position.y = 50;        
         enemies.push(new Cube(getRndNext(-28, 29), -45));
         enemies.push(new Triangle(0, -45));
+        enemies.push(new Spinner(15, -30));
         this.intro = true;
     }
     //game loop
