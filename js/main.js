@@ -30,7 +30,7 @@ function onLoad() {
 
     preload = new Preload();
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    camera.position.set(0, 50, 0);
+    camera.position.set(-14, -16, 45);
     scene = new THREE.Scene();
     scene.add(camera);
 
@@ -67,7 +67,6 @@ function draw() {
         document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
         document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
-        console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
 
     requestAnimationFrame(draw);
 

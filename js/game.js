@@ -7,6 +7,7 @@ class Game {
         enemies.push(new Triangle(0, -45));
         enemies.push(new Spinner(15, -30));
         this.intro = true;
+        this.introClock = new THREE.Clock();
     }
     //game loop
     update() {
@@ -17,9 +18,21 @@ class Game {
         particleUpdate();
         input.update();
 
-        //intro
-        if (player.ship.position.y > 0 && this.intro) {
-            player.ship.position.y -= 1;
+        //intro -14, -16, 45, (14, 66, -45)
+        if (this.intro) {
+            if (player.ship.position.y > 0)
+                player.ship.position.y -= 0.5;
+            else if (camera.position.x < 0){
+                camera.position.x += 0.23;
+                camera.position.y += 1.1;
+                camera.position.z -= 0.75;
+                console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
+            }
+            else {
+                this.intro = false;
+                camera.position.set(0, 50, 0);
+                console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
+            }
         }
 
         //collision checking
