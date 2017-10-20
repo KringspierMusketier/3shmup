@@ -7,6 +7,7 @@ class Game {
         enemies.push(new Triangle(0, -45));
         enemies.push(new Spinner(15, -30));
         this.intro = true;
+        this.iter = 0;
         this.introClock = new THREE.Clock();
     }
     //game loop
@@ -22,10 +23,11 @@ class Game {
         if (this.intro) {
             if (player.ship.position.y > 0)
                 player.ship.position.y -= 0.5;
-            else if (camera.position.x < 0){
-                camera.position.x += 0.23;
+            else if (this.iter < 59) {
+                camera.position.x += (14/60);
                 camera.position.y += 1.1;
                 camera.position.z -= 0.75;
+                this.iter++;
                 console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
             }
             else {
