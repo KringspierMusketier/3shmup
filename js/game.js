@@ -3,13 +3,11 @@ class Game {
         input = new Input();
         this.timer = 0;
         player = new Player(0,20);
-        player.ship.position.y = 50;        
+        player.ship.position.y = 70;        
         enemies.push(new Cube(getRndNext(-28, 29), -45));
         enemies.push(new Triangle(0, -45));
         enemies.push(new Spinner(15, -30));
-        this.intro = true;
-        this.iter = 0;
-        this.introClock = new THREE.Clock();
+        intro = new Intro();
     }
     //game loop
     update() {
@@ -19,25 +17,17 @@ class Game {
         playerBulletMovement();
         particleUpdate();
         input.update();
-        console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
         timeline(this.timer);
         this.timer++;
 
         //intro -14, -16, 45, (14, 66, -45)
-        if (this.intro) {
-            if (player.ship.position.y > 0)
+        if (!intro.done) {
+            if (player.ship.position.y > 0) {
                 player.ship.position.y -= 0.5;
-            else if (this.iter < 59) {
-                camera.position.x += (14/60);
-                camera.position.y += 1.1;
-                camera.position.z -= 0.75;
-                this.iter++;
-                console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
             }
-            else {
-                this.intro = false;
-                camera.position.set(0, 50, 0);
-                console.log("camX: " + camera.position.x + ", camY: " + camera.position.y + ", camZ: " + camera.position.z);
+
+            else if (!intro.started) {
+                intro.start();
             }
         }
 

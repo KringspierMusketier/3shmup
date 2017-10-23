@@ -1,4 +1,4 @@
-var scene, renderer, player, camera, controls, gui, input, preload, progressBar;
+var scene, renderer, player, camera, controls, gui, input, preload, progressBar, intro;
 var height = 640;
 var width = 480;
 var score = 00000000;
@@ -45,7 +45,7 @@ function onLoad() {
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
-    controls.enableZoom = false;
+    controls.enableZoom = true;
 
     var canvasContainer = document.getElementById('canvas_inner');
     canvasContainer.appendChild(renderer.domElement);
@@ -64,6 +64,7 @@ function draw() {
     
 
         game.update();
+        TWEEN.update();
         document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
         document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
