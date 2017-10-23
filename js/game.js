@@ -3,7 +3,7 @@ class Game {
         input = new Input();
         this.timer = 0;
         player = new Player(0,20);
-        player.ship.position.y = 70;        
+        player.ship.position.y = 100;        
         enemies.push(new Cube(getRndNext(-28, 29), -45));
         enemies.push(new Triangle(0, -45));
         enemies.push(new Spinner(15, -30));
@@ -21,14 +21,8 @@ class Game {
         this.timer++;
 
         //intro -14, -16, 45, (14, 66, -45)
-        if (!intro.done) {
-            if (player.ship.position.y > 0) {
-                player.ship.position.y -= 0.5;
-            }
-
-            else if (!intro.started) {
-                intro.start();
-            }
+        if (!intro.started) {
+            intro.start();
         }
 
         //collision checking

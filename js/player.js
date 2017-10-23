@@ -19,6 +19,7 @@ class Player {
         this.speed = 0.02;
         this.speed = 0.8;
         this.reload = 0;
+        this.spin = false;
         this.ship.position.x = posX;
         this.ship.position.z = posZ;
         scene.add(this.ship);
@@ -62,10 +63,16 @@ class Player {
         }
     }
     update() {
-        if (this.ship.rotation.z > 0)
-            this.ship.rotation.z -= 0.04;
-        if (this.ship.rotation.z < 0)
-            this.ship.rotation.z += 0.04;
+
+        if(this.spin) {
+            this.ship.rotation.z -= 0.32;
+        } else {
+            if (this.ship.rotation.z > 0)
+                this.ship.rotation.z -= 0.04;
+            if (this.ship.rotation.z < 0)
+                this.ship.rotation.z += 0.04;
+        }
+
         this.hitbox.setFromObject(this.ship.children[0]);
 
         if (this.exhaust.scale.x < 0.01) {
