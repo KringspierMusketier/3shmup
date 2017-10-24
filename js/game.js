@@ -1,6 +1,7 @@
 class Game {
     constructor() {
         input = new Input();
+        this.bg = new Background();
         this.timer = 0;
         player = new Player(0,20);
         player.ship.position.y = 100;
@@ -14,6 +15,7 @@ class Game {
     }
     //game loop
     update() {
+        this.bg.update();
         player.update();
         enemyUpdates();
         enemyBulletUpdate();

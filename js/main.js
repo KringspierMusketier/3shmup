@@ -29,6 +29,7 @@ manager.onError = function(url) {
 function onLoad() {
 
     preload = new Preload();
+    bgpreload = new BackgroundPreload();
     camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
     camera.position.set(-14, -16, 45);
     scene = new THREE.Scene();
