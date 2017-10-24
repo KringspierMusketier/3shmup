@@ -1,4 +1,3 @@
-bgloop;
 bgchunk = [];
 
 class BackgroundPreload {
@@ -6,10 +5,11 @@ class BackgroundPreload {
         var loader = new THREE.JSONLoader(manager);
 
         loader.load('models/loopbackground.json', function (geometry) {
-            var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-                color: new THREE.Color(0xDD4444)
+            var mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
+                color: new THREE.Color(0x653311)
             }))
-            bgloop = mesh.clone();
+            bgchunk.push(mesh.clone());
         });
     }
+
 }
