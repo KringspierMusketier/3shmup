@@ -97,6 +97,7 @@ class Player {
         this.exhaust2.scale.x -= 0.05;
         this.exhaust2.scale.z -= 0.05;
         this.exhaust2.scale.y -= 0.025;
+        console.log(this.side);
             
     }
     onHit() {

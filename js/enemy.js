@@ -47,7 +47,7 @@ class Enemy {
         if(!posX) {
             if (player.side = 0) {
                 this.mesh.position.x = getRndNext(0, 28);
-            } else {
+            } else if (player.side = 1){
                 this.mesh.position.x = getRndNext(-28, 0);
             }
         } else {
