@@ -42,11 +42,9 @@ class Spinner extends Enemy {
         score += 100;
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
         super.onDeath();
-        enemies.push(new Spinner());
     }
 
     onExit() {
         super.onDeath();
-        enemies.push(new Spinner());
     }
 }

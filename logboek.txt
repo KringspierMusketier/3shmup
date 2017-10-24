@@ -28,3 +28,12 @@ Je kogels en vijanden worden netjes verwijderd als ze buiten het veld komen en d
 Main menu opnieuw verwerkt
 Er is nu een explosie van particles wanneer enemies doodgaan
 Vijanden kunnen nu kogels in jouw richting schieten
+
+//19-10-2017
+Nieuwe vijand toegevoegd
+
+//23-10-2017
+Intro voor het spel is gerealiseerd
+Achtergrond voor een deel van het spel is gemaakt
+
+//24-10-2017

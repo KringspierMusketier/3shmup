@@ -1,6 +1,7 @@
+done = false;
+
 class Intro {
     constructor() {
-        this.done = false;
         this.started = false;
         this.tor = new THREE.Object3D();
 
@@ -46,6 +47,7 @@ class Intro {
             .onComplete(function() {
                 scene.remove(this.tor);
                 player.spin = false;
+                done = true;
             });
 
         this.tween0.chain(this.tweenA);

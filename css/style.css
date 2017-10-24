@@ -46,6 +46,13 @@ body {
   font-family: "Lucida Console", normal;
 }
 
+#instructions {
+  width: auto;
+  height: auto;
+  margin-top: 200px;
+  margin-left: 20px;
+}
+
 #btn_startgame {
   border-style: solid;
   border-color: rgb(0, 194, 0);

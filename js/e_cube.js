@@ -20,7 +20,6 @@ class Cube extends Enemy {
         }
     }
     update() {
-
         this.onFire()
         super.update();
         this.mesh.position.z += 0.2;
@@ -30,12 +29,10 @@ class Cube extends Enemy {
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
         score += 100;
         super.onDeath();
-        enemies.push(new Cube());
     }
 
     onExit() {
         super.onExit();
-        enemies.push(new Cube());
     }
 
 }
