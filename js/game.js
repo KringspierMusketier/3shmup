@@ -5,6 +5,12 @@ class Game {
         player = new Player(0,20);
         player.ship.position.y = 100;
         intro = new Intro();
+
+        //verwijder de onderste lijnen om intro af te laten spelen
+        intro.started = true;
+        done = true;
+        camera.position.set(0,50,0);
+        player.ship.position.y = 0;
     }
     //game loop
     update() {

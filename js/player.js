@@ -22,6 +22,7 @@ class Player {
         this.spin = false;
         this.ship.position.x = posX;
         this.ship.position.z = posZ;
+        this.side = 0;
         scene.add(this.ship);
 
         this.hitbox = new THREE.Box3();
@@ -71,6 +72,12 @@ class Player {
                 this.ship.rotation.z -= 0.04;
             if (this.ship.rotation.z < 0)
                 this.ship.rotation.z += 0.04;
+        }
+
+        if(this.ship.position.x < 0) {
+            this.side = 0;
+        } else {
+            this.side = 1;
         }
 
         this.hitbox.setFromObject(this.ship.children[0]);

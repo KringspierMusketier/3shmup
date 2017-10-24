@@ -1,5 +1,5 @@
 class Cube extends Enemy {
-    constructor() {
+    constructor(posX, posZ) {
         super();
         this.hp = 100;
         this.reload = 0;
@@ -7,8 +7,8 @@ class Cube extends Enemy {
         this.material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
         this.basecolor = new THREE.Color(0x00ffff);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.mesh.position.x = getRndNext(-28, 29);
-        this.mesh.position.z = -45;
+
+        super.setPos(posX, posZ);
         scene.add(this.mesh);
     }
 

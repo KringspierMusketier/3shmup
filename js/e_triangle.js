@@ -1,5 +1,5 @@
 class Triangle extends Enemy {
-    constructor() {
+    constructor(posX, posZ) {
         super();
         this.hp = 80;
         this.geometry = new THREE.CylinderGeometry( 1, 3, 3, 4 );
@@ -10,13 +10,12 @@ class Triangle extends Enemy {
         this.speed = 0.4;
         this.clock = new THREE.Clock();
 
-        if (Math.round(Math.random()) == 0) {
+        super.setPos(posX, posZ);
+        if (this.mesh.position.x < 0) {
             this.side = -1;
-            this.mesh.position.x = getRndNext(-28, 0);
         }
         else {
             this.side = 1;
-            this.mesh.position.x = getRndNext(0, 28);
         }
         scene.add(this.mesh);
         this.clock.start();

@@ -42,4 +42,22 @@ class Enemy {
             this.onDeath();
 
     }
+
+    setPos(posX, posZ) {
+        if(!posX) {
+            if (player.side = 0) {
+                this.mesh.position.x = getRndNext(0, 28);
+            } else {
+                this.mesh.position.x = getRndNext(-28, 0);
+            }
+        } else {
+            this.mesh.position.x = posX;
+        }
+
+        if(!posZ) {
+            this.mesh.position.z = -45;
+        } else {
+            this.mesh.position.z = posZ;
+        }
+    }
 }

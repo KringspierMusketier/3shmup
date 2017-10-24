@@ -30,6 +30,9 @@ class Intro {
         this.tweenBa = new TWEEN.Tween(camera.position)
             .to({z: 501}, 1000)
             .easing(TWEEN.Easing.Quartic.Out)
+            .onStart(function() {
+                //player.spin = true;
+            })
             .onUpdate(function() {
                 this.tor.position.z += 8;
             });
@@ -39,14 +42,13 @@ class Intro {
             .easing(TWEEN.Easing.Quartic.Out)
             .onStart(function() {
                 this.tor.position.z += 15;
-                player.spin = true;
             })
             .onUpdate(function() {
                 this.tor.position.z += 15;
             })
             .onComplete(function() {
                 scene.remove(this.tor);
-                player.spin = false;
+                //player.spin = false;
                 done = true;
             });
 
