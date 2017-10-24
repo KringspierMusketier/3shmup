@@ -45,6 +45,15 @@ function timeline(timer) {
         case 240: {
             enemies.push(new Triangle());
             enemies.push(new Cube());
+            enemies.push(new Cube());
+            break;
+        }
+        case 480: {
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            break;
         }
     }
 }
