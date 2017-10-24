@@ -37,3 +37,5 @@ Intro voor het spel is gerealiseerd
 Achtergrond voor een deel van het spel is gemaakt
 
 //24-10-2017
+Achtergrond kan nu afgebeeld worden in het spel en herhaalt zich 
+Het plaatsen van nieuwe vijanden aangepast zodat als er geen coordinaat is gegeven voor een nieuwe vijand, dat de vijand aan de helft van het scherm spawnt waar de speler niet is, zodat de speler wel moet bewegen om de vijanden neer te schieten

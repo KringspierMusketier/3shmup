@@ -6,11 +6,10 @@ class Triangle extends Enemy {
         this.material = new THREE.MeshBasicMaterial({color: 0xfe7722, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.basecolor = new THREE.Color(0xfe7722);
-        this.mesh.position.z = -45;
         this.speed = 0.4;
         this.clock = new THREE.Clock();
 
-        super.setPos(posX, posZ);
+        setPos(posX, posZ, this.mesh);
         if (this.mesh.position.x < 0) {
             this.side = -1;
         }

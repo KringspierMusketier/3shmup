@@ -8,7 +8,7 @@ class Cube extends Enemy {
         this.basecolor = new THREE.Color(0x00ffff);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
 
-        super.setPos(posX, posZ);
+        setPos(posX, posZ, this.mesh);
         scene.add(this.mesh);
     }
 

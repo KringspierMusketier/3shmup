@@ -1,3 +1,5 @@
+pside = 0;
+
 class Player {
     constructor(posX, posZ) {
         this.ship = models[0].clone();
@@ -74,10 +76,10 @@ class Player {
                 this.ship.rotation.z += 0.04;
         }
 
-        if(this.ship.position.x < 0) {
-            this.side = 0;
+        if(this.ship.position.x > 0) {
+            pside = 1;
         } else {
-            this.side = 1;
+            pside = 0;
         }
 
         this.hitbox.setFromObject(this.ship.children[0]);
@@ -97,7 +99,6 @@ class Player {
         this.exhaust2.scale.x -= 0.05;
         this.exhaust2.scale.z -= 0.05;
         this.exhaust2.scale.y -= 0.025;
-        console.log(this.side);
             
     }
     onHit() {
