@@ -8,6 +8,8 @@ class Enemy {
         this.mesh = new THREE.Object3D();
         this.flash = new THREE.Clock();
         this.basecolor = new THREE.Color();
+
+
     }
 
     onHit() {
@@ -24,6 +26,24 @@ class Enemy {
     onExit() {
         scene.remove(this.mesh);
         enemies.splice(enemies.indexOf(this), 1);
+    }
+
+    setPos(posX, posZ, mesh) {
+        if(posX == null) {
+            if(player.ship.position.x > 0)
+                mesh.position.x = getRndNext(-28, 0);
+            else {
+                mesh.position.x = getRndNext(0, 28);
+            }
+        } else {
+            mesh.position.x = posX;
+        }
+
+        if(posZ == null) {
+            mesh.position.z = -45;
+        } else {
+            mesh.position.z = posZ;
+        }
     }
 
     update() {

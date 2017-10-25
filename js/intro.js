@@ -26,12 +26,12 @@ class Intro {
                 this.tor = torMesh.clone();
                 scene.add(this.tor);
             });
-        
+
         this.tweenBa = new TWEEN.Tween(camera.position)
             .to({z: 501}, 1000)
             .easing(TWEEN.Easing.Quartic.Out)
             .onStart(function() {
-                //player.spin = true;
+                new TWEEN.Tween(camera.rotation).to({z: 360*Math.PI/180}, 2200).easing(TWEEN.Easing.Quartic.Out).start();
             })
             .onUpdate(function() {
                 this.tor.position.z += 8;

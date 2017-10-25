@@ -9,7 +9,8 @@ class Triangle extends Enemy {
         this.speed = 0.4;
         this.clock = new THREE.Clock();
 
-        setPos(posX, posZ, this.mesh);
+        super.setPos(posX, posZ, this.mesh);
+
         if (this.mesh.position.x < 0) {
             this.side = -1;
         }

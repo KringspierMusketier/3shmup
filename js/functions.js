@@ -31,25 +31,6 @@ function outOfBound(mesh) {
     }
 }
 
-function setPos(posX, posZ, mesh) {
-    if(!posX) {
-        if(pside = 0) {
-            mesh.position.x = getRndNext(0, 28);
-        } else {
-            mesh.position.x = getRndNext(-28, 0);
-        }
-    } else {
-        mesh.position.x = posX;
-    }
-
-    if(!posZ) {
-        mesh.position.z = -45;
-    }
-    else {
-        mesh.position.z = posZ;
-    }
-}
-
 function restart() {
     location = location;
 }
