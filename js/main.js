@@ -63,16 +63,15 @@ function draw() {
     controls.update();
     stats.end();
     
-
-        game.update();
-        TWEEN.update();
-        document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
-        document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
-        document.getElementById('score').innerHTML = ("SC " + score);
-        if (lives > -1)
-            document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
-        else 
-            document.getElementById('lives').innerHTML = ("P1: DEAD");
+    game.update();
+    TWEEN.update();
+    document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
+    document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
+    document.getElementById('score').innerHTML = ("SC " + score);
+    if (lives > -1)
+        document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
+    else 
+        document.getElementById('lives').innerHTML = ("P1: DEAD");
 
     requestAnimationFrame(draw);
 

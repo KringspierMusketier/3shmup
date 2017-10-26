@@ -10,10 +10,10 @@ class Game {
         intro = new Intro();
 
         //verwijder de onderste lijnen om intro af te laten spelen
-        intro.started = true;
+        /**intro.started = true;
         done = true;
         camera.position.set(0,50,0);
-        player.ship.position.y = 0;
+        player.ship.position.y = 0;**/
     }
     //game loop
     update() {
@@ -39,8 +39,13 @@ class Game {
 
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
-            if (player.hitbox.intersectsBox(enemies[i].hitbox))
+            if (player.hitbox.intersectsBox(enemies[i].hitbox) && lives > -1 && !player.god) {
+                lives -= 1;
                 player.onHit();
+                this.cTimer = this.timer;
+                break;
+
+            }
 
             for (var j = 0; j < playerBulletList.length; j++) {
                 if (enemies[i].hitbox.intersectsBox(playerBulletList[j].hitbox)) {
@@ -71,7 +76,7 @@ class Game {
         }
 
         if(player.dead) {
-            if (this.timer < this.cTimer + 180) {
+            if (this.timer < this.cTimer + 150) {
                 emptyBullets();
             } else {
                 gui.show(document.getElementById("gameover"));
