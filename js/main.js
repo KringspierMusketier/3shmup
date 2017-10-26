@@ -70,6 +70,7 @@ function draw() {
         document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
         document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
+        document.getElementById('timer').innerHTML = ("time: " + game.timer);
 
     requestAnimationFrame(draw);
 
