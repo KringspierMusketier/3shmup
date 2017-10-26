@@ -23,6 +23,12 @@ function particleUpdate() {
         particles[i].update();
 }
 
+function emptyBullets() {
+    for (var i = 0; i < eBullList.length; i++) {
+        eBullList[i].destroy();
+    }
+}
+
 function outOfBound(mesh) {
     if (mesh.position.x < -30 || mesh.position.x > 30 || mesh.position.z < -40 || mesh.position.z > 40) {
         return true;

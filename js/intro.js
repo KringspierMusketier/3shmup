@@ -52,6 +52,45 @@ class Intro {
                 done = true;
             });
 
+        this.tweenHit = new TWEEN.Tween(player.ship.rotation)
+            .to({z: 360*Math.PI/180}, 2000)
+            .easing(TWEEN.Easing.Quartic.Out)
+            .onStart(function() {
+                this.hitClock = new THREE.Clock();
+                this.hitClock.start();
+                this.pMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, side: THREE.DoubleSide});
+                this.pGeometry = new THREE.PlaneGeometry(700, 700);
+                this.pMesh = new THREE.Mesh(this.pGeometry, this.pMaterial);
+                this.pMesh.position.y = -5;
+                this.pMesh.rotation.x = 90*Math.PI/180;
+                scene.add(this.pMesh);
+                player.ship.children[3].material.color.set(0xffffff);
+            })
+            .onUpdate(function() {
+                if (this.hitClock.getElapsedTime() >= 0.10 && this.hitClock.getElapsedTime() < 0.20) {
+                    scene.remove(this.pMesh);
+                    player.ship.children[3].material.color.set(0xff0000);
+                }
+                else if (this.hitClock.getElapsedTime() >= 0.20 && this.hitClock.getElapsedTime() < 0.30)
+                    player.ship.children[3].material.color.set(0xffffff);
+                else if (this.hitClock.getElapsedTime() >= 0.30 && this.hitClock.getElapsedTime() < 0.40)
+                    player.ship.children[3].material.color.set(0xff0000);
+                else if (this.hitClock.getElapsedTime() >= 0.40 && this.hitClock.getElapsedTime() < 0.50)
+                    player.ship.children[3].material.color.set(0xffffff);
+                else if (this.hitClock.getElapsedTime() >= 0.50 && this.hitClock.getElapsedTime() < 0.60)
+                    player.ship.children[3].material.color.set(0xff0000);
+                else if (this.hitClock.getElapsedTime() >= 0.60 && this.hitClock.getElapsedTime() < 0.70)
+                    player.ship.children[3].material.color.set(0xffffff);
+                else if (this.hitClock.getElapsedTime() >= 0.70 && this.hitClock.getElapsedTime() < 0.80)
+                    player.ship.children[3].material.color.set(0xff0000);
+                else if (this.hitClock.getElapsedTime() >= 0.80 && this.hitClock.getElapsedTime() < 0.90)
+                    player.ship.children[3].material.color.set(0xffffff);
+                else if (this.hitClock.getElapsedTime() >= 0.90 && this.hitClock.getElapsedTime() < 1.00)
+                    player.ship.children[3].material.color.set(0xff0000);
+                else if (this.hitClock.getElapsedTime() >= 1.00 && this.hitClock.getElapsedTime() < 1.10)
+                    player.ship.children[3].material.color.set(0xffffff);
+            });
+
         this.tween0.chain(this.tweenA);
         this.tweenA.chain(this.tweenB);
         this.tweenB.chain(this.tweenBa);
@@ -61,5 +100,9 @@ class Intro {
     start() {
         this.tween0.start();
         this.started = true;
+    }
+
+    hit() {
+        this.tweenHit.start();
     }
 }

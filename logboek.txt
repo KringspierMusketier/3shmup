@@ -39,3 +39,13 @@ Achtergrond voor een deel van het spel is gemaakt
 //24-10-2017
 Achtergrond kan nu afgebeeld worden in het spel en herhaalt zich 
 Het plaatsen van nieuwe vijanden aangepast zodat als er geen coordinaat is gegeven voor een nieuwe vijand, dat de vijand aan de helft van het scherm spawnt waar de speler niet is, zodat de speler wel moet bewegen om de vijanden neer te schieten
+
+//25-10-2017
+Bugfixes
+Nieuwe achtergronden voor het spel gemaakt
+
+//26-10-2017
+Achtergronden zijn opgedeeld in chunks die vervolgens in een bepaalde volgorde kunnen worden afgebeeld en herhaald, het spel kan ze nu laten zien
+Als je geraakt wordt door een kogel dan verdwijnen alle vijandige kogels voor 2.5 seconden zodat je niet meteen wordt overrompeld, en je kan voor die tijd geen schade opnemen, wat vervolgens wordt afgebeeld met een bol om je schip die rood flitst om aan te geven dat je geraakt bent
+Vervolgens flitst de achtergrond ook snel wit om dat aan te geven.
+Elke keer als je geraakt wordt verlies je een leven, en als je geraakt wordt wanneer je geen levens meer hebt dan explodeert je schip en krijg je een game over

@@ -102,6 +102,20 @@ body {
    margin-top: 180px;
 }
 
+#gameover {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 3;
+  margin-top: 140px;
+  margin-left: 140px;
+}
+
+#gameover h2 {
+  color: rgb(0, 194, 0);
+  font-family: "Lucida Console", normal;
+}
+
 .hide {
   display: none;
 }
