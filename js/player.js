@@ -2,6 +2,7 @@ class Player {
     constructor(posX, posZ) {
         this.ship = models[0].clone();
         this.ship.add(models[1].clone());
+        this.basecolor = 0xDD4444;
 
         this.exhaustgeo = new THREE.CylinderGeometry(2,5,20,3);
         this.exhaustmat = new THREE.MeshBasicMaterial({color: 0xfe7722, wireframe: true});
@@ -15,11 +16,18 @@ class Player {
         this.ship.add(this.exhaust);
         this.ship.add(this.exhaust2);
 
+        this.gGeo = new THREE.SphereGeometry(50, 9, 6);
+        this.gMat = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true});
+        this.godSphere = new THREE.Mesh(this.gGeo, this.gMat);
+
         this.ship.scale.set(0.1,0.1,0.1);
         this.speed = 0.02;
         this.speed = 0.8;
         this.reload = 0;
         this.spin = false;
+        this.god = false;
+        this.hit = false;
+        this.dead = false;
         this.ship.position.x = posX;
         this.ship.position.z = posZ;
         scene.add(this.ship);
@@ -93,7 +101,18 @@ class Player {
             
     }
     onHit() {
-
+        if (lives > -1) {
+            this.god = true;
+            this.hit = true;
+            this.ship.add(this.godSphere);
+            particles.push(new Explosion(this.ship.position.x, this.ship.position.z));
+            intro.hit();
+            emptyBullets();
+        } else {
+            this.dead = true;
+            particles.push(new Explosion(this.ship.position.x, this.ship.position.z, this.dead));
+            scene.remove(this.ship);
+        }
     }
 }
 

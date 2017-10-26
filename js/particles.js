@@ -1,13 +1,21 @@
 particles = [];
 
 class Explosion {
-    constructor(posX, posZ) {
+    constructor(posX, posZ, gameover) {
         this.particleCount = 10;
         this.particles = new THREE.Geometry();
         this.pMaterial = new THREE.PointsMaterial({
             color: 0xbfbfbf,
             size: 0.4
         });
+
+        if(gameover) {
+            this.particleCount = 50;
+            this.pMaterial = new THREE.PointsMaterial({
+                color: 0xff0000,
+                size: 0.8
+            });
+        }
 
         for (var i = 0; i < this.particleCount; i++) {
             var pX = posX;
