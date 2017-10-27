@@ -34,6 +34,16 @@ Gui.prototype.startGame = function() {
     draw();
 }
 
+Gui.prototype.showHelp = function() {
+    this.hide(document.getElementById('mainMenu'));
+    this.show(document.getElementById('help'));
+}
+
+Gui.prototype.returnMenu = function() {
+    this.hide(document.getElementById('help'));
+    this.show(document.getElementById('mainMenu'));
+}
+
 Gui.prototype.showHighscore = function() {
 
 }

@@ -8,6 +8,9 @@ class Triangle extends Enemy {
         this.basecolor = new THREE.Color(0xfe7722);
         this.speed = 0.4;
         this.clock = new THREE.Clock();
+        
+        this.reload = 0;
+        this.max = 0;
 
         super.setPos(posX, posZ, this.mesh);
 
@@ -21,8 +24,21 @@ class Triangle extends Enemy {
         this.clock.start();
     }
 
+    onFire() {
+        this.reload++;
+        if (this.reload > 60) {
+            var lBullet = new EnemyBullet(this, 3, 1, 0.5, 0, 0);
+            var mBullet = new EnemyBullet(this, 3, 1, 0.5, 0, 0);
+            var rBullet = new EnemyBullet(this, 3, 1, 0.5, 0, 0);
+            lBullet.inX += 1;
+            rBullet.inX -= 1;
+            this.reload = 0;
+        }
+    }
+
     update() {
         super.update();
+        this.onFire();
         this.mesh.position.z += this.speed;
         if (this.clock.getElapsedTime() > 1.5)
             if (this.speed > 0)

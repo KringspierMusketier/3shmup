@@ -44,7 +44,6 @@ class Game {
                 player.onHit();
                 this.cTimer = this.timer;
                 break;
-
             }
 
             for (var j = 0; j < playerBulletList.length; j++) {

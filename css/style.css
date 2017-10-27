@@ -33,7 +33,7 @@ body {
   z-index: 1;
 }
 
-#mainMenu {
+.menu {
   position: absolute;
   width: auto;
   height: auto;
@@ -45,25 +45,13 @@ body {
 }
 
 
-#instructions {
-  width: auto;
-  height: auto;
-  margin-top: 200px;
-  margin-left: 20px;
-  color: rgb(0, 194, 0);
-  font-family: "Lucida Console", normal;
-}
-
-#instructions h4 {
-  display: block;
-}
-
-#btn_startgame {
+.btn_startgame {
   border-style: solid;
   border-color: rgb(0, 194, 0);
   background-color: black;
   color: rgb(0, 194, 0);
   margin-left: 200px;
+  margin-bottom: 50px;
 }
 
 #hud {
@@ -91,7 +79,7 @@ body {
   font-family: "Lucida Console", normal;
 }
 
-#mainMenu h1 {
+.menuHeader {
   color: #fafafa;
   text-shadow: -1px -1px 0 #000,
                 1px -1px 0 #000,
@@ -100,6 +88,11 @@ body {
    margin-bottom: 20px;
    margin-left: 180px;
    margin-top: 180px;
+}
+
+.menu h6 {
+  color: rgb(0, 194, 0);
+  font-family: "Lucida Console", normal;
 }
 
 #gameover {
