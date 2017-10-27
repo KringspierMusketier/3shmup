@@ -7,6 +7,13 @@ class Spinner extends Enemy {
         this.basecolor = new THREE.Color(0xfe7722);
         this.speed = 0.4;
         this.clock = new THREE.Clock();
+        this.orb = new THREE.Object3D();
+        this.mesh.add(this.orb);
+        this.mesh.add(this.orb);
+        this.mesh.add(this.orb);
+
+        this.reload = 0;
+        this.max = 0;
 
         super.setPos(posX, posZ, this.mesh);
 
@@ -34,6 +41,13 @@ class Spinner extends Enemy {
         if (this.clock.getElapsedTime() > 10) {
             this.mesh.position.z -= 0.2;
             this.mesh.rotation.y -= 0.03;
+        }
+    }
+    
+    onFire() {
+        this.reload++;
+        if (this.reload < 20) {
+
         }
     }
 

@@ -18,7 +18,7 @@ class Cube extends Enemy {
         this.reload++;
         if (this.reload > 10) {
             if (this.max < 5) {
-                var lBullet = new EnemyBullet(this, 1, 2, 0.5, 0, 0);
+                var lBullet = new EnemyBullet(this, 1, 2, 0.5, 0, 0, 0, 0);
                 this.reload = 0;
                 this.max++;
             }

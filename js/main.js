@@ -1,4 +1,4 @@
-var scene, renderer, player, camera, controls, gui, input, preload, progressBar, intro;
+var scene, renderer, player, camera, controls, gui, input, preload, progressBar, intro, bg;
 var height = 640;
 var width = 480;
 var score = 00000000;
@@ -15,6 +15,7 @@ manager.onStart = function(url, itemsLoaded, itemsTotal) {
 
 manager.onLoad = function() {
     console.log("Loading complete");
+    bg = new Background();
     gui.show(document.getElementById('mainMenu'));
 };
 

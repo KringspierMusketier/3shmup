@@ -27,11 +27,9 @@ class Triangle extends Enemy {
     onFire() {
         this.reload++;
         if (this.reload > 60) {
-            var lBullet = new EnemyBullet(this, 3, 1, 0.5, 0, 0);
-            var mBullet = new EnemyBullet(this, 3, 1, 0.5, 0, 0);
-            var rBullet = new EnemyBullet(this, 3, 1, 0.5, 0, 0);
-            lBullet.inX += 1;
-            rBullet.inX -= 1;
+            var mBullet = new EnemyBullet(this, 3, 1, 0.7, 0, 0, 0, 0);
+            var lBullet = new EnemyBullet(this, 3, 1, 0.7, 0, 0, -3, 0);
+            var rBullet = new EnemyBullet(this, 3, 1, 0.7, 0, 0, 3, 0);
             this.reload = 0;
         }
     }
