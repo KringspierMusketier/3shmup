@@ -5,6 +5,8 @@ accelerate = false;
 decelerate = false;
 holetilt = false;
 change = 0.01;
+sea = null;
+seaturn = false;
 
 hexcolor = new THREE.Color(0x000000);
 
@@ -35,12 +37,22 @@ class Background {
 
     update() {
         var offset = 2000;
+
+        switch (game.timer) {
         //phase 1: air and sea
 
-            
+            case 700:
+                sea = new THREE.Mesh(new THREE.CubeGeometry(500,10,500), new THREE.MeshBasicMaterial({ color: 0x006994, alpha:0 }));
+                sea.position.set(0, -80, -500);
+                scene.add(sea);
+                break;
+
+            case 1700:
+                renderer.setClearColor(0x006994);
+                scene.remove(sea);
+                break;
 
         //phase 2: land
-        switch (game.timer) {
             case offset:
                 
                 this.bginit(2, 350, 270, 80, 12);
@@ -105,6 +117,12 @@ class Background {
 
 
 
+        }
+        if (sea) {
+            sea.position.z += 0.5;
+        }
+        if (seaturn) {
+            sea.material.color.setAlpha += 0.002;
         }
         if (game.timer-offset<1860) {
             for (var i = 0; i < bglist.length; i++) {
