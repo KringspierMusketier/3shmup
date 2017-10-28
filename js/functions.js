@@ -61,5 +61,9 @@ function timeline(timer) {
             enemies.push(new Triangle());
             break;
         }
+        case 560: {
+            enemies.push(new Spinner(20));
+            break;
+        }
     }
 }

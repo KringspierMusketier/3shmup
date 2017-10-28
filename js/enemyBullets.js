@@ -20,7 +20,7 @@ boundBot = 40;
 
 class EnemyBullet {
 
-    constructor(enemy, bulletType, bulletBehavior, initialSpeed, initialDirection, acceleration) {
+    constructor(enemy, bulletType, bulletBehavior, initialSpeed, initialDirection, acceleration, x_offset, z_offset) {
         var inX = enemy.mesh.position.x; //initial x
         var inZ = enemy.mesh.position.z; //initial z
 
@@ -42,9 +42,10 @@ class EnemyBullet {
         this.s3 = new THREE.Vector3();
         this.behavior = bulletBehavior;
         this.timer = 0;
+        this.locked = false;
         this.mesh = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xCCBCFA, wireframe: true }));
         this.hitbox = new THREE.Box3();
-        this.mesh.position.set(inX, 0,inZ);
+        this.mesh.position.set(inX + x_offset, 0, inZ + z_offset);
         //this.mesh.rotation.y = initialDirection;
         eBullList.push(this);
         
@@ -61,6 +62,11 @@ class EnemyBullet {
 
             case 1: //constant drop, with angle.
                 {
+                    /**if(!this.locked) {
+                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.multiplyScalar(-1);
+                        this.locked = true;
+                    }**/
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
@@ -107,6 +113,10 @@ class EnemyBullet {
                         this.direction.multiplyScalar(-1);
                     }
                     break;
+                }
+            case 6: 
+                {
+                    this.direction.normalize();
                 }
          
         }

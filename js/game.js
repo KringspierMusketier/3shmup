@@ -1,7 +1,6 @@
 class Game {
     constructor() {
         input = new Input();
-        this.bg = new Background();
         this.hit = false;
         this.timer = 0;
         this.cTimer = 0;
@@ -17,7 +16,7 @@ class Game {
     }
     //game loop
     update() {
-        this.bg.update();
+        bg.update();
         player.update();
         enemyUpdates();
         enemyBulletUpdate();
@@ -44,7 +43,6 @@ class Game {
                 player.onHit();
                 this.cTimer = this.timer;
                 break;
-
             }
 
             for (var j = 0; j < playerBulletList.length; j++) {
