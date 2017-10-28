@@ -4,22 +4,14 @@ bgspeed = 2;
 accelerate = false;
 decelerate = false;
 holetilt = false;
+change = 0.01;
+
+hexcolor = new THREE.Color(0x000000);
 
 class Background {
-    construct() { }
-
-    bginit1() {
-        bglist.push(bgchunk[2].clone());
-        bglist[0].position.y = -80;
-        bglist[0].position.z = -350;
-        bglist[0].rotation.y = -0.5 * Math.PI;
-        bglist[0].scale.set(14, 12, 12);
-        scene.add(bglist[0]);
-        currentLight = new THREE.PointLight(0xDDDDFF, 3, 500, 2.5);
-        currentLight.position.set(20, 125, 0);
-        scene.add(currentLight)
-        console.log(currentLight.intensity);
+    construct() {
     }
+    
     //chunk list:
     //0: city
     //1: island (does not appear)
@@ -33,7 +25,7 @@ class Background {
     bginit(chunk, offset, rotation, yset, scale) {
         bglist.push(bgchunk[chunk].clone());
         bglist[bglist.length - 1].position.y = -yset;
-        if (chunk == 3) bglist[bglist.length - 1].position.x = -75;
+        if (chunk == 3) bglist[bglist.length - 1].position.x = -100;
         bglist[bglist.length - 1].position.z = -offset;
         bglist[bglist.length - 1].rotation.y = rotation / 180 * Math.PI;
         bglist[bglist.length - 1].scale.set(scale, scale, scale);
@@ -42,33 +34,38 @@ class Background {
 
 
     update() {
-        //if (currentLight != null) {
-        //    currentLight.position.x = player.position.x;
-        //    currentLight.position.z = player.position.z;
-        //}
-        //if (bglist && currentLight) {
-        //    bglist.rotation.x += 0.1;
-        //}
-        var offset = 0;
+        var offset = 2000;
+        //phase 1: air and sea
+
+            
+
+        //phase 2: land
         switch (game.timer) {
             case offset:
-                this.bginit1();
+                
+                this.bginit(2, 350, 270, 80, 12);
                 console.log("BACKGROUND INIT")
+                this.bginit(5, 1350, 0, 75, 12);
+                currentLight = new THREE.PointLight(0xDDDDFF, 3, 500, 2.5);
+                currentLight.position.set(20, 125, 0);
+                scene.add(currentLight)
                 break;
             case 300 + offset:
                 accelerate = true;
-                this.bginit(5, 750, 0, 75, 12);
                 break;
             case 400 + offset:
                 this.bginit(5, 800, 0, 75, 12);
                 break;
             case 450 + offset:
+
                 this.bginit(5, 800, 0, 75, 12);
                 break;
             case 550 + offset:
                 this.bginit(5, 800, 0, 75, 12);
                 break;
             case 735 + offset:
+
+                renderer.setClearColor(0x555555);
                 this.bginit(0, 650, 90, 80, 8);
                 break;
             case 924 + offset:
@@ -86,42 +83,71 @@ class Background {
                 this.bginit(0, 670, 90, 80, 8);
                 decelerate = true;
                 break;
-            case 1400 + offset:
-                this.bginit(3, 925, 0, 80, 6);
+            case 1410 + offset:
+                renderer.setClearColor(0x000000,1);
+                this.bginit(3, 925, 0, 80, 7);
                 break;
-            case 1800 + offset:
+            case 1770 + offset:
                 holetilt = true;
-                bgspeed = 0.5;
+                //bgspeed = 0.5;
+                break;
+
+            //phase 3: underground
+            case 1860 + offset:
+                bglist[bglist.length - 1].position.x = 500;
+                this.bginit(4, -10, 0, 340, 4)
+
+                currentLight = new THREE.PointLight(0x9999AA, 0.001, 80, 1);
+                currentLight.position.set(0, -50, 0);
+                scene.add(currentLight)
+
                 break;
 
 
 
         }
-        for (var i = 0; i < bglist.length; i++) {
-            if (bglist[i]) {
-                bglist[i].position.z += bgspeed;
-                if (accelerate) bgspeed += 0.001;
-                if (decelerate) {
-                    bgspeed -= 0.0015;
-                    if (bgspeed < 2) {
-                        bgspeed = 2;
-                        decelerate = false;
+        if (game.timer-offset<1860) {
+            for (var i = 0; i < bglist.length; i++) {
+                if (bglist[i]) {
+                    bglist[i].position.z += bgspeed;
+                    if (accelerate) bgspeed += 0.001;
+                    if (decelerate) {
+                        bgspeed -= 0.0015;
+                        if (bgspeed < 2) {
+                            bgspeed = 2;
+                            decelerate = false;
+                        }
+                    }
+                    if (holetilt) {
+                        bglist[bglist.length - 1].rotation.x += 0.0005;
+                        currentLight.intensity -= 0.002;
                     }
                 }
-                if (holetilt) {
-                    console.log(currentLight.intensity);
-                    bglist[bglist.length - 1].rotation.x += 0.0005;
-                    currentLight.intensity -= 0.001;
+            }
+            if (game.timer > 400 && game.timer < 830) {
+                if (game.timer % 6 == 0) {
+                    hexcolor.add(new THREE.Color(0x010203));
                 }
-                    //if (game.timer < 2200) {
-                    //    console.log(bgspeed);
-                    //    console.log(holetilt);
-                    //    console.log(game.timer);
-                    //}
-                }
+                //console.log(hexcolor);
+                renderer.setClearColor(hexcolor, 1);
+            }
+
+        } else {
+            currentLight.position.x = player.ship.position.x;
+            currentLight.position.z = player.ship.position.z;
+            currentLight.distance = -Math.abs(currentLight.position.z);
+            console.log(player.ship.position);
+            console.log(currentLight.position);
+            bglist[bglist.length - 1].rotation.x += change;
+            if (change < 0.05) {
+                change += 0.0002;
+            }
+            if (currentLight.intensity < 2) {
+                currentLight.intensity += 0.03;
             }
 
         }
+    }
 
     }
 

@@ -26,8 +26,8 @@ class BackgroundPreload {
         });
 
         loader.load('models/bg/BGcity.json', function (geometry) {
-            var mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
-                color: new THREE.Color(0xDDDDDD)
+            var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
+                color: new THREE.Color(0xAAAAAA)
             }))
             bgchunk[0] = mesh.clone();
         });
@@ -37,6 +37,20 @@ class BackgroundPreload {
                 color: new THREE.Color(0x654321)
             }))
             bgchunk[3] = mesh.clone();
+        });
+
+        loader.load('models/bg/BGstarrysky.json', function (geometry) {
+            var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+                color: new THREE.Color(0xffffff)
+            }))
+            bgchunk[1] = mesh.clone();
+        });
+
+        loader.load('models/bg/BGisland.json', function (geometry) {
+            var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
+                color: new THREE.Color(0xff00ff)
+            }))
+            bgchunk[6] = mesh.clone();
         });
 
         loader.load('models/bg/loopbackground.json', function (geometry) {
