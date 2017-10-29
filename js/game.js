@@ -29,6 +29,7 @@ class Game {
         enemyBulletUpdate();
         playerBulletMovement();
         particleUpdate();
+        orbUpdate();
 
         //intro -14, -16, 45, (14, 66, -45)
         if (!intro.started) {
@@ -68,6 +69,13 @@ class Game {
                 break;
             }
 
+        }
+
+        for (var i = 0; i < orbArray.length; i++) {
+            if (player.hitbox.intersectsBox(orbArray[i].hitbox)) {
+                orbArray[i].destroy();
+                score += 50;
+            }
         }
 
         if (player.hit) {

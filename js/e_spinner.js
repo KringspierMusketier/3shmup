@@ -58,6 +58,6 @@ class Spinner extends Enemy {
     }
 
     onExit() {
-        super.onDeath();
+        super.onExit();
     }
 }

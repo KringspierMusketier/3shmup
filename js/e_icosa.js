@@ -1,56 +1,52 @@
-class Triangle extends Enemy {
+class Icosa extends Enemy {
     constructor(posX, posZ) {
         super();
-        this.hp = 80;
-        this.geometry = new THREE.CylinderGeometry( 1, 3, 3, 4 );
-        this.material = new THREE.MeshBasicMaterial({color: 0xfe7722, wireframe: true});
+        this.hp = 300;
+        this.geometry = new THREE.IcosahedronGeometry(2);
+        this.material = new THREE.MeshBasicMaterial({color: 0x2661b5, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.basecolor = new THREE.Color(0xfe7722);
-        this.speed = 0.4;
-        this.clock = new THREE.Clock();
-        this.orbs = 3;
-        
+        this.basecolor = new THREE.Color(0x2661b5);
+        this.speed = 0.2;
+        this.orbs = 10;
+
         this.reload = 0;
-        this.max = 0;
+        this.timer = 0;
 
         super.setPos(posX, posZ, this.mesh);
-
         if (this.mesh.position.x < 0) {
             this.side = -1;
         }
         else {
             this.side = 1;
         }
+
         scene.add(this.mesh);
-        this.clock.start();
     }
 
     onFire() {
-        this.reload++;
-        if (this.reload > 20 && this.max < 3) {
-            var lBullet = new EnemyBullet(this, 1, 0, -1, 0, 0);
-            var rBullet = new EnemyBullet(this, 1, 0, 1, 0, 0);
-            this.reload = 0;
+        if (this.max < 2 && this.timer >= 90) {
+            var laser = new EnemyBullet(this, 3, 0, 0, 0, 0);
             this.max++;
         }
     }
 
     update() {
-        super.update();
         this.onFire();
+        super.update();
         this.mesh.position.z += this.speed;
-        if (this.clock.getElapsedTime() > 1.5)
+        if (this.timer > 90)
             if (this.speed > 0)
                 this.speed -= 0.02;
+            
 
-        if (this.clock.getElapsedTime() > 2.5) {
+        else if (this.timer > 640) {
             this.mesh.position.x += (0.4 * this.side);
             this.mesh.position.z -= 0.2;
         }
     }
-
+    
     onDeath() {
-        score += 100;
+        score += 500;
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
         super.onDeath();
     }
