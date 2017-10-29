@@ -51,7 +51,7 @@ class Orb {
         } else {
             this.mesh.position.z += 0.4;
         }
-
+        if (this.mesh.position.distanceTo(player.ship.position) < 6) this.isHoming = true;
         if (this.mesh.position.z > 40)
             this.destroy();
     }
