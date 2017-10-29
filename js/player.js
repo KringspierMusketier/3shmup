@@ -15,6 +15,7 @@ class Player {
         this.exhaust2.position.x += 10;
         this.ship.add(this.exhaust);
         this.ship.add(this.exhaust2);
+        this.ship.renderOrder = 0.3;
 
         this.gGeo = new THREE.SphereGeometry(50, 9, 6);
         this.gMat = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true});

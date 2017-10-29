@@ -24,6 +24,7 @@ class EnemyBullet {
         var inX = enemy.mesh.position.x; //initial x
         var inZ = enemy.mesh.position.z; //initial z
         var oPos = enemy.mesh.position;
+        this.tgtDir = initialDirection;
         this.x_offset = x_offset;
         this.z_offset = z_offset;
         this.arg = optArg;
@@ -40,17 +41,18 @@ class EnemyBullet {
         this.cTimer = 0;
         this.locked = false;
         this.mesh = new THREE.Object3D();
+        this.mesh.renderOrder = 0.1;
         this.hitbox = new THREE.Box3();
 
         this.c2_color = 0;
 
         switch(bulletType) {
-            //triangle, cone
+            //triangle, cone, spinner
             case 1: {
                 var mesh = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xCB26C9}));
                 this.mesh = mesh.clone();
                 this.behavior = 1;
-                this.speed = 1.0;
+                this.speed = 0.9;
                 this.acc = 0;
                 break;
             }
@@ -88,6 +90,7 @@ class EnemyBullet {
 
             case 1: //straightforward
                 {
+                    this.cTimer++;
                     if(!this.locked) {
                         if (this.arg == 0)
                             this.direction.set(this.mesh.position.x - player.ship.position.x - this.x_offset, 0, this.mesh.position.z - player.ship.position.z - this.z_offset);
@@ -95,6 +98,8 @@ class EnemyBullet {
                             this.direction.set(-30, 0, 0);
                         else if (this.arg == 2)
                             this.direction.set(30, 0, 0);
+                        else if (this.arg == 3)
+                            this.direction.set(this.tgtDir.x, this.tgtDir.y, this.tgtDir.z);
 
                         if (this.arg > 0) {
                             this.speed = 0.6;
@@ -103,6 +108,19 @@ class EnemyBullet {
                         this.direction.multiplyScalar(-1);
                         this.locked = true;
                     }
+
+                    if (this.cTimer > 10 ) {
+                        if (this.c2_color == 0) {
+                            this.mesh.material.color.set(0xdf7cde);
+                            this.c2_color = 1;
+                        } else {
+                            this.mesh.material.color.set(0xCB26C9);
+                            this.c2_color = 0;
+                        }
+
+                        this.cTimer = 0;
+                    }
+
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
@@ -132,7 +150,7 @@ class EnemyBullet {
 
                     if (this.cTimer > 5 ) {
                         if (this.c2_color == 0) {
-                            this.mesh.material.color.set(0xdf7cde);
+                            this.mesh.material.color.set(0xFF0000);
                             this.c2_color = 1;
                         } else {
                             this.mesh.material.color.set(0xCB26C9);

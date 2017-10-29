@@ -3,10 +3,10 @@ class Cone extends Enemy {
         super();
         this.hp = 400;
         this.geometry = new THREE.ConeGeometry(3,9,9,11);
-        this.material = new THREE.MeshBasicMaterial({color: 0x93d600, wireframe: true});
+        this.material = new THREE.MeshBasicMaterial({color: 0x2661b5, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.rotation.x += 90*Math.PI/180;
-        this.basecolor = new THREE.Color(0x93d600);
+        this.basecolor = new THREE.Color(0x2661b5);
         this.speed = 0.3;
         this.orbs = 10;
         

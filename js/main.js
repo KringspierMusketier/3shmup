@@ -70,8 +70,12 @@ function draw() {
         document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
         document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
-        document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
         document.getElementById('timer').innerHTML = ("time: " + game.timer);
+
+        if (lives > -1)
+            document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
+        else
+         document.getElementById('lives').innerHTML = ("P1: DEAD");
 
     requestAnimationFrame(draw);
 

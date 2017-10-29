@@ -6,14 +6,14 @@ class Explosion {
         this.particles = new THREE.Geometry();
         this.pMaterial = new THREE.PointsMaterial({
             color: 0xbfbfbf,
-            size: 0.4
+            size: 0.6
         });
 
         if(gameover) {
             this.particleCount = 50;
             this.pMaterial = new THREE.PointsMaterial({
                 color: 0xff0000,
-                size: 0.8
+                size: 1.2
             });
         }
 

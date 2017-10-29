@@ -46,7 +46,6 @@ function timeline(timer) {
         case 120: {
             enemies.push(new Triangle());
             enemies.push(new Triangle());
-            enemies.push(new Icosa());
             break;
         }
         case 160: {
@@ -116,9 +115,9 @@ function timeline(timer) {
         }
 
         case 1340: {
-            enemies.push(new Cube(20));
-            enemies.push(new Cube(15));
-            enemies.push(new Cube(10));
+            enemies.push(new Cube(21));
+            enemies.push(new Cube(13));
+            enemies.push(new Cube(4));
             break;
         }
         case 1400: {
@@ -130,6 +129,81 @@ function timeline(timer) {
         }
         case 1430: {
             enemies.push(new Triangle(-17));
+            break;
+        }
+
+        case 1630: {
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(10));
+            break;
+        }
+        case 1650: {
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(5));
+            enemies.push(new Triangle(-15));
+            enemies.push(new Triangle(-5));
+            break;
+        }
+        case 1710: {
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-10));
+            break;
+        }
+
+        case 1840: {
+            enemies.push(new Triangle(-5));
+            enemies.push(new Triangle(5));
+            break;
+        }
+
+        case 1860: {
+            enemies.push(new Cube(-5));
+            enemies.push(new Cube(5));
+            break;
+        }
+
+        case 2200: {
+            enemies.push(new Cone(0));
+            break;
+        }
+
+        case 2320: {
+            enemies.push(new Cone(-15));
+            enemies.push(new Cone(15));
+            break;
+        }
+
+        case 2560: {
+            enemies.push(new Cone(-20));
+            enemies.push(new Triangle(25));
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(10));
+            break;
+        }
+        case 2600: {
+            enemies.push(new Triangle(12));
+            enemies.push(new Triangle(17));
+            enemies.push(new Triangle(21));
+            break;
+        }
+        case 2640: {
+            enemies.push(new Triangle(25));
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(10));
+            break;
+        }
+        case 2680: {
+            enemies.push(new Triangle(12));
+            enemies.push(new Triangle(17));
+            enemies.push(new Triangle(21));
+            break;
+        }
+        case 2800: {
+            enemies.push(new Cone(20));
+            enemies.push(new Cube(-25));
+            enemies.push(new Cube(-15));
             break;
         }
     }

@@ -6,6 +6,7 @@ class Enemy {
         this.hp = 1;
         this.hitbox = new THREE.Box3();
         this.mesh = new THREE.Object3D();
+        this.mesh.renderOrder = 0.2;
         this.flash = new THREE.Clock();
         this.basecolor = new THREE.Color();
         this.multiplier = 5.0;

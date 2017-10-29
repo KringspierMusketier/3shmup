@@ -43,7 +43,6 @@ class Game {
                 timeline(this.timer);
             }
         }
-
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
             if (player.hitbox.intersectsBox(enemies[i].hitbox) && lives > -1 && !player.god) {

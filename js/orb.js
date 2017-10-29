@@ -9,10 +9,11 @@ function orbUpdate() {
 class Orb {
     constructor(posX, posZ) {
         this.geometry = new THREE.SphereGeometry(0.8, 6, 6);
-        this.material = new THREE.MeshBasicMaterial({color: 0x9baf18, wireframe: true});
+        this.material = new THREE.MeshBasicMaterial({color: 0xf9e04a, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.x = posX;
         this.mesh.position.z = posZ;
+        this.mesh.renderOrder = 0.4;
 
         this.direction = new THREE.Vector3();
         this.s3 = new THREE.Vector3();

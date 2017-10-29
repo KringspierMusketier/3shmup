@@ -28,7 +28,7 @@ class Preload {
 
         loader.load('models/mediumbad_v1_1.json', function (geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-                color: new THREE.Color(0xDDDD00),
+                color: new THREE.Color(0x2661b5),
                 wireframe: true
             }))
             mesh.scale.set(4, 4, 4);
