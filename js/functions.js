@@ -45,25 +45,64 @@ function timeline(timer) {
     switch (timer) {
         case 120: {
             enemies.push(new Triangle());
-            enemies.push(new Cube(15));
+            enemies.push(new Triangle());
             break;
         }
-        case 240: {
+        case 160: {
             enemies.push(new Triangle());
-            enemies.push(new Cube());
-            enemies.push(new Cube(10));
+            break;
+        }
+        case 320: {
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            break;
+        }
+        case 360: {
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
             break;
         }
         case 480: {
-            enemies.push(new Triangle());
-            enemies.push(new Triangle());
-            enemies.push(new Triangle());
-            enemies.push(new Triangle());
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(-20));
+            break;
+        }
+        case 520: {
+            enemies.push(new Triangle(-16));
+            enemies.push(new Triangle(16));
             break;
         }
         case 560: {
-            enemies.push(new Cone(20));
-            enemies.push(new Cone(-20));
+            enemies.push(new Triangle(-12));
+            enemies.push(new Triangle(12));
+            break;
+        }
+        case 600: {
+            enemies.push(new Triangle(-8));
+            enemies.push(new Triangle(8));
+            break;
+        }
+        case 640: {
+            enemies.push(new Triangle(-4));
+            enemies.push(new Triangle(4));
+            break;
+        }
+        case 760: {
+            enemies.push(new Cube());
+            break;
+        }
+        case 880: {
+            enemies.push(new Cube());
+            enemies.push(new Cube());
+            break;
+        }
+        case 1080: {
+            enemies.push(new Cube(0));
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-15));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(20));
             break;
         }
     }

@@ -45,6 +45,6 @@ class Cone extends Enemy {
     }
 
     onExit() {
-        super.onDeath();
+        super.onExit();
     }
 }

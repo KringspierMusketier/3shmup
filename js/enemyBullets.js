@@ -112,12 +112,12 @@ class EnemyBullet {
                         if (this.speed > 0.05)
                             this.speed -= 0.02;
                     }
-                    else if (this.timer >= 90 && this.timer < 100) {
+                    else if (this.timer >= 90 && this.timer < 95) {
                         this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
                         this.direction.multiplyScalar(-1);
                         this.speed += 0.02;
                     }
-                    else if (this.timer >= 100 && this.speed < 1.2)
+                    else if (this.timer >= 95 && this.speed < 1.2)
                         this.speed += 0.04;
 
                     if (this.cTimer > 5 ) {

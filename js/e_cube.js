@@ -8,7 +8,7 @@ class Cube extends Enemy {
         this.material = new THREE.MeshBasicMaterial({color: 0x00ffff, wireframe: true});
         this.basecolor = new THREE.Color(0x00ffff);
         this.mesh = new THREE.Mesh(this.geometry, this.material);
-        this.speed = 0.15;
+        this.speed = 0.25;
         this.orbs = 5;
 
         super.setPos(posX, posZ, this.mesh);
