@@ -29,7 +29,6 @@ class Player {
         this.dead = false;
         this.ship.position.x = posX;
         this.ship.position.z = posZ;
-        this.ship.children[0].scale.set(0.7, 0.7, 0.7);
         scene.add(this.ship);
 
         this.hitbox = new THREE.Box3();

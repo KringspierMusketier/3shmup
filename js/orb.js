@@ -45,7 +45,7 @@ class Orb {
             this.direction.normalize();
             this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
         } else {
-            this.mesh.position.z += 0.6;
+            this.mesh.position.z += 0.4;
         }
 
         if (this.mesh.position.z > 40)

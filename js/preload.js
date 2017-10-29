@@ -21,6 +21,7 @@ class Preload {
                 color: new THREE.Color(0x00FFFF),
                 wireframe: true
             }))
+            mesh.scale.set(0.7, 0.7, 0.7);
             var object = mesh.clone();
             models.push(object);
         });

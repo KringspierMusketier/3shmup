@@ -25,10 +25,6 @@ class Cube extends Enemy {
                 this.max++;
             }
         }
-        else if (this.reload > 120) {
-            this.max = 0;
-            this.reload = 0;
-        }
     }
 
     update() {

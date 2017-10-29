@@ -23,6 +23,7 @@ class EnemyBullet {
     constructor(enemy, bulletType, initialDirection, x_offset, z_offset, optArg) {
         var inX = enemy.mesh.position.x; //initial x
         var inZ = enemy.mesh.position.z; //initial z
+        var oPos = enemy.mesh.position;
         this.x_offset = x_offset;
         this.z_offset = z_offset;
         this.arg = optArg;
@@ -60,6 +61,15 @@ class EnemyBullet {
                 this.behavior = 2;
                 this.speed = 0.7;
                 this.acc = 0;
+                break;
+            }
+            //icosa
+            case 3: {
+                var lineGeom = new THREE.Geometry();
+                lineGeom.vertices.push(oPos);
+                lineGeom.vertices.push(player.ship.position);
+                var lineMat = new THREE.LineBasicMaterial({color: "red"});
+                this.mesh = new THREE.Line(lineGeom, lineMat);
                 break;
             }
         }
@@ -137,13 +147,19 @@ class EnemyBullet {
                     break;
                 }
 
-            case 3: // boomerang bullet
+            case 3: //laser
                 {
-                    this.direction.normalize()
-                    this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
-                    this.speed += this.acc;
-                    this.acc -= 0.03;
-                    break;
+                    this.mesh.geometry.verticesNeedUpdate = true;
+                    this.timer++;
+
+                    if (this.timer >= 90 && this.timer < 100)
+                        this.mesh.material.color.set("white");
+                    else if (this.timer >= 100 && this.timer < 110)
+                        this.mesh.material.color.set("red");
+                    else if (this.timer >= 110 && this.timer < 120)
+                        this.mesh.material.color.set("white");
+                    else if (this.timer >= 100 && this.timer < 110)
+                        this.mesh.material.color.set("red");
                 }
 
             case 4: // re-targetting bullet ///needs flashing

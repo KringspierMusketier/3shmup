@@ -46,6 +46,7 @@ function timeline(timer) {
         case 120: {
             enemies.push(new Triangle());
             enemies.push(new Triangle());
+            enemies.push(new Icosa());
             break;
         }
         case 160: {
@@ -103,6 +104,32 @@ function timeline(timer) {
             enemies.push(new Triangle(-15));
             enemies.push(new Triangle(15));
             enemies.push(new Triangle(20));
+            break;
+        }
+
+        case 1260: {
+            enemies.push(new Cube(20));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(-15));
+            enemies.push(new Cube(-20));
+            break;
+        }
+
+        case 1340: {
+            enemies.push(new Cube(20));
+            enemies.push(new Cube(15));
+            enemies.push(new Cube(10));
+            break;
+        }
+        case 1400: {
+            enemies.push(new Cube(17));
+            enemies.push(new Cube(12));
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-15));
+            break;
+        }
+        case 1430: {
+            enemies.push(new Triangle(-17));
             break;
         }
     }

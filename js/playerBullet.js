@@ -6,8 +6,6 @@ class PlayerBullet{
         var posX = shippos.x;
         var posZ = shippos.z;
         this.shipPosz = posZ;
-        this.direction = new THREE.Vector3;
-        this.direction.set(0, 0, -1);
         this.clock = new THREE.Clock();
         this.speed = 2.25;
         var geo = new THREE.TetrahedronGeometry();
@@ -30,6 +28,7 @@ class PlayerBullet{
     movement() {
         this.hitbox.setFromObject(this.mpBullet);
         this.mpBullet.position.z -= this.speed;
+
         if (this.mpBullet.position.z < -40) {
             this.destroy();
         }
