@@ -3,6 +3,10 @@ earth.position.z = -400;
 
 class Game {
     constructor() {
+
+        this.tempLight = new THREE.PointLight(0xDDDDFF, 2, 0, 2);
+        this.tempLight.position.set(-50, 0, 30);
+        scene.add(this.tempLight);
         input = new Input();
         this.hit = false;
         this.timer = 0;
