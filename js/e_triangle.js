@@ -8,6 +8,7 @@ class Triangle extends Enemy {
         this.basecolor = new THREE.Color(0xfe7722);
         this.speed = 0.4;
         this.clock = new THREE.Clock();
+        this.orbs = 3;
         
         this.reload = 0;
         this.max = 0;

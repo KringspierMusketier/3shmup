@@ -41,6 +41,8 @@ class EnemyBullet {
         this.mesh = new THREE.Object3D();
         this.hitbox = new THREE.Box3();
 
+        this.c2_color = 0;
+
         switch(bulletType) {
             //triangle, cone
             case 1: {
@@ -96,9 +98,10 @@ class EnemyBullet {
                     break;
                 }
 
-            case 2: //homing bullet /// needs to increase in brightness
+            case 2: //homing bullet
                 {
                     this.timer++;
+                    this.cTimer++;
                     if (this.timer < 60) {
                         this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
                         this.direction.multiplyScalar(-1);
@@ -117,6 +120,18 @@ class EnemyBullet {
                     else if (this.timer >= 100 && this.speed < 1.2)
                         this.speed += 0.04;
 
+                    if (this.cTimer > 5 ) {
+                        if (this.c2_color == 0) {
+                            this.mesh.material.color.set(0xdf7cde);
+                            this.c2_color = 1;
+                        } else {
+                            this.mesh.material.color.set(0xCB26C9);
+                            this.c2_color = 0;
+                        }
+
+                        this.cTimer = 0;
+                    }
+                    
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;

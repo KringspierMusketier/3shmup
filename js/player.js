@@ -21,7 +21,6 @@ class Player {
         this.godSphere = new THREE.Mesh(this.gGeo, this.gMat);
 
         this.ship.scale.set(0.1,0.1,0.1);
-        this.ship.children[0].scale.set(0.8, 0.8, 0.8);
         this.speed = 0.7;
         this.reload = 0;
         this.spin = false;
@@ -30,6 +29,7 @@ class Player {
         this.dead = false;
         this.ship.position.x = posX;
         this.ship.position.z = posZ;
+        this.ship.children[0].scale.set(0.7, 0.7, 0.7);
         scene.add(this.ship);
 
         this.hitbox = new THREE.Box3();

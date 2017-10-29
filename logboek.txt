@@ -51,5 +51,12 @@ Vervolgens flitst de achtergrond ook snel wit om dat aan te geven.
 Elke keer als je geraakt wordt verlies je een leven, en als je geraakt wordt wanneer je geen levens meer hebt dan explodeert je schip en krijg je een game over
 
 //27-10-2017
-De achtergrond zit nu in het spel en werkt naar behoren
+De achtergrond laat nu een rij aaneenvolgende chunks afbeelden
 Instructie pagina toegevoegd aan het hoofdmenu zodat spelers weten hoe de besturing werkt
+
+//28-10-2017
+Achtergrond verder uitgebreid, je begint nu in de lucht en daalt langzaam naar beneden
+Vijandige kogels paars gemaakt zodat je ze beter kan zien
+De kogels van Cube gaan nu niet de hele tijd achter je aan, maar gaan na een tijdje snel rechtdoor
+
+//29-10-2017

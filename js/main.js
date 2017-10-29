@@ -36,7 +36,7 @@ function onLoad() {
     scene = new THREE.Scene();
     scene.add(camera);
 
-    renderer = new THREE.WebGLRenderer({ antialias: false });
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(width, height);
     renderer.shadowMap.enabled = false;
     renderer.shadowMapSoft = false;

@@ -9,6 +9,7 @@ class Enemy {
         this.flash = new THREE.Clock();
         this.basecolor = new THREE.Color();
         this.multiplier = 5.0;
+        this.orbs = 0;
 
     }
 
@@ -21,6 +22,9 @@ class Enemy {
     onDeath() {
         scene.remove(this.mesh);
         enemies.splice(enemies.indexOf(this), 1);
+        for (var i = 0; i < this.orbs; i++) {
+            var newOrb = new Orb(this.mesh.position.x, this.mesh.position.z);
+        }
     }
 
     onExit() {
