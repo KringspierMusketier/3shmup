@@ -46,7 +46,6 @@ function timeline(timer) {
         case 120: {
             enemies.push(new Triangle());
             enemies.push(new Triangle());
-            enemies.push(new Icosa());
             break;
         }
         case 160: {
