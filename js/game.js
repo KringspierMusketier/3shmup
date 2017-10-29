@@ -1,3 +1,6 @@
+earth = new THREE.Mesh(new THREE.SphereGeometry(20, 32, 32), new THREE.MeshLambertMaterial({ color: 0x005988 }));
+earth.position.z = -400;
+
 class Game {
     constructor() {
         input = new Input();
@@ -7,12 +10,16 @@ class Game {
         player = new Player(0,20);
         player.ship.position.y = 100;
         intro = new Intro();
+        scene.add(earth);
+        bg.bginit(1, 0, 0, 0, 5);
+
+
 
         //verwijder de onderste lijnen om intro af te laten spelen
-        intro.started = true;
-        done = true;
-        camera.position.set(0,50,0);
-        player.ship.position.y = 0;
+        //intro.started = true;
+        //done = true;
+        //camera.position.set(0,50,0);
+        //player.ship.position.y = 0;
     }
     //game loop
     update() {

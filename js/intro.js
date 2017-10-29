@@ -2,7 +2,6 @@ done = false;
 
 class Intro {
     constructor() {
-        
         this.started = false;
         this.tor = new THREE.Object3D();
 
@@ -47,8 +46,14 @@ class Intro {
             .onUpdate(function() {
                 this.tor.position.z += 15;
             })
-            .onComplete(function() {
+            .onComplete(function () {
+
+
+                //REMOVE LIGHT
+
+
                 scene.remove(this.tor);
+                scene.remove(this.tempLight);
                 //player.spin = false;
                 done = true;
             });
@@ -99,6 +104,12 @@ class Intro {
     }
 
     start() {
+
+
+        //ADDLIGHT
+        this.tempLight = new THREE.PointLight(0xDDDDFF, 2, 0, 2);
+        this.tempLight.position.set(-50, 0, 30);
+        scene.add(this.tempLight);
         this.tween0.start();
         this.started = true;
     }

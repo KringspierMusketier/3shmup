@@ -3,13 +3,7 @@ bgchunk = [];
 class BackgroundPreload {
     constructor() {
         var loader = new THREE.JSONLoader(manager);
-
-        //loader.load('models/bg/BGisland.json', function (geometry) {
-        //    var mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
-        //        color: new THREE.Color(0xDDDD22)
-        //    }))
-        //    bgchunk.push(mesh.clone());
-        //});
+        
 
         loader.load('models/bg/BGbeach.json', function (geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({
@@ -48,7 +42,7 @@ class BackgroundPreload {
 
         loader.load('models/bg/BGisland.json', function (geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({
-                color: new THREE.Color(0xff00ff)
+                color: new THREE.Color(0xffff00)
             }))
             bgchunk[6] = mesh.clone();
         });
@@ -59,6 +53,15 @@ class BackgroundPreload {
             }))
             bgchunk[4] = mesh.clone();
         });
+
+        loader.load('models/bg/BGSata.json', function (geometry) {
+            var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
+                color: new THREE.Color(0x444444)
+            }))
+            bgchunk[7] = mesh.clone();
+        });
+        
+
         for (var i; i < bgchunk.length; i++)
         {
             console.log("test"+ bgchunk[i].color);

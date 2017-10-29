@@ -1,12 +1,13 @@
 bglist= [];
-currentLight = null;
+currentLight = new THREE.PointLight(0xDDDDFF, 3, 500, 2.5);
+currentLight.position.set(20, 125, 0);
 bgspeed = 2;
 accelerate = false;
 decelerate = false;
 holetilt = false;
-change = 0.01;
+change = 0.02;
 sea = null;
-seaturn = false;
+seacolor = false;
 
 hexcolor = new THREE.Color(0x000000);
 
@@ -28,6 +29,7 @@ class Background {
         bglist.push(bgchunk[chunk].clone());
         bglist[bglist.length - 1].position.y = -yset;
         if (chunk == 3) bglist[bglist.length - 1].position.x = -100;
+        if (chunk == 7) bglist[bglist.length - 1].position.x = -20
         bglist[bglist.length - 1].position.z = -offset;
         bglist[bglist.length - 1].rotation.y = rotation / 180 * Math.PI;
         bglist[bglist.length - 1].scale.set(scale, scale, scale);
@@ -40,27 +42,47 @@ class Background {
 
         switch (game.timer) {
         //phase 1: air and sea
+            case 1:
+                //scene.add(currentLight);
+                break;
+            case 20:
+                bgspeed = 0.3;
+                this.bginit(7, 80, 58, 30, 2);
+                break;
+                
 
-            case 700:
-                sea = new THREE.Mesh(new THREE.CubeGeometry(500,10,500), new THREE.MeshBasicMaterial({ color: 0x006994, alpha:0 }));
+            case 1000:
+                bgspeed = 2;
+                sea = new THREE.Mesh(new THREE.CubeGeometry(500, 5, 500), new THREE.MeshBasicMaterial({ color: 0x4890d8}));
                 sea.position.set(0, -80, -500);
                 scene.add(sea);
                 break;
+            case 1300:
+                seacolor = true;
+
+                break;
 
             case 1700:
-                renderer.setClearColor(0x006994);
+                this.bginit(6, 150, 0, 70, 5);
+
+                this.bginit(6, 450, 50, 70, 8);
+                break
+
+            case 1900:
+                renderer.setClearColor(sea.material.color.getHex());
+                console.log("LOOK HERE"+ sea.material.color.getHex());
                 scene.remove(sea);
                 break;
 
         //phase 2: land
             case offset:
-                
+                scene.remove(bglist[bglist.length - 1]);
+                scene.remove(bglist[bglist.length - 2]);
+                bglist.pop();
+                bglist.pop();
                 this.bginit(2, 350, 270, 80, 12);
                 console.log("BACKGROUND INIT")
                 this.bginit(5, 1350, 0, 75, 12);
-                currentLight = new THREE.PointLight(0xDDDDFF, 3, 500, 2.5);
-                currentLight.position.set(20, 125, 0);
-                scene.add(currentLight)
                 break;
             case 300 + offset:
                 accelerate = true;
@@ -77,22 +99,27 @@ class Background {
                 break;
             case 735 + offset:
 
-                renderer.setClearColor(0x555555);
-                this.bginit(0, 650, 90, 80, 8);
+                renderer.setClearColor(0x333333);
+                this.bginit(0, 610, 90, 80, 8);
                 break;
             case 924 + offset:
-                this.bginit(0, 640, 90, 80, 8);
+                this.bginit(0, 600, 90, 80, 8);
                 bgspeed += 1;
                 accelerate = false;
                 break;
             case 1051 + offset:
-                this.bginit(0, 680, 90, 80, 8);
+                this.bginit(0, 640, 90, 80, 8);
                 break;
             case 1200 + offset:
-                this.bginit(0, 610, 90, 80, 8);
+                this.bginit(0, 570, 90, 80, 8);
                 break;
             case 1325 + offset:
-                this.bginit(0, 670, 90, 80, 8);
+                this.bginit(0, 630, 90, 80, 8);
+
+                var plane = new THREE.Mesh(new THREE.CubeGeometry(300, 1, 1000), new THREE.MeshBasicMaterial({ color: 0x333333 }));
+                plane.position.set(0, -80, -670);
+                bglist.push(plane)
+                scene.add(plane);
                 decelerate = true;
                 break;
             case 1410 + offset:
@@ -105,7 +132,7 @@ class Background {
                 break;
 
             //phase 3: underground
-            case 1860 + offset:
+            case 1830 + offset:
                 bglist[bglist.length - 1].position.x = 500;
                 this.bginit(4, -10, 0, 340, 4)
 
@@ -120,11 +147,14 @@ class Background {
         }
         if (sea) {
             sea.position.z += 0.5;
+            console.log(sea.material.color.getHex() + "," + game.timer);
+            if (seacolor&&sea.material.color.getHex() >= 0x006994){
+                var cspeed = 150;
+            sea.material.color.sub(new THREE.Color(0.28125 / cspeed, 0.12891 / cspeed, 0.26562 / cspeed));
+            }
+
         }
-        if (seaturn) {
-            sea.material.color.setAlpha += 0.002;
-        }
-        if (game.timer-offset<1860) {
+        if (game.timer-offset<1830) {
             for (var i = 0; i < bglist.length; i++) {
                 if (bglist[i]) {
                     bglist[i].position.z += bgspeed;
@@ -142,7 +172,7 @@ class Background {
                     }
                 }
             }
-            if (game.timer > 400 && game.timer < 830) {
+            if (game.timer > 700 && game.timer < 1130) {
                 if (game.timer % 6 == 0) {
                     hexcolor.add(new THREE.Color(0x010203));
                 }
