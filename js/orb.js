@@ -9,11 +9,11 @@ function orbUpdate() {
 class Orb {
     constructor(posX, posZ) {
         this.geometry = new THREE.SphereGeometry(0.8, 6, 6);
-        this.material = new THREE.MeshBasicMaterial({color: 0xf9e04a, wireframe: true});
+        this.material = new THREE.MeshBasicMaterial({color: 0x9baf18, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.x = posX;
         this.mesh.position.z = posZ;
-        this.mesh.renderOrder = 0.4;
+        this.isHoming = false;
 
         this.direction = new THREE.Vector3();
         this.s3 = new THREE.Vector3();
@@ -40,11 +40,14 @@ class Orb {
             this.mesh.position.x += this.vX;
             this.mesh.position.z += this.vZ;
         }
-        else if (!keyboard.pressed("z")) {
+        else if (!keyboard.pressed("z") || this.isHoming == true) {
             this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
             this.direction.multiplyScalar(-1);
             this.direction.normalize();
             this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
+            if (this.mesh.position.distanceTo(player.ship.position) < 16) {
+                this.isHoming = true;
+            }
         } else {
             this.mesh.position.z += 0.4;
         }
