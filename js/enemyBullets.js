@@ -1,8 +1,8 @@
 eBullMesh = [];
 eBullList = [];
 
-eBullMesh[0] = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 10), new THREE.MeshBasicMaterial({ color: 0x44DD22, wireframe: true }));
-eBullMesh[1] = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xDDEE00, wireframe: true }));
+eBullMesh[0] = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 10), new THREE.MeshBasicMaterial({ color: 0x8B1A89, wireframe: true }));
+eBullMesh[1] = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x8B1A89, wireframe: true }));
 eBullMesh[2] = new THREE.Mesh(new THREE.OctahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x7799BB, wireframe: true }));
 eBullMesh[3] = new THREE.Mesh(new THREE.DodecahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x22DD99, wireframe: true }));
 eBullMesh[4] = new THREE.Mesh(new THREE.IcosahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x999999, wireframe: true }));
@@ -20,37 +20,51 @@ boundBot = 40;
 
 class EnemyBullet {
 
-    constructor(enemy, bulletType, bulletBehavior, initialSpeed, initialDirection, acceleration, x_offset, z_offset) {
+    constructor(enemy, bulletType, initialDirection, x_offset, z_offset, optArg) {
         var inX = enemy.mesh.position.x; //initial x
         var inZ = enemy.mesh.position.z; //initial z
+        this.x_offset = x_offset;
+        this.z_offset = z_offset;
+        this.arg = optArg;
 
         //aim at player
-        this.mothership = enemy;
         this.direction = new THREE.Vector3();
         this.direction.set(-Math.sin(initialDirection), 0, Math.cos(initialDirection));
-        if (bulletBehavior == 1) {
-            this.direction.set(inX - player.ship.position.x, 0, inZ - player.ship.position.z);
-            this.direction.multiplyScalar(-1);
-            
-            this.direction.normalize();
-            //console.log("Vector after 1sformation");
-            //console.log(this.direction);
+
+        this.speed = 0;
+        this.acc = 0;
+        this.s3 = new THREE.Vector3();
+        this.behavior = 0;
+        this.timer = 0;
+        this.cTimer = 0;
+        this.locked = false;
+        this.mesh = new THREE.Object3D();
+        this.hitbox = new THREE.Box3();
+
+        switch(bulletType) {
+            //triangle, cone
+            case 1: {
+                var mesh = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xCB26C9}));
+                this.mesh = mesh.clone();
+                this.behavior = 1;
+                this.speed = 1.0;
+                this.acc = 0;
+                break;
+            }
+            //cube
+            case 2: {
+                var mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(), new THREE.MeshBasicMaterial({color: 0xCB26C9}));
+                this.mesh = mesh.clone();
+                this.behavior = 2;
+                this.speed = 0.7;
+                this.acc = 0;
+                break;
+            }
         }
 
-        this.speed = initialSpeed;
-        this.acc = acceleration;
-        this.s3 = new THREE.Vector3();
-        this.behavior = bulletBehavior;
-        this.timer = 0;
-        this.locked = false;
-        this.mesh = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0xCCBCFA, wireframe: true }));
-        this.hitbox = new THREE.Box3();
-        this.mesh.position.set(inX + x_offset, 0, inZ + z_offset);
-        //this.mesh.rotation.y = initialDirection;
+        this.mesh.position.set(inX + this.x_offset, 0, inZ + this.z_offset);
         eBullList.push(this);
-        
         scene.add(this.mesh);
-        //console.log("bullet is added to the scene")
     }
    
     
@@ -60,13 +74,23 @@ class EnemyBullet {
         switch (this.behavior) {
             case 0: ///constant drop
 
-            case 1: //constant drop, with angle.
+            case 1: //straightforward
                 {
-                    /**if(!this.locked) {
-                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                    if(!this.locked) {
+                        if (this.arg == 0)
+                            this.direction.set(this.mesh.position.x - player.ship.position.x - this.x_offset, 0, this.mesh.position.z - player.ship.position.z - this.z_offset);
+                        else if (this.arg == 1)
+                            this.direction.set(-30, 0, 0);
+                        else if (this.arg == 2)
+                            this.direction.set(30, 0, 0);
+
+                        if (this.arg > 0) {
+                            this.speed = 0.6;
+                            this.mesh.scale.set(2,2,2);
+                        }
                         this.direction.multiplyScalar(-1);
                         this.locked = true;
-                    }**/
+                    }
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
@@ -74,11 +98,25 @@ class EnemyBullet {
 
             case 2: //homing bullet /// needs to increase in brightness
                 {
-                    this.time++;
-                    if (this.timer < 100) {
+                    this.timer++;
+                    if (this.timer < 60) {
                         this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
                         this.direction.multiplyScalar(-1);
                     }
+                    else if (this.timer >= 60 && this.timer < 90) {
+                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.multiplyScalar(-1);
+                        if (this.speed > 0.05)
+                            this.speed -= 0.02;
+                    }
+                    else if (this.timer >= 90 && this.timer < 100) {
+                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
+                        this.direction.multiplyScalar(-1);
+                        this.speed += 0.02;
+                    }
+                    else if (this.timer >= 100 && this.speed < 1.2)
+                        this.speed += 0.04;
+
                     this.direction.normalize();
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;

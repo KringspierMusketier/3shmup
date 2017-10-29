@@ -21,8 +21,8 @@ class Player {
         this.godSphere = new THREE.Mesh(this.gGeo, this.gMat);
 
         this.ship.scale.set(0.1,0.1,0.1);
-        this.speed = 0.02;
-        this.speed = 0.8;
+        this.ship.children[0].scale.set(0.8, 0.8, 0.8);
+        this.speed = 0.7;
         this.reload = 0;
         this.spin = false;
         this.god = false;

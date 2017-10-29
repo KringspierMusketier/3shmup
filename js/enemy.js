@@ -8,7 +8,7 @@ class Enemy {
         this.mesh = new THREE.Object3D();
         this.flash = new THREE.Clock();
         this.basecolor = new THREE.Color();
-
+        this.multiplier = 5.0;
 
     }
 
