@@ -1,4 +1,4 @@
-var scene, renderer, player, camera, controls, gui, input, preload, progressBar, intro, bg;
+var scene, renderer, player, audio, camera, controls, gui, input, preload, progressBar, intro, bg;
 var height = 640;
 var width = 480;
 var score = 00000000;
