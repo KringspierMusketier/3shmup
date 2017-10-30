@@ -47,7 +47,7 @@ class Background {
                 break;
             case 20:
                 bgspeed = 0.3;
-                this.bginit(7, 80, 58, 10, 1);
+                if (bgchunk[7]) this.bginit(7, 80, 58, 10, 1);
                 break;
                 
 
