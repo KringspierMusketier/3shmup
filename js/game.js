@@ -3,6 +3,7 @@ earth.position.z = -400;
 
 class Game {
     constructor() {
+        audio = new Audio();
 
         this.tempLight = new THREE.PointLight(0xDDDDFF, 2, 0, 2);
         this.tempLight.position.set(-50, 0, 30);
@@ -15,8 +16,11 @@ class Game {
         player.ship.position.y = 100;
         intro = new Intro();
         scene.add(earth);
-        bg.bginit(1, 0, 0, 0, 5);
-
+        for (var i = 0; i < 6; i++) {
+            bg.bginit(1, 80 * i, Math.random(), 5, 9);
+        }
+        bg.bginit(1, 900, 0, 20, 7);
+        bg.bginit(1, 900, 113, 20, 7);
 
 
         //verwijder de onderste lijnen om intro af te laten spelen
@@ -78,6 +82,7 @@ class Game {
             if (player.hitbox.intersectsBox(orbArray[i].hitbox)) {
                 orbArray[i].destroy();
                 score += 50;
+                audio.powerup();
             }
         }
 

@@ -15,12 +15,14 @@ class Enemy {
     }
 
     onHit() {
+        audio.enemyImpact();
         this.flash.start();
         this.mesh.material.color.set(0xff0000);
         this.hp -= 20;
     }
 
     onDeath() {
+        audio.enemyDeath();
         scene.remove(this.mesh);
         enemies.splice(enemies.indexOf(this), 1);
         for (var i = 0; i < this.orbs; i++) {
