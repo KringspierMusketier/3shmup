@@ -13,7 +13,8 @@ class Spinner extends Enemy {
         this.speed = 0.15;
         this.timer = 0;
         this.cTimer = 0;
-        this.orbs = 20;
+        this.dTimer = 0;
+        this.orbs = 500;
         this.bob = 0;
         this.bobdirection = false;
 
@@ -21,6 +22,7 @@ class Spinner extends Enemy {
         this.phase = 0;
         this.subPhase = 0;
         this.shotTimer = 0;
+        this.dying = false;
 
         this.reload = 0;
         this.max = 0;
@@ -39,12 +41,31 @@ class Spinner extends Enemy {
     update() {
         super.update();
         this.timer++;
-        if (this.timer < 240)
-            this.mesh.position.z += this.speed;
-        else if (this.timer >= 240 && this.hp > 0) {
-            this.onFire();
+
+        if (!this.dying) {
+            if (this.timer < 240)
+                this.mesh.position.z += this.speed;
+            else if (this.timer >= 240 && this.hp > 0) {
+                this.onFire();
+            }
+            this.bobbing();
+        } else {
+            emptyBullets();
+            this.cTimer++;
+            this.dTimer++;
+            this.mesh.rotation.x += 0.1;
+            if (this.dTimer > 15 && this.cTimer < 300) {
+                particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
+                for (var i = 0; i < 20; i++) {
+                    var newOrb = new Orb(this.mesh.position.x, this.mesh.position.z);
+                }
+                this.dTimer = 0;
+            }
+            else if (this.cTimer >= 480) {
+                particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z, 2));
+                super.onDeath();
+            } 
         }
-        this.bobbing();
     }
 
     bobbing() {
@@ -262,9 +283,10 @@ class Spinner extends Enemy {
     }
 
     onDeath() {
-        score += 100000;
-        particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
-        super.onDeath();
+        if(!this.dying)
+            score += 100000;
+        
+        this.dying = true;
     }
 
     onExit() {

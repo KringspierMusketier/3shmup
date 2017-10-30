@@ -36,7 +36,7 @@ class Orb {
         this.timer++;
         this.hitbox.setFromObject(this.mesh);
 
-        if (this.timer < 30 && keyboard.pressed("z")) {
+        if (this.timer < 30) {
             this.mesh.position.x += this.vX;
             this.mesh.position.z += this.vZ;
         }
