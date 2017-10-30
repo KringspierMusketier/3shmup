@@ -24,10 +24,10 @@ class Game {
 
 
         //verwijder de onderste lijnen om intro af te laten spelen
-        //intro.started = true;
-        //done = true;
-        //camera.position.set(0,50,0);
-        //player.ship.position.y = 0;
+        intro.started = true;
+        done = true;
+        camera.position.set(0,50,0);
+        player.ship.position.y = 0;
     }
     //game loop
     update() {
@@ -81,7 +81,7 @@ class Game {
         for (var i = 0; i < orbArray.length; i++) {
             if (player.hitbox.intersectsBox(orbArray[i].hitbox)) {
                 orbArray[i].destroy();
-                score += 50;
+                score += 500;
                 audio.powerup();
             }
         }
