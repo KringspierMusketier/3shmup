@@ -1,4 +1,4 @@
-var scene, renderer, player, camera, controls, gui, input, preload, progressBar, intro, bg;
+var scene, renderer, player, audio, camera, controls, gui, input, preload, progressBar, intro, bg;
 var height = 640;
 var width = 480;
 var score = 00000000;
@@ -67,15 +67,14 @@ function draw() {
 
         game.update();
         TWEEN.update();
-        document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
-        document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
-        document.getElementById('timer').innerHTML = ("time: " + game.timer);
 
         if (lives > -1)
             document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
-        else
-         document.getElementById('lives').innerHTML = ("P1: DEAD");
+        else {
+            document.getElementById('lives').innerHTML = ("P1: DEAD");
+            document.getElementById('endScore').innerHTML = (score + " PTS");
+        }
 
     requestAnimationFrame(draw);
 

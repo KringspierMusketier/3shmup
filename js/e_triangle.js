@@ -50,7 +50,7 @@ class Triangle extends Enemy {
     }
 
     onDeath() {
-        score += 100;
+        score += 1000;
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
         super.onDeath();
     }

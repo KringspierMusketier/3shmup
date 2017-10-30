@@ -60,3 +60,14 @@ Vijandige kogels paars gemaakt zodat je ze beter kan zien
 De kogels van Cube gaan nu niet de hele tijd achter je aan, maar gaan na een tijdje snel rechtdoor
 
 //29-10-2017
+De kogels zien er per vijand type nu er anders uit, de kogels van Triangle flitsen van paars naar een lichtere soort paars zodat ze beter te merken zijn, de kogels van Cube flitsen opvallend rood en lijken op merkwaardige slangen, en de kogels van Cone zijn wat groter
+Er is nu een soort van bovenliggend score systeem, waarbij vijanden Orbs los laten als ze doodgaan. Deze Orbs 'exploderen' in willekeurige richtingen waarna ze meteen naar beneden vallen. Voor elke Orb waarmee je in aanraking komt krijg je 50 punten.
+Als je ophoudt met schieten, dan worden alle Orbs snel naar je toegetrokken. Daarnaast kun je ook dichtbij de Orbs vliegen om ze op te pakken.
+Het idee achter de Orbs is dat je door niet te schieten het risico loopt om niet de vijanden op tijd neer te schieten waardoor je overrompeld kan worden door kogels, hoewel je met goede timing wel meer punten kan binnenhalen.
+Er is nu een nieuwe vijand genaamd Cone die direct afwisselend links en rechts kogels schiet. 
+Nu zitten er vijandpatronen voor de eerste dertig seconden erin. 
+De achtergrond is uitgebreid om vanaf de ruimte te beginnen, daarnaast zijn de kleuren en belichting voor latere chunks aangepast.
+
+//30-10-2017
+Achtergrondmuziek toegevoegd, geluiden worden nu afgespeeld als er bepaalde acties zoals schieten en sterven worden gedaan
+De style van de pagina is geupdate. Heeft nu een achtergrond en een padding. Knoppen zijn ook meer in het centrum.

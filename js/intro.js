@@ -13,7 +13,10 @@ class Intro {
         this.tweenA = new TWEEN.Tween(camera.position)
             .to({x: 1.3, y: 0, z: 50}, 2000)
             .easing(TWEEN.Easing.Quartic.Out)
-            .delay(400);
+            .delay(400)
+            .onStart(function () {
+                audio.playerDeath();
+            });
 
         this.tweenB = new TWEEN.Tween(camera.position)
             .to({z: 500}, 400)

@@ -3,6 +3,7 @@ earth.position.z = -400;
 
 class Game {
     constructor() {
+        audio = new Audio();
 
         this.tempLight = new THREE.PointLight(0xDDDDFF, 2, 0, 2);
         this.tempLight.position.set(-50, 0, 30);
@@ -14,16 +15,20 @@ class Game {
         player = new Player(0,20);
         player.ship.position.y = 100;
         intro = new Intro();
+        this.done = false;
         scene.add(earth);
-        bg.bginit(1, 0, 0, 0, 5);
-
+        for (var i = 0; i < 6; i++) {
+            bg.bginit(1, 80 * i, Math.random(), 5, 9);
+        }
+        bg.bginit(1, 900, 0, 20, 7);
+        bg.bginit(1, 900, 113, 20, 7);
 
 
         //verwijder de onderste lijnen om intro af te laten spelen
-        //intro.started = true;
-        //done = true;
-        //camera.position.set(0,50,0);
-        //player.ship.position.y = 0;
+        /**intro.started = true;
+        done = true;
+        camera.position.set(0,50,0);
+        player.ship.position.y = 0;**/
     }
     //game loop
     update() {
@@ -47,6 +52,13 @@ class Game {
                 timeline(this.timer);
             }
         }
+
+        //extend lives for every 100000 pts
+        if(score % 100000 == 0 && score != 0) {
+            lives += 1;
+            score += 100;
+        }
+
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
             if (player.hitbox.intersectsBox(enemies[i].hitbox) && lives > -1 && !player.god) {
@@ -77,7 +89,8 @@ class Game {
         for (var i = 0; i < orbArray.length; i++) {
             if (player.hitbox.intersectsBox(orbArray[i].hitbox)) {
                 orbArray[i].destroy();
-                score += 50;
+                score += 500;
+                audio.powerup();
             }
         }
 
@@ -96,6 +109,13 @@ class Game {
                 emptyBullets();
             } else {
                 gui.show(document.getElementById("gameover"));
+            }
+        }
+
+        if (player.win) {
+            player.ship.position.z -= 1.3;
+            if (player.ship.position.z < -50) {
+                gui.show(document.getElementById("gamewon"));
             }
         }
         /**for (var i = 0; i < enemyBulletList.length; i++)

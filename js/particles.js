@@ -1,20 +1,31 @@
 particles = [];
 
 class Explosion {
-    constructor(posX, posZ, gameover) {
+    constructor(posX, posZ, optArg) {
         this.particleCount = 10;
+        this.decay = 1.5;
         this.particles = new THREE.Geometry();
         this.pMaterial = new THREE.PointsMaterial({
             color: 0xbfbfbf,
             size: 0.6
         });
 
-        if(gameover) {
+        if(optArg == 1) {
             this.particleCount = 50;
             this.pMaterial = new THREE.PointsMaterial({
                 color: 0xff0000,
                 size: 1.2
             });
+            this.decay = 3;
+        }
+
+        if(optArg == 2) {
+            this.particleCount = 500;
+            this.pMaterial = new THREE.PointsMaterial({
+                color: 0x00ff00,
+                size: 1.5
+            });
+            this.decay = 5;
         }
 
         for (var i = 0; i < this.particleCount; i++) {
@@ -43,7 +54,7 @@ class Explosion {
             vert.z += vert.vZ;
         }
 
-        if (this.clock.getElapsedTime() > 1.5) {
+        if (this.clock.getElapsedTime() > this.decay) {
             scene.remove(this.particleSystem);
             particles.splice(particles.indexOf(this), 1);
         }

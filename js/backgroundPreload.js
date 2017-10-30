@@ -47,6 +47,7 @@ class BackgroundPreload {
             var mesh = new THREE.Mesh(geometry, dirt);
             bgchunk[4] = mesh.clone();
         });
+       
 
         loader.load('models/bg/BGSata.json', function (geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
@@ -55,10 +56,6 @@ class BackgroundPreload {
             bgchunk[7] = mesh.clone();
         });
         
-
-        for (var i; i < bgchunk.length; i++)
-        {
-            console.log("test"+ bgchunk[i].color);
-        }
+        
     }
 }

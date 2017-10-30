@@ -17,6 +17,7 @@
 		<script type="text/javascript" src="js/functions.js"></script>
         <script type="text/javascript" src="js/backgroundPreload.js"></script>
         <script type="text/javascript" src="js/backgroundManager.js"></script>
+        <script type="text/javascript" src="js/audioManager.js"></script>
 		<script type="text/javascript" src="js/preload.js"></script>
         <script type="text/javascript" src="js/enemyBullets.js"></script>
         <script type="text/javascript" src="js/playerBullet.js"></script>
@@ -25,6 +26,7 @@
 		<script type="text/javascript" src="js/enemy.js"></script>
 		<script type="text/javascript" src="js/e_cube.js"></script>
 		<script type="text/javascript" src="js/e_triangle.js"></script>
+		<script type="text/javascript" src="js/e_boss.js"></script>
 		<script type="text/javascript" src="js/e_spinner.js"></script>
 		<script type="text/javascript" src="js/e_cone.js"></script>
 		<script type="text/javascript" src="js/e_icosa.js"></script>
@@ -40,11 +42,10 @@
 		<div id="canvas_outer">
 			<div class="row">
 				<div class="col-sm-3 hud">
-					<p>test</p>
 				</div>
 				<div class="col-sm-6" id="field">
 					<div id="mainMenu" class="hide menu">
-						<h1 class="menuHeader">3shmup</h1>
+						<h1 class="menuHeader">Descrysis</h1>
 						<button type="button" class="btn btn-alert btn_startgame" onclick="gui.startGame()">Start Game</button>
 						<button type="button" class="btn btn-alert btn_startgame" onclick="gui.showHelp()">Instructions</button>
 					</div>
@@ -66,12 +67,19 @@
 					</div>
 					<div id="gameover" class="hide">
 						<h2>GAME OVER</h2>
+						<h2 id="endScore"></h2>;
+                        <h2 style="font-size:15px; margin-top:50px;">Press F5 to try again</h2>
 					</div>
+                    <div id="gamewon" class="hide">
+                        <h2>YOU WON!</h2>
+                        <h2 id="endScore"></h2>;
+                        <h2 style="font-size:15px; margin-top:50px;">Press F5 to try again</h2>
+                    </div>
 					<div id="canvas_inner">
 					</div>
 				</div>
 				<div class="col-sm-3 hud">
-					<p>test</p>
+					
 				</div>
 			</div>
 			<div id="statsBox"></div>

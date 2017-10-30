@@ -9,7 +9,7 @@ function orbUpdate() {
 class Orb {
     constructor(posX, posZ) {
         this.geometry = new THREE.SphereGeometry(0.8, 6, 6);
-        this.material = new THREE.MeshBasicMaterial({color: 0x9baf18, wireframe: true});
+        this.material = new THREE.MeshBasicMaterial({color: 0xFFBF00, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.x = posX;
         this.mesh.position.z = posZ;
@@ -36,7 +36,7 @@ class Orb {
         this.timer++;
         this.hitbox.setFromObject(this.mesh);
 
-        if (this.timer < 30 && keyboard.pressed("z")) {
+        if (this.timer < 30) {
             this.mesh.position.x += this.vX;
             this.mesh.position.z += this.vZ;
         }

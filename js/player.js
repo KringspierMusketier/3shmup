@@ -4,8 +4,8 @@ class Player {
         this.ship.add(models[1].clone());
         this.basecolor = 0xDD4444;
 
-        this.exhaustgeo = new THREE.CylinderGeometry(2,5,20,3);
-        this.exhaustmat = new THREE.MeshBasicMaterial({color: 0xfe7722, wireframe: true});
+        this.exhaustgeo = new THREE.CylinderGeometry(2, 5, 20, 3);
+        this.exhaustmat = new THREE.MeshBasicMaterial({ color: 0xfe7722, wireframe: true });
         this.exhaust = new THREE.Mesh(this.exhaustgeo, this.exhaustmat);
         this.exhaust.rotation.x += 1.5;
         this.exhaust.position.y += -6;
@@ -13,15 +13,16 @@ class Player {
         this.exhaust2 = this.exhaust.clone();
         this.exhaust.position.x += -10;
         this.exhaust2.position.x += 10;
+        this.win = false;
         this.ship.add(this.exhaust);
         this.ship.add(this.exhaust2);
         this.ship.renderOrder = 0.3;
 
         this.gGeo = new THREE.SphereGeometry(50, 9, 6);
-        this.gMat = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true});
+        this.gMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
         this.godSphere = new THREE.Mesh(this.gGeo, this.gMat);
 
-        this.ship.scale.set(0.1,0.1,0.1);
+        this.ship.scale.set(0.1, 0.1, 0.1);
         this.speed = 0.7;
         this.reload = 0;
         this.spin = false;
@@ -52,7 +53,7 @@ class Player {
         }
     }
     moveUp() {
-        if (this.ship.position.z > - 35) {
+        if (this.ship.position.z > - 35&&!this.win) {
             this.ship.position.z -= this.speed;
         }
     }
@@ -63,7 +64,9 @@ class Player {
     }
     shoot() {
         this.reload++;
+        
         if (this.reload > 7) {
+            audio.playerShot();
             var lBullet = new PlayerBullet(new THREE.Vector3(this.ship.position.x - 2.5, 0, this.ship.position.z), this.ship.rotation.z);
             var mBullet = new PlayerBullet(this.ship.position, this.ship.rotation.z);
             var rBullet = new PlayerBullet(new THREE.Vector3(this.ship.position.x + 2.5, 0, this.ship.position.z), this.ship.rotation.z);
@@ -108,10 +111,12 @@ class Player {
             particles.push(new Explosion(this.ship.position.x, this.ship.position.z));
             intro.hit();
             emptyBullets();
+            audio.playerImpact();
         } else {
             this.dead = true;
-            particles.push(new Explosion(this.ship.position.x, this.ship.position.z, this.dead));
+            particles.push(new Explosion(this.ship.position.x, this.ship.position.z, 1));
             scene.remove(this.ship);
+            audio.playerDeathAlt();
         }
     }
 }

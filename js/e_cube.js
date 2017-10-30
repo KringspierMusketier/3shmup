@@ -19,7 +19,7 @@ class Cube extends Enemy {
     onFire() {
         this.reload++;
         if (this.reload > 90) {
-            if (this.max < 3) {
+            if (this.max < 2) {
                 var lBullet = new EnemyBullet(this, 2, 0, 0, 0, 0);
                 var mBullet = new EnemyBullet(this, 2, 0, 0, -0.6, 0);
                 var nBullet = new EnemyBullet(this, 2, 0, 0, -1.2, 0);
@@ -40,7 +40,7 @@ class Cube extends Enemy {
 
     onDeath() {
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
-        score += 100;
+        score += 3000;
         super.onDeath();
     }
 
