@@ -30,6 +30,7 @@ Gui.prototype.startGame = function() {
     this.hide(document.getElementById('mainMenu'));
     this.show(document.getElementById('hud'));
     this.show(document.getElementById('positions'));
+    audio.menuClick();
     game = new Game();
     draw();
 }
@@ -37,25 +38,11 @@ Gui.prototype.startGame = function() {
 Gui.prototype.showHelp = function() {
     this.hide(document.getElementById('mainMenu'));
     this.show(document.getElementById('help'));
+    audio.menuClick();
 }
 
 Gui.prototype.returnMenu = function() {
     this.hide(document.getElementById('help'));
     this.show(document.getElementById('mainMenu'));
-}
-
-Gui.prototype.showHighscore = function() {
-
-}
-
-Gui.prototype.updateLives = function() {
-
-}
-
-Gui.prototype.updateScore = function() {
-
-}
-
-Gui.prototype.gameOver = function() {
-
+    audio.menuClick();
 }

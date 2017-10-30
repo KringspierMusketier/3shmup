@@ -63,7 +63,7 @@ class Spinner extends Enemy {
         if (!this.dying) {
             if(this.hp < 8000) {
                 this.eTimer++;
-                if (this.eTimer > 420) {
+                if (this.eTimer > 360) {
                     enemies.push(new Cone());
                     this.eTimer = 0;
                 }
@@ -82,6 +82,7 @@ class Spinner extends Enemy {
             this.mesh.rotation.x += 0.1;
             if (this.dTimer > 15 && this.cTimer < 300) {
                 particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
+                audio.enemyDeath();
                 for (var i = 0; i < 20; i++) {
                     var newOrb = new Orb(this.mesh.position.x, this.mesh.position.z);
                 }
@@ -89,6 +90,7 @@ class Spinner extends Enemy {
             }
             else if (this.cTimer >= 480) {
                 particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z, 2));
+                audio.bigExplosion();
                 player.win = true;
                 super.onDeath();
             }

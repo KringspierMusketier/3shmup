@@ -3,10 +3,33 @@ class Audio {
         this.listener = new THREE.AudioListener();
         camera.add(this.listener);
         this.audioLoader = new THREE.AudioLoader();
+    }
+
+    startGame() {
+        var bgm = new THREE.Audio(this.listener);
+        this.audioLoader.load('sound/bgm2.mp3', function (buffer) {
+            bgm.setBuffer(buffer);
+            bgm.setLoop(true);
+            bgm.setVolume(0.4);
+            bgm.play();
+        });
+    }
+
+    blastOff() {
         var sound = new THREE.Audio(this.listener);
-        this.audioLoader.load('sound/bgm.mp3', function (buffer) {
+        this.audioLoader.load('sound/blastOff.wav', function (buffer) {
             sound.setBuffer(buffer);
-            sound.setLoop(true);
+            sound.setLoop(false);
+            sound.setVolume(0.5);
+            sound.play();
+        });
+    }
+
+    charge() {
+        var sound = new THREE.Audio(this.listener);
+        this.audioLoader.load('sound/charge.wav', function (buffer) {
+            sound.setBuffer(buffer);
+            sound.setLoop(false);
             sound.setVolume(0.4);
             sound.play();
         });
@@ -35,6 +58,15 @@ class Audio {
     playerImpact() {
         var sound = new THREE.Audio(this.listener);
         this.audioLoader.load('sound/playerImpact.ogg', function (buffer) {
+            sound.setBuffer(buffer);
+            sound.setLoop(false);
+            sound.setVolume(0.4);
+            sound.play();
+        });
+    }
+    menuClick() {
+        var sound = new THREE.Audio(this.listener);
+        this.audioLoader.load('sound/menuClick.ogg', function (buffer) {
             sound.setBuffer(buffer);
             sound.setLoop(false);
             sound.setVolume(0.4);
@@ -76,6 +108,16 @@ class Audio {
             sound.setBuffer(buffer);
             sound.setLoop(false);
             sound.setVolume(0.2);
+            sound.play();
+        });
+    }
+
+    bigExplosion() {
+        var sound = new THREE.Audio(this.listener);
+        this.audioLoader.load('sound/bigExplosion.wav', function (buffer) {
+            sound.setBuffer(buffer);
+            sound.setLoop(false);
+            sound.setVolume(1);
             sound.play();
         });
     }

@@ -55,6 +55,7 @@ function onLoad() {
     var statsContainer = document.getElementById('statsBox');
     statsContainer.appendChild(stats.domElement);
 
+    audio = new Audio();
     gui = new Gui();
     camera.lookAt(0,0,0);
 };

@@ -11,11 +11,11 @@ class Intro {
             .delay(500);
         
         this.tweenA = new TWEEN.Tween(camera.position)
-            .to({x: 1.3, y: 0, z: 50}, 2000)
+            .to({x: 1.3, y: 0, z: 50}, 2300)
             .easing(TWEEN.Easing.Quartic.Out)
             .delay(400)
             .onStart(function () {
-                audio.playerDeath();
+                audio.charge();
             });
 
         this.tweenB = new TWEEN.Tween(camera.position)
@@ -26,6 +26,7 @@ class Intro {
                 var torMaterial = new THREE.MeshBasicMaterial({color: 0xfe7722});
                 var torMesh = new THREE.Mesh(torGeometry, torMaterial);
                 torMesh.position.set(player.ship.position.x, player.ship.position.y, player.ship.position.z);
+                audio.blastOff();
                 this.tor = torMesh.clone();
                 scene.add(this.tor);
             });
