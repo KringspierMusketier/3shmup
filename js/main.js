@@ -67,10 +67,7 @@ function draw() {
 
         game.update();
         TWEEN.update();
-        document.getElementById('posX').innerHTML = ("posX: " + player.ship.position.x);
-        document.getElementById('posZ').innerHTML = ("posZ: " + player.ship.position.z);
         document.getElementById('score').innerHTML = ("SC " + score);
-        document.getElementById('timer').innerHTML = ("time: " + game.timer);
 
         if (lives > -1)
             document.getElementById('lives').innerHTML = ("P1: " + lives + "X");

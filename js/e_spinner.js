@@ -69,9 +69,9 @@ class Spinner extends Enemy {
                 }
             }
 
-            if (this.timer < 240)
+            if (this.timer < 400)
                 this.mesh.position.z += this.speed;
-            else if (this.timer >= 240 && this.hp > 0) {
+            else if (this.timer >= 400 && this.hp > 0) {
                 this.onFire();
             }
             this.bobbing();

@@ -52,6 +52,13 @@ class Game {
                 timeline(this.timer);
             }
         }
+
+        //extend lives for every 100000 pts
+        if(score % 100000 == 0 && score != 0) {
+            lives += 1;
+            score += 100;
+        }
+
         //collision checking
         for (var i = 0; i < enemies.length; i++) {
             if (player.hitbox.intersectsBox(enemies[i].hitbox) && lives > -1 && !player.god) {

@@ -38,7 +38,7 @@ function outOfBound(mesh) {
 }
 
 function rndColor() {
-    
+
 }
 
 function restart() {
@@ -222,8 +222,16 @@ function timeline(timer) {
             break;
         }
 
-        case 3280: {
-            enemies.push(new Spinner(1));
+        case 3200: {
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-10));
+            enemies.push(new Triangle(10));
+            enemies.push(new Triangle(20));
+            break;
+        }
+
+        case 3660: {
+            enemies.push(new Spinner(1, -60));
             break;
         }
     }
