@@ -47,11 +47,7 @@ class BackgroundPreload {
             var mesh = new THREE.Mesh(geometry, dirt);
             bgchunk[4] = mesh.clone();
         });
-
-        //loader.load('models/bg/BGLoop.json', function (geometry) {
-        //    var mesh = new THREE.Mesh(geometry, dirt);
-        //    bgchunk[4] = mesh.clone();
-        //});
+       
 
         loader.load('models/bg/BGSata.json', function (geometry) {
             var mesh = new THREE.Mesh(geometry, new THREE.MeshPhongMaterial({
