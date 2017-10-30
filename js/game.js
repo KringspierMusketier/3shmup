@@ -107,7 +107,7 @@ class Game {
 
         if (player.win) {
             player.ship.position.z -= 5;
-            if (player.ships.position.z < -50) {
+            if (player.ship.position.z < -50) {
 
             }
         }

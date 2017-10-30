@@ -3,7 +3,7 @@ aggression = 1;
 class Spinner extends Enemy {
     constructor(posX, posZ) {
         super();
-        this.hp = 500;
+        this.hp = 12000;
 
         this.mesh = enemyModels[1].clone();
         this.mesh.scale.set(20,20,20);
@@ -42,6 +42,16 @@ class Spinner extends Enemy {
         super.update();
         this.timer++;
 
+        if(this.hp < 6000 && this.hp >= 3000) {
+            aggression = 1.1;
+            this.basecolor = 0x0000ff;
+        }
+
+        else if (this.hp < 3000) {
+            aggression = 1.3;
+            this.basecolor = 0xff9933;
+        }
+
         if (!this.dying) {
             if (this.timer < 240)
                 this.mesh.position.z += this.speed;
@@ -63,8 +73,9 @@ class Spinner extends Enemy {
             }
             else if (this.cTimer >= 480) {
                 particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z, 2));
+                player.win = true;
                 super.onDeath();
-            } 
+            }
         }
     }
 
@@ -104,6 +115,20 @@ class Spinner extends Enemy {
                     var rBullet = new EnemyBullet(this, 2, 0, -5, -1.8, 0);
                     var oBullet = new EnemyBullet(this, 2, 0, -5, -2.4, 0);
                     var pBullet = new EnemyBullet(this, 2, 0, -5, -3.0, 0);
+                    if (aggression >= 1.1) {
+                        var lBullet = new EnemyBullet(this, 2, 0, -7, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, -7, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, -7, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, -7, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, -7, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, -7, -9.0, 0);
+                        var lBullet = new EnemyBullet(this, 2, 0, -12, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, -12, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, -12, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, -12, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, -12, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, -12, -9.0, 0);
+                    }
                     this.subPhase++;
                 }
                 else if (this.reload > 50 && this.subPhase == 1) {
@@ -125,6 +150,20 @@ class Spinner extends Enemy {
                     var rBullet = new EnemyBullet(this, 2, 0, 5, -1.8, 0);
                     var oBullet = new EnemyBullet(this, 2, 0, 5, -2.4, 0);
                     var pBullet = new EnemyBullet(this, 2, 0, 5, -3.0, 0);
+                    if (aggression >= 1.1) {
+                        var lBullet = new EnemyBullet(this, 2, 0, 7, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, 7, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, 7, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, 7, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, 7, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, 7, -9.0, 0);
+                        var lBullet = new EnemyBullet(this, 2, 0, 12, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, 12, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, 12, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, 12, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, 12, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, 12, -9.0, 0);
+                    }
                     this.subPhase++;
                 }
                 else if (this.reload > 70 && this.subPhase == 2) {
@@ -146,6 +185,20 @@ class Spinner extends Enemy {
                     var rBullet = new EnemyBullet(this, 2, 0, -5, -1.8, 0);
                     var oBullet = new EnemyBullet(this, 2, 0, -5, -2.4, 0);
                     var pBullet = new EnemyBullet(this, 2, 0, -5, -3.0, 0);
+                    if (aggression >= 1.1) {
+                        var lBullet = new EnemyBullet(this, 2, 0, -7, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, -7, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, -7, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, -7, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, -7, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, -7, -9.0, 0);
+                        var lBullet = new EnemyBullet(this, 2, 0, -12, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, -12, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, -12, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, -12, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, -12, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, -12, -9.0, 0);
+                    }
                     this.subPhase++;
                 }
                 else if (this.reload > 90 && this.subPhase == 3) {
@@ -167,6 +220,20 @@ class Spinner extends Enemy {
                     var rBullet = new EnemyBullet(this, 2, 0, 5, -1.8, 0);
                     var oBullet = new EnemyBullet(this, 2, 0, 5, -2.4, 0);
                     var pBullet = new EnemyBullet(this, 2, 0, 5, -3.0, 0);
+                    if (aggression >= 1.1) {
+                        var lBullet = new EnemyBullet(this, 2, 0, 7, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, 7, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, 7, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, 7, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, 7, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, 7, -9.0, 0);
+                        var lBullet = new EnemyBullet(this, 2, 0, 12, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, 12, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, 12, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, 12, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, 12, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, 12, -9.0, 0);
+                    }
                     this.subPhase++;
                 }
                 else if (this.reload > 110 && this.subPhase == 4) {
@@ -188,6 +255,20 @@ class Spinner extends Enemy {
                     var rBullet = new EnemyBullet(this, 2, 0, -5, -1.8, 0);
                     var oBullet = new EnemyBullet(this, 2, 0, -5, -2.4, 0);
                     var pBullet = new EnemyBullet(this, 2, 0, -5, -3.0, 0);
+                    if (aggression >= 1.1) {
+                        var lBullet = new EnemyBullet(this, 2, 0, -7, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, -7, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, -7, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, -7, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, -7, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, -7, -9.0, 0);
+                        var lBullet = new EnemyBullet(this, 2, 0, -12, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, -12, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, -12, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, -12, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, -12, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, -12, -9.0, 0);
+                    }
                     this.subPhase++;
                 }
                 else if (this.reload > 130 && this.subPhase == 5) {
@@ -209,6 +290,20 @@ class Spinner extends Enemy {
                     var rBullet = new EnemyBullet(this, 2, 0, 5, -1.8, 0);
                     var oBullet = new EnemyBullet(this, 2, 0, 5, -2.4, 0);
                     var pBullet = new EnemyBullet(this, 2, 0, 5, -3.0, 0);
+                    if (aggression >= 1.1) {
+                        var lBullet = new EnemyBullet(this, 2, 0, 7, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, 7, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, 7, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, 7, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, 7, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, 7, -9.0, 0);
+                        var lBullet = new EnemyBullet(this, 2, 0, 12, -6, 0);
+                        var mBullet = new EnemyBullet(this, 2, 0, 12, -6.6, 0);
+                        var nBullet = new EnemyBullet(this, 2, 0, 12, -7.2, 0);
+                        var rBullet = new EnemyBullet(this, 2, 0, 12, -7.8, 0);
+                        var oBullet = new EnemyBullet(this, 2, 0, 12, -8.4, 0);
+                        var pBullet = new EnemyBullet(this, 2, 0, 12, -9.0, 0);
+                    }
                     this.subPhase++;
                 }
                 else if (this.subPhase == 6) {
@@ -225,33 +320,33 @@ class Spinner extends Enemy {
             }
             case 1: {
                 if (this.reload > 120 && this.subPhase == 0) {
-                    for (var i = 0; i < 40; i++) {
+                    for (var i = 0; i < (35 * aggression); i++) {
                         var pBullet = new EnemyBullet(this, 1, 0, getRndNext(-5, 5), 0, 4);
-                        if (i == 39) {
+                        if (i >= (35 * aggression - 1)) {
                             this.subPhase++;
                         }
                     }
                 }
                 else if (this.reload > 150 && this.subPhase == 1) {
-                    for (var i = 0; i < 40; i++) {
+                    for (var i = 0; i < (35 * aggression); i++) {
                         var pBullet = new EnemyBullet(this, 1, 0, getRndNext(-5, 5), 0, 4);
-                        if (i == 39) {
+                        if (i >= (35 * aggression - 1)) {
                             this.subPhase++;
                         }
                     }
                 }
                 else if (this.reload > 180 && this.subPhase == 2) {
-                    for (var i = 0; i < 40; i++) {
+                    for (var i = 0; i < (35 * aggression); i++) {
                         var pBullet = new EnemyBullet(this, 1, 0, getRndNext(-5, 5), 0, 4);
-                        if (i == 39) {
+                        if (i >= (35 * aggression - 1)) {
                             this.subPhase++;
                         }
                     }
                 }
                 else if (this.reload > 210 && this.subPhase == 3) {
-                    for (var i = 0; i < 40; i++) {
+                    for (var i = 0; i < (35 * aggression); i++) {
                         var pBullet = new EnemyBullet(this, 1, 0, getRndNext(-5, 5), 0, 4);
-                        if (i == 39) {
+                        if (i >= (35 * aggression - 1)) {
                             this.subPhase++;
                         }
                     }

@@ -108,19 +108,19 @@ class EnemyBullet {
                             this.direction.set(this.tgtDir.x, this.tgtDir.y, this.tgtDir.z);
                         else if (this.arg == 4) {
                             this.direction.set(getRndNext(-1, 1), 0, -1);
-                            this.speed = 0.5;
+                            this.speed = 0.5 * aggression;
                         }
                         else if (this.arg == 5) {
                             this.mesh.position.x -= 15;
                             this.direction.set(this.mesh.position.x - player.ship.position.x - this.x_offset, 0, this.mesh.position.z - player.ship.position.z - this.z_offset);
                             this.mesh.scale.set(2,2,2);
-                            this.speed = 2.0;
+                            this.speed = 2.0 * aggression;
                         }
                         else if (this.arg == 6) {
                             this.mesh.position.x += 15;
                             this.direction.set(this.mesh.position.x - player.ship.position.x - this.x_offset, 0, this.mesh.position.z - player.ship.position.z - this.z_offset);
                             this.mesh.scale.set(2,2,2);
-                            this.speed = 2.0;
+                            this.speed = 2.0 * aggression;
                         }
                         this.direction.multiplyScalar(-1);
                         this.locked = true;
