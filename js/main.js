@@ -74,8 +74,10 @@ function draw() {
 
         if (lives > -1)
             document.getElementById('lives').innerHTML = ("P1: " + lives + "X");
-        else
-         document.getElementById('lives').innerHTML = ("P1: DEAD");
+        else {
+            document.getElementById('lives').innerHTML = ("P1: DEAD");
+            document.getElementById('endScore').innerHTML = (score + " PTS");
+        }
 
     requestAnimationFrame(draw);
 
