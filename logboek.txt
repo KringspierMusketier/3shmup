@@ -70,3 +70,4 @@ De achtergrond is uitgebreid om vanaf de ruimte te beginnen, daarnaast zijn de k
 
 //30-10-2017
 Achtergrondmuziek toegevoegd, geluiden worden nu afgespeeld als er bepaalde acties zoals schieten en sterven worden gedaan
+De style van de pagina is geupdate. Heeft nu een achtergrond en een padding. Knoppen zijn ook meer in het centrum.
