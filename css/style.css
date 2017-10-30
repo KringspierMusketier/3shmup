@@ -130,6 +130,26 @@ body {
         padding: 10px,30px,10px,30px;
     }
 
+
+#gamewon {
+    position: absolute;
+    width: auto;
+    height: auto;
+    z-index: 3;
+    margin-top: 240px;
+    margin-left: 170px;
+    background-color: rgba(0,0,0,0.25);
+    padding: 10px,30px,10px,30px;
+    border-radius: 10px;
+}
+
+    #gamewon h2 {
+        color: #FFBF00;
+        font-weight: bold;
+        font-family: 'Saira', sans-serif;
+        text-align: center;
+        padding: 10px,30px,10px,30px;
+    }
 .hide {
   display: none;
 }

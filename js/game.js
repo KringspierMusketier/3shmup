@@ -106,9 +106,9 @@ class Game {
         }
 
         if (player.win) {
-            player.ship.position.z -= 5;
+            player.ship.position.z -= 1.3;
             if (player.ship.position.z < -50) {
-
+                gui.show(document.getElementById("gamewon"));
             }
         }
         /**for (var i = 0; i < enemyBulletList.length; i++)
