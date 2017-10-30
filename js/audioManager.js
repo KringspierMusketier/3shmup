@@ -6,7 +6,7 @@ class Audio {
         var sound = new THREE.Audio(this.listener);
         this.audioLoader.load('sound/bgm.mp3', function (buffer) {
             sound.setBuffer(buffer);
-            sound.setLoop(false);
+            sound.setLoop(true);
             sound.setVolume(0.4);
             sound.play();
         });

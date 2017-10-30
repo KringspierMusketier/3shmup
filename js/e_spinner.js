@@ -14,6 +14,8 @@ class Spinner extends Enemy {
         this.timer = 0;
         this.cTimer = 0;
         this.orbs = 20;
+        this.bob = 0;
+        this.bobdirection = false;
 
         this.bob = 0;
         this.phase = 0;
@@ -42,7 +44,19 @@ class Spinner extends Enemy {
         else if (this.timer >= 240 && this.hp > 0) {
             this.onFire();
         }
+        this.bobbing();
+    }
 
+    bobbing() {
+        if (true) {
+            if (this.bobdirection) this.mesh.position.z += 0.04;
+            else this.mesh.position.z -= 0.04;
+            this.bob++;
+            if (this.bob > 80) {
+                this.bob = 0;
+                this.bobdirection = !this.bobdirection;
+            }
+        }
     }
     
     onFire() {
