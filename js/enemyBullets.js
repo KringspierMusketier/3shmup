@@ -61,7 +61,7 @@ class EnemyBullet {
                 var mesh = new THREE.Mesh(new THREE.IcosahedronGeometry(), new THREE.MeshBasicMaterial({color: 0xCB26C9}));
                 this.mesh = mesh.clone();
                 this.behavior = 2;
-                this.speed = 0.7;
+                this.speed = 0.7 * aggression;
                 this.acc = 0;
                 break;
             }
@@ -114,13 +114,13 @@ class EnemyBullet {
                             this.mesh.position.x -= 15;
                             this.direction.set(this.mesh.position.x - player.ship.position.x - this.x_offset, 0, this.mesh.position.z - player.ship.position.z - this.z_offset);
                             this.mesh.scale.set(2,2,2);
-                            this.speed = 2.0 * aggression;
+                            this.speed = 1.9 * aggression;
                         }
                         else if (this.arg == 6) {
                             this.mesh.position.x += 15;
                             this.direction.set(this.mesh.position.x - player.ship.position.x - this.x_offset, 0, this.mesh.position.z - player.ship.position.z - this.z_offset);
                             this.mesh.scale.set(2,2,2);
-                            this.speed = 2.0 * aggression;
+                            this.speed = 1.9 * aggression;
                         }
                         this.direction.multiplyScalar(-1);
                         this.locked = true;

@@ -36,6 +36,9 @@ class Cone extends Enemy {
         this.onFire();
         super.update();
         this.mesh.position.z += this.speed;
+        if(player.win) {
+            this.onExit();
+        }
     }
 
     onDeath() {
