@@ -13,6 +13,7 @@ class Player {
         this.exhaust2 = this.exhaust.clone();
         this.exhaust.position.x += -10;
         this.exhaust2.position.x += 10;
+        this.win = false;
         this.ship.add(this.exhaust);
         this.ship.add(this.exhaust2);
         this.ship.renderOrder = 0.3;

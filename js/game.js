@@ -15,6 +15,7 @@ class Game {
         player = new Player(0,20);
         player.ship.position.y = 100;
         intro = new Intro();
+        this.done = false;
         scene.add(earth);
         for (var i = 0; i < 6; i++) {
             bg.bginit(1, 80 * i, Math.random(), 5, 9);
@@ -101,6 +102,13 @@ class Game {
                 emptyBullets();
             } else {
                 gui.show(document.getElementById("gameover"));
+            }
+        }
+
+        if (player.win) {
+            player.ship.position.z -= 5;
+            if (player.ships.position.z < -50) {
+
             }
         }
         /**for (var i = 0; i < enemyBulletList.length; i++)
