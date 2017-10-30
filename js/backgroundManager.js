@@ -44,6 +44,7 @@ class Background {
         switch (game.timer) {
         //phase 1: air and sea
             case 1:
+                game.timer = offset + 1779;
                 break;
             case 20:
                 bgspeed = 0.3;

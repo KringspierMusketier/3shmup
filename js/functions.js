@@ -89,12 +89,12 @@ function timeline(timer) {
             break;
         }
         case 760: {
-            enemies.push(new Cube());
+            enemies.push(new Cube(0));
             break;
         }
         case 880: {
-            enemies.push(new Cube());
-            enemies.push(new Cube());
+            enemies.push(new Cube(-15));
+            enemies.push(new Cube(15));
             break;
         }
         case 1080: {
@@ -204,6 +204,22 @@ function timeline(timer) {
             enemies.push(new Cone(20));
             enemies.push(new Cube(-25));
             enemies.push(new Cube(-15));
+            break;
+        }
+
+        case 2980: {
+            enemies.push(new Cone(0));
+            break;
+        }
+
+        case 3040: {
+            enemies.push(new Cone(-15));
+            enemies.push(new Cone(15));
+            break;
+        }
+
+        case 3280: {
+            enemies.push(new Spinner(1));
             break;
         }
     }

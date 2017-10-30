@@ -39,7 +39,7 @@ class Cone extends Enemy {
     }
 
     onDeath() {
-        score += 500;
+        score += 5000;
         particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z));
         super.onDeath();
     }
