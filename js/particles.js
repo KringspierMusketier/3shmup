@@ -1,7 +1,7 @@
 particles = [];
 
 class Explosion {
-    constructor(posX, posZ, gameover) {
+    constructor(posX, posZ, optArg) {
         this.particleCount = 10;
         this.particles = new THREE.Geometry();
         this.pMaterial = new THREE.PointsMaterial({
@@ -9,12 +9,16 @@ class Explosion {
             size: 0.6
         });
 
-        if(gameover) {
+        if(optArg == 1) {
             this.particleCount = 50;
             this.pMaterial = new THREE.PointsMaterial({
                 color: 0xff0000,
                 size: 1.2
             });
+        }
+
+        if(optArg == 2) {
+            
         }
 
         for (var i = 0; i < this.particleCount; i++) {

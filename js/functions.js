@@ -37,6 +37,10 @@ function outOfBound(mesh) {
     }
 }
 
+function rndColor() {
+    
+}
+
 function restart() {
     location = location;
 }

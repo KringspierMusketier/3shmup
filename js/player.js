@@ -113,7 +113,7 @@ class Player {
             audio.playerImpact();
         } else {
             this.dead = true;
-            particles.push(new Explosion(this.ship.position.x, this.ship.position.z, this.dead));
+            particles.push(new Explosion(this.ship.position.x, this.ship.position.z, 1));
             scene.remove(this.ship);
             audio.playerDeathAlt();
         }

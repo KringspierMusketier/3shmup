@@ -1,7 +1,9 @@
+aggression = 1;
+
 class Spinner extends Enemy {
     constructor(posX, posZ) {
         super();
-        this.hp = 20000;
+        this.hp = 500;
 
         this.mesh = enemyModels[1].clone();
         this.mesh.scale.set(20,20,20);
@@ -37,7 +39,7 @@ class Spinner extends Enemy {
         this.timer++;
         if (this.timer < 240)
             this.mesh.position.z += this.speed;
-        else if (this.timer >= 240) {
+        else if (this.timer >= 240 && this.hp > 0) {
             this.onFire();
         }
 
