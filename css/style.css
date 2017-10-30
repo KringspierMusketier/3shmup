@@ -1,7 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Saria);
+@import url('https://fonts.googleapis.com/css?family=Saira');
 
 body {
-    font-family: 'saria', sans-serif;
+    font-family: 'Saira', sans-serif;
     overflow: hidden;
     background-image: url("sitebg.png");
     background-size: 100% auto;
@@ -49,7 +49,7 @@ body {
   z-index: 2;
   margin: 0;
   display: block;
-  font-family: "Lucida Console", normal;
+  font-family: 'Saira', sans-serif;
 }
 
 
@@ -68,7 +68,7 @@ body {
   width: auto;
   height: auto;
   z-index: 3;
-  font-family: "Lucida Console", normal;
+  font-family: 'Saira', sans-serif;
   padding-left: 15px;
   padding-top: 10px;
 
@@ -89,7 +89,7 @@ body {
 #positions h6 {
   color: #fafafa;
   margin-bottom: 1px;
-  font-family: "Lucida Console", normal;
+  font-family: 'Saira', sans-serif;
 }
 
 .menuHeader {
@@ -106,8 +106,8 @@ body {
 
 
 .menu h6 {
-  color: rgb(0, 194, 0);
-  font-family: "Lucida Console", normal;
+    color: rgb(0, 194, 0);
+    font-family: 'Saira', sans-serif;
 }
 
 #gameover {
@@ -124,7 +124,8 @@ body {
 
     #gameover h2 {
         color: rgb(0, 194, 0);
-        font-family: "Lucida Console", normal;
+        font-weight: bold;
+        font-family: 'Saira', sans-serif;
         text-align: center;
         padding: 10px,30px,10px,30px;
     }
