@@ -53,7 +53,7 @@ class Player {
         }
     }
     moveUp() {
-        if (this.ship.position.z > - 35) {
+        if (this.ship.position.z > - 35&&!this.win) {
             this.ship.position.z -= this.speed;
         }
     }

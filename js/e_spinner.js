@@ -63,6 +63,7 @@ class Spinner extends Enemy {
             }
             else if (this.cTimer >= 480) {
                 particles.push(new Explosion(this.mesh.position.x, this.mesh.position.z, 2));
+                player.win = true;
                 super.onDeath();
             } 
         }
