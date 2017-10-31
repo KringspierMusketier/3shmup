@@ -1,7 +1,12 @@
 bgchunk = [];
 
+//Hier worden alle chunks geladen van modellen die we zelf hebben gemaakt in Blender.
+
+
+//Dit zijn vaker voorkomende kleuren die we precies wilden afstemmen. Strand zand (islands, beach) en aarde (hole, loopbackground);
 beach = new THREE.MeshLambertMaterial({ color: 0xC2B280 });
 dirt = new THREE.MeshLambertMaterial({ color: 0x573B0C });
+
 class BackgroundPreload {
     constructor() {
         var loader = new THREE.JSONLoader(manager);

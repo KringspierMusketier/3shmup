@@ -1,5 +1,7 @@
 keyboard = new THREEx.KeyboardState();
 
+//hier wordt gezocht naar keyboard inputs. De snelheid wordt ook gehalveerd voor 'focus mode'.
+//De functies van de ingedrukte knoppen worden uitgevoerd in player.
 class Input {
     constructor() {
         this.focus = false;

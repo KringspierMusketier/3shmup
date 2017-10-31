@@ -1,7 +1,7 @@
 function getRndNext(min, max) {
     return Math.random() * (max - min) + min;
   }
-
+//De volgende functies zorgen ervoor dat alle bullets, enemies en particles worden geupdate.
 function playerBulletMovement() {
     for (var i = 0; i < playerBulletList.length; i++) {
         playerBulletList[i].movement();
@@ -23,12 +23,14 @@ function particleUpdate() {
         particles[i].update();
 }
 
+//Dit haalt elke bullet van het scherm. Dit wordt gebruikt in de invincibility phase als de speler geraakt wordt.
 function emptyBullets() {
     for (var i = 0; i < eBullList.length; i++) {
         eBullList[i].destroy();
     }
 }
 
+//Dit controleert of iets out of bound is. if(outOfBound(mesh)) Destroy(); is een populaire.
 function outOfBound(mesh) {
     if (mesh.position.x < -30 || mesh.position.x > 30 || mesh.position.z < -40 || mesh.position.z > 40) {
         return true;
@@ -40,10 +42,12 @@ function outOfBound(mesh) {
 function rndColor() {
 
 }
-
+//legacy
 function restart() {
     location = location;
 }
+//Dit is de timeline voor de enemies die aanvallen. We probeerden dit in een aparte tijdlijn te zetten, net als de achtergrond, maar Javascript vond dat het alleen
+//goed zou moeten kunnen werken als het hier stond, dus we moesten er maar mee door.
 
 function timeline(timer) {
     switch (timer) {

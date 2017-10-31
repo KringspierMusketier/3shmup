@@ -2,6 +2,9 @@ models = [];
 enemyModels = [];
 bulletModels = [];
 
+//Hier worden de modellen geladen van .json bestanden gemaakt in Blender.
+//De achtergronden worden in backgroundPreload.js gemaakt voor overzicht.
+
 class Preload {
     constructor() {
         //BackGroundPreload();

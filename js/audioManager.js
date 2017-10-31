@@ -5,6 +5,7 @@ class Audio {
         this.audioLoader = new THREE.AudioLoader();
     }
 
+    //Hier wordt de achtergrondmuziek geladen.
     startGame() {
         var bgm = new THREE.Audio(this.listener);
         this.audioLoader.load('sound/bgm_new.ogg', function (buffer) {
@@ -14,7 +15,7 @@ class Audio {
             bgm.play();
         });
     }
-
+    //Dit is de achtergrondmuziek voor de boss fight.
     boss() {
         var sound = new THREE.Audio(this.listener);
         this.audioLoader.load('sound/boss.mp3', function (buffer) {
@@ -24,7 +25,7 @@ class Audio {
             sound.play();
         });
     }
-
+    //Deze geluiden worden gemaakt in het intro.
     blastOff() {
         var sound = new THREE.Audio(this.listener);
         this.audioLoader.load('sound/blastOff.wav', function (buffer) {
@@ -54,7 +55,7 @@ class Audio {
             sound.play();
         });
     }
-
+    //De andere geluiden spreken voor zich
     playerDeath() {
         var sound = new THREE.Audio(this.listener);
         this.audioLoader.load('sound/playerDeath.ogg', function (buffer) {
