@@ -10,7 +10,7 @@ class Audio {
         this.audioLoader.load('sound/bgm_new.ogg', function (buffer) {
             bgm.setBuffer(buffer);
             bgm.setLoop(false);
-            bgm.setVolume(0.5);
+            bgm.setVolume(0.6);
             bgm.play();
         });
     }
@@ -20,7 +20,7 @@ class Audio {
         this.audioLoader.load('sound/boss.mp3', function (buffer) {
             sound.setBuffer(buffer);
             sound.setLoop(true);
-            sound.setVolume(0.5);
+            sound.setVolume(0.8);
             sound.play();
         });
     }
