@@ -230,6 +230,10 @@ function timeline(timer) {
             break;
         }
 
+        case 3620: {
+            audio.boss();
+            break;
+        }
         case 3660: {
             enemies.push(new Spinner(1, -60));
             break;

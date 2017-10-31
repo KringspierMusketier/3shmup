@@ -7,11 +7,21 @@ class Audio {
 
     startGame() {
         var bgm = new THREE.Audio(this.listener);
-        this.audioLoader.load('sound/bgm2.mp3', function (buffer) {
+        this.audioLoader.load('sound/bgm_new.ogg', function (buffer) {
             bgm.setBuffer(buffer);
-            bgm.setLoop(true);
-            bgm.setVolume(0.4);
+            bgm.setLoop(false);
+            bgm.setVolume(0.5);
             bgm.play();
+        });
+    }
+
+    boss() {
+        var sound = new THREE.Audio(this.listener);
+        this.audioLoader.load('sound/boss.mp3', function (buffer) {
+            sound.setBuffer(buffer);
+            sound.setLoop(true);
+            sound.setVolume(0.5);
+            sound.play();
         });
     }
 
@@ -21,6 +31,16 @@ class Audio {
             sound.setBuffer(buffer);
             sound.setLoop(false);
             sound.setVolume(0.5);
+            sound.play();
+        });
+    }
+
+    extend() {
+        var sound = new THREE.Audio(this.listener);
+        this.audioLoader.load('sound/extend.wav', function (buffer) {
+            sound.setBuffer(buffer);
+            sound.setLoop(false);
+            sound.setVolume(0.9);
             sound.play();
         });
     }
@@ -50,7 +70,7 @@ class Audio {
         this.audioLoader.load('sound/playerShot.ogg', function (buffer) {
             sound.setBuffer(buffer);
             sound.setLoop(false);
-            sound.setVolume(0.2);
+            sound.setVolume(0.1);
             sound.play();
         });
     }

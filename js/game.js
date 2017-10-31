@@ -12,6 +12,9 @@ class Game {
         this.hit = false;
         this.timer = 0;
         this.cTimer = 0;
+        this.winTimer = 0;
+        this.extend1 = false;
+        this.extend2 = false;
         player = new Player(0,20);
         player.ship.position.y = 100;
         intro = new Intro();
@@ -54,9 +57,16 @@ class Game {
         }
 
         //extend lives for every 100000 pts
-        if(score % 100000 == 0 && score != 0) {
+        if(!this.extend1 && score > 100000) {
             lives += 1;
-            score += 100;
+            audio.extend();
+            this.extend1 = true;
+        }
+
+        if(!this.extend2 && score > 200000) {
+            lives += 1;
+            audio.extend();
+            this.extend2 = true;
         }
 
         //collision checking
@@ -113,9 +123,12 @@ class Game {
         }
 
         if (player.win) {
-            player.ship.position.z -= 1.3;
-            if (player.ship.position.z < -50) {
-                gui.show(document.getElementById("gamewon"));
+            this.winTimer++;
+            if (this.winTimer > 300) {
+                player.ship.position.z -= 1.3;
+                if (player.ship.position.z < -50) {
+                    gui.show(document.getElementById("gamewon"));
+                }
             }
         }
         /**for (var i = 0; i < enemyBulletList.length; i++)
