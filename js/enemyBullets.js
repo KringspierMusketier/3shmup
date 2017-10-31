@@ -1,35 +1,21 @@
 eBullMesh = [];
 eBullList = [];
 
-eBullMesh[0] = new THREE.Mesh(new THREE.ConeGeometry(1, 2, 10), new THREE.MeshBasicMaterial({ color: 0x8B1A89, wireframe: true }));
-eBullMesh[1] = new THREE.Mesh(new THREE.TetrahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x8B1A89, wireframe: true }));
-eBullMesh[2] = new THREE.Mesh(new THREE.OctahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x7799BB, wireframe: true }));
-eBullMesh[3] = new THREE.Mesh(new THREE.DodecahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x22DD99, wireframe: true }));
-eBullMesh[4] = new THREE.Mesh(new THREE.IcosahedronGeometry(), new THREE.MeshBasicMaterial({ color: 0x999999, wireframe: true }));
-
-
+//maximum coordinaten van het veld waarbinnen de kogels moeten zijn
 boundRight = 30;
 boundLeft = -30;
 boundTop = -40;
 boundBot = 40;
 
-//player bullet shape
-
-
-
-
 class EnemyBullet {
 
     constructor(enemy, bulletType, initialDirection, x_offset, z_offset, optArg) {
-        var inX = enemy.mesh.position.x; //initial x
-        var inZ = enemy.mesh.position.z; //initial z
-        var oPos = enemy.mesh.position;
-        this.tgtDir = initialDirection;
+        var inX = enemy.mesh.position.x; //speler x-positie
+        var inZ = enemy.mesh.position.z; //speler z-positie
         this.x_offset = x_offset;
         this.z_offset = z_offset;
         this.arg = optArg;
 
-        //aim at player
         this.direction = new THREE.Vector3();
         this.direction.set(-Math.sin(initialDirection), 0, Math.cos(initialDirection));
 
@@ -65,30 +51,18 @@ class EnemyBullet {
                 this.acc = 0;
                 break;
             }
-            //icosa
-            case 3: {
-                var lineGeom = new THREE.Geometry();
-                lineGeom.vertices.push(oPos);
-                lineGeom.vertices.push(player.ship.position);
-                var lineMat = new THREE.LineBasicMaterial({color: "red"});
-                this.mesh = new THREE.Line(lineGeom, lineMat);
-                break;
-            }
         }
 
         this.mesh.position.set(inX + this.x_offset, 0, inZ + this.z_offset);
         eBullList.push(this);
         scene.add(this.mesh);
     }
-   
-    
 
+    //update de positie en richting van de kogel
     movement() {
         this.hitbox.setFromObject(this.mesh);
         switch (this.behavior) {
-            case 0: ///constant drop
-
-            case 1: //straightforward
+            case 1: //deze kogels gaan in een lineaire richting
                 {
                     this.cTimer++;
                     if(!this.locked) {
@@ -104,8 +78,6 @@ class EnemyBullet {
                             this.speed = 0.6;
                             this.mesh.scale.set(2,2,2);
                         }
-                        else if (this.arg == 3)
-                            this.direction.set(this.tgtDir.x, this.tgtDir.y, this.tgtDir.z);
                         else if (this.arg == 4) {
                             this.direction.set(getRndNext(-1, 1), 0, -1);
                             this.speed = 0.5 * aggression;
@@ -143,7 +115,7 @@ class EnemyBullet {
                     break;
                 }
 
-            case 2: //homing bullet
+            case 2: //deze kogels achtervolgen je
                 {
                     this.timer++;
                     this.cTimer++;
@@ -165,6 +137,7 @@ class EnemyBullet {
                     else if (this.timer >= 95 && this.speed < 1.2)
                         this.speed += 0.04;
 
+                    //laat de kleur van de kogel veranderen van paars naar rood en dan terug naar paars enz.
                     if (this.cTimer > 5 ) {
                         if (this.c2_color == 0) {
                             this.mesh.material.color.set(0xFF0000);
@@ -181,56 +154,17 @@ class EnemyBullet {
                     this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
                     break;
                 }
-
-            case 3: //laser
-                {
-                    this.mesh.geometry.verticesNeedUpdate = true;
-                    this.timer++;
-
-                    if (this.timer >= 90 && this.timer < 100)
-                        this.mesh.material.color.set("white");
-                    else if (this.timer >= 100 && this.timer < 110)
-                        this.mesh.material.color.set("red");
-                    else if (this.timer >= 110 && this.timer < 120)
-                        this.mesh.material.color.set("white");
-                    else if (this.timer >= 100 && this.timer < 110)
-                        this.mesh.material.color.set("red");
-                }
-
-            case 4: // re-targetting bullet ///needs flashing
-                {
-                    this.direction.normalize();
-                    this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
-                    if (this.timer > 100 && this.timer < 120) {
-                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
-                        this.direction.multiplyScalar(-1);
-                    }
-                    this.timer++;
-                    break;
-                }
-            case 5: // re-targetting bullets all at once.
-                {
-                    this.direction.normalize();
-                    this.mesh.position.add(this.s3.copy(this.direction).multiplyScalar(this.speed));
-                    if (this.mothership.timer > 1000 && this.mothership.timer < 1200) {
-                        this.direction.set(this.mesh.position.x - player.ship.position.x, 0, this.mesh.position.z - player.ship.position.z);
-                        this.direction.multiplyScalar(-1);
-                    }
-                    break;
-                }
-            case 6: 
-                {
-                    this.direction.normalize();
-                }
-         
         }
     }
 
 
+    //verwijder kogel van scene en de kogellijst
     destroy() {
         scene.remove(this.mesh);
         eBullList.splice(eBullList.indexOf(this), 1);
     }
+
+    //update kogelbeweging en check of kogel binnen het veld zit
     update() {
         this.movement();
         if (outOfBound(this.mesh)) {

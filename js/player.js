@@ -4,6 +4,7 @@ class Player {
         this.ship.add(models[1].clone());
         this.basecolor = 0xDD4444;
 
+        //dit zorgt voor de uitlaten achter het schip
         this.exhaustgeo = new THREE.CylinderGeometry(2, 5, 20, 3);
         this.exhaustmat = new THREE.MeshBasicMaterial({ color: 0xfe7722, wireframe: true });
         this.exhaust = new THREE.Mesh(this.exhaustgeo, this.exhaustmat);
@@ -13,11 +14,11 @@ class Player {
         this.exhaust2 = this.exhaust.clone();
         this.exhaust.position.x += -10;
         this.exhaust2.position.x += 10;
-        this.win = false;
         this.ship.add(this.exhaust);
         this.ship.add(this.exhaust2);
         this.ship.renderOrder = 0.3;
 
+        //deze bol wordt afgebeeld wanneer de speler een kogel raakt
         this.gGeo = new THREE.SphereGeometry(50, 9, 6);
         this.gMat = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
         this.godSphere = new THREE.Mesh(this.gGeo, this.gMat);
@@ -25,10 +26,11 @@ class Player {
         this.ship.scale.set(0.1, 0.1, 0.1);
         this.speed = 0.7;
         this.reload = 0;
-        this.spin = false;
         this.god = false;
         this.hit = false;
         this.dead = false;
+        this.spin = false;
+        this.win = false;
         this.ship.position.x = posX;
         this.ship.position.z = posZ;
         scene.add(this.ship);
@@ -37,6 +39,7 @@ class Player {
 
     }
 
+    //beweeg naar links
     moveLeft() {
         if (this.ship.position.x > -28) {
             this.ship.position.x -= this.speed;
@@ -45,6 +48,7 @@ class Player {
         }
     }
 
+    //beweeg naar rechts
     moveRight() {
         if (this.ship.position.x < 28) {
             this.ship.position.x += this.speed;
@@ -52,16 +56,22 @@ class Player {
                 this.ship.rotation.z -= 0.08;
         }
     }
+
+    //beweeg naar boven
     moveUp() {
         if (this.ship.position.z > - 35&&!this.win) {
             this.ship.position.z -= this.speed;
         }
     }
+
+    //beweeg naar beneden
     moveDown() {
         if (this.ship.position.z < 37) {
             this.ship.position.z += this.speed;
         }
     }
+
+    //schiet kogels af
     shoot() {
         this.reload++;
         
@@ -73,8 +83,9 @@ class Player {
             this.reload = 0;
         }
     }
-    update() {
 
+    //laat de uitlaten bewegen
+    update() {
         if(this.spin) {
             this.ship.rotation.z -= 0.32;
         } else {
@@ -103,7 +114,10 @@ class Player {
         this.exhaust2.scale.y -= 0.025;
             
     }
+
+    //als de speler geraakt wordt
     onHit() {
+        //als de speler nog levens heeft
         if (lives > -1) {
             this.god = true;
             this.hit = true;
@@ -113,6 +127,7 @@ class Player {
             emptyBullets();
             audio.playerImpact();
         } else {
+            //als de speler geen levens meer heeft
             this.dead = true;
             particles.push(new Explosion(this.ship.position.x, this.ship.position.z, 1));
             scene.remove(this.ship);

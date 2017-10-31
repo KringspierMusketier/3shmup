@@ -1,4 +1,4 @@
-var scene, renderer, player, audio, camera, controls, gui, input, preload, progressBar, intro, bg;
+var scene, renderer, player, audio, camera, controls, gui, input, preload, intro, bg;
 var height = 640;
 var width = 480;
 var score = 00000000;
@@ -8,6 +8,7 @@ var debug = false;
 var loaded = false;
 stats.setMode(0);
 
+//de loadingmanager die in de console zegt of alle modellen wel geladen zijn
 var manager = new THREE.LoadingManager();
 manager.onStart = function(url, itemsLoaded, itemsTotal) {
     console.log("Started loading: " + url + ".\nLoaded " + itemsLoaded + " of " + itemsTotal + "files.");
@@ -47,7 +48,7 @@ function onLoad() {
 
     controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enablePan = false;
-    controls.enableZoom = true;
+    controls.enableZoom = false;
 
     var canvasContainer = document.getElementById('canvas_inner');
     canvasContainer.appendChild(renderer.domElement);
@@ -68,6 +69,7 @@ function draw() {
 
         game.update();
         TWEEN.update();
+        //tekent de GUI elementen op het scherm wanneer het spel actief is
         document.getElementById('score').innerHTML = ("SC " + score);
 
         if (lives > -1)

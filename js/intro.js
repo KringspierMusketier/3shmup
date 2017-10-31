@@ -1,15 +1,18 @@
 done = false;
 
+//Deze klasse laat de intro afspelen door middel van tween.js, waarmee we de camera en het schip in allerlei richtingen kunnen bewegen maar het ook laten afzwakken wanneer de tween bijna voorbij is
 class Intro {
     constructor() {
         this.started = false;
         this.tor = new THREE.Object3D();
 
+        //laat het schip van bovenaf in het scherm komen
         this.tween0 = new TWEEN.Tween(player.ship.position)
             .to({y: 0}, 1600)
             .easing(TWEEN.Easing.Quartic.Out)
             .delay(500);
         
+        //camera beweegt langzaam naar achter het schip
         this.tweenA = new TWEEN.Tween(camera.position)
             .to({x: 1.3, y: 0, z: 50}, 2300)
             .easing(TWEEN.Easing.Quartic.Out)
@@ -18,6 +21,7 @@ class Intro {
                 audio.charge();
             });
 
+        //camera springt opeens snel naar achteren om te simuleren dat het schip afneemt, daarnaast wordt een stofwolk rondom het schip gemaakt
         this.tweenB = new TWEEN.Tween(camera.position)
             .to({z: 500}, 400)
             .easing(TWEEN.Easing.Quartic.Out)
@@ -31,6 +35,7 @@ class Intro {
                 scene.add(this.tor);
             });
 
+        //camera blijft voor deze tween in dezelfde plaats, maar hier gaat de stofwolk snel in de richting van de camera en de camera draait een rondje
         this.tweenBa = new TWEEN.Tween(camera.position)
             .to({z: 501}, 1000)
             .easing(TWEEN.Easing.Quartic.Out)
@@ -41,6 +46,7 @@ class Intro {
                 this.tor.position.z += 8;
             });
 
+        //camera orienteert zich terug boven de speler terwijl het lijkt dat de stofwolk door de camera heengaat
         this.tweenC = new TWEEN.Tween(camera.position)
             .to({x: 0, y: 50, z: 0}, 1200)
             .easing(TWEEN.Easing.Quartic.Out)
@@ -51,15 +57,11 @@ class Intro {
                 this.tor.position.z += 15;
             })
             .onComplete(function () {
-
-                
-
-
                 scene.remove(this.tor);
-                //player.spin = false;
                 done = true;
             });
 
+        //als het schip geraakt wordt, dan wordt er heel snel een witte plane in het achtergrond geplaatst zodat het lijkt alsof het flitst, en er wordt ook nog een bol om het schip gemaakt die snel rood en wit flitst
         this.tweenHit = new TWEEN.Tween(player.ship.rotation)
             .to({z: 360*Math.PI/180}, 2000)
             .easing(TWEEN.Easing.Quartic.Out)
@@ -106,9 +108,6 @@ class Intro {
     }
 
     start() {
-
-
-        //ADDLIGHT
         this.tween0.start();
         this.started = true;
     }

@@ -18,10 +18,12 @@ Gui.removeClass = function (el, className) {
     }
 };
 
+//laat HTML elementen zien
 Gui.prototype.show = function (node) {
     Gui.removeClass(node, 'hide');
 };
 
+//verberg HTML elementen
 Gui.prototype.hide = function (node) {
     Gui.addClass(node, 'hide');
 };

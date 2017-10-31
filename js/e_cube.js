@@ -20,6 +20,7 @@ class Cube extends Enemy {
         this.reload++;
         if (this.reload > 90) {
             if (this.max < 2) {
+                //meerdere kogels worden in een keer gespawnt waarbij elke een beetje hoger dan de vorige wordt gespawnt, waardoor de kogels op een grotere rubberen slang lijken
                 var lBullet = new EnemyBullet(this, 2, 0, 0, 0, 0);
                 var mBullet = new EnemyBullet(this, 2, 0, 0, -0.6, 0);
                 var nBullet = new EnemyBullet(this, 2, 0, 0, -1.2, 0);

@@ -22,9 +22,11 @@ class Cone extends Enemy {
         this.reload++;
         if (this.reload > 10) {
             if (this.side == 1){
+                //schiet links
                 var lBullet = new EnemyBullet(this, 1, 0, 0, 0, 1);
                 this.side = 0;
             } else {
+                //schiet rechts
                 var lBullet = new EnemyBullet(this, 1, 0, 0, 0, 2);
                 this.side = 1;
             }

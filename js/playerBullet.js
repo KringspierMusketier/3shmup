@@ -1,7 +1,6 @@
-playerBulletList = [];
+playerBulletList = []; //lijst van alle speler kogels
 
 class PlayerBullet{
-
     constructor(shippos, shiprot) {
         var posX = shippos.x;
         var posZ = shippos.z;

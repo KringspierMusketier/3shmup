@@ -1,9 +1,9 @@
 //10-10-2017
 Begin project
-Besloten om voor een verticale orientatie te gaan voor het spelveld met de HUD grotendeels eromheen. 
+Besloten om voor een verticale orientatie te gaan voor het spelveld met de HUD grotendeels eromheen, net zoals shoot 'em ups in de arcadehallen. 
 
 //11-10-2017
-Model aangemaakt voor speler-schip en kan worden afgebeeld op het scherm
+Model aangemaakt voor speler-schip en kan worden afgebeeld op het scherm. Modellen worden afgebeeld in wireframes aangezien dit spel zich in cyberspace afspeelt
 
 //12-10-2017
 Modellen kunnen laten manipuleren en rond bewegen

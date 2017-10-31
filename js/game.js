@@ -27,14 +27,16 @@ class Game {
         bg.bginit(1, 900, 113, 20, 7);
 
 
-        //verwijder de onderste lijnen om intro af te laten spelen
+        //comment de onderste lijnen eruit om intro af te laten spelen
         /**intro.started = true;
         done = true;
         camera.position.set(0,50,0);
         player.ship.position.y = 0;**/
     }
+
     //game loop
     update() {
+        //ga alle mindere update functies erlangs
         bg.update();
         player.update();
         enemyUpdates();
@@ -43,7 +45,6 @@ class Game {
         particleUpdate();
         orbUpdate();
 
-        //intro -14, -16, 45, (14, 66, -45)
         if (!intro.started) {
             intro.start();
         }
@@ -56,7 +57,7 @@ class Game {
             }
         }
 
-        //extend lives for every 100000 pts
+        //voor elke 100000 punten krijg je een bonus leven
         if(!this.extend1 && score > 100000) {
             lives += 1;
             audio.extend();
@@ -69,7 +70,7 @@ class Game {
             this.extend2 = true;
         }
 
-        //collision checking
+        //check collisies met kogels, vijanden, orbs en speler
         for (var i = 0; i < enemies.length; i++) {
             if (player.hitbox.intersectsBox(enemies[i].hitbox) && lives > -1 && !player.god) {
                 lives -= 1;
@@ -104,6 +105,7 @@ class Game {
             }
         }
 
+        //als je geraakt wordt, laat alle kogels verdwijnen voor 2.5 seconden
         if (player.hit) {
             if (this.timer < this.cTimer + 150)
                 emptyBullets();
@@ -114,6 +116,7 @@ class Game {
             }
         }
 
+        //laat gameover scherm zien als speler geen levens meer heeft
         if(player.dead) {
             if (this.timer < this.cTimer + 150) {
                 emptyBullets();
@@ -122,6 +125,7 @@ class Game {
             }
         }
 
+        //als speler gewonnen heeft, laat nu vijf seconden het schip naar boven vliegen en laat de win scherm zien
         if (player.win) {
             this.winTimer++;
             if (this.winTimer > 300) {
@@ -131,8 +135,5 @@ class Game {
                 }
             }
         }
-        /**for (var i = 0; i < enemyBulletList.length; i++)
-            if (player.hitbox.intersectsBox(enemyBulletList[i].hitbox))
-                player.onHit();**/
     }
 }

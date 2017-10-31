@@ -1,3 +1,4 @@
+//als de baas meer schade aan zijn hp krijgt, dan wordt aggression verhoogd waardoor zijn kogels sneller zullen gaan en meerdere kogels worden toegevoegd
 aggression = 1;
 
 class Spinner extends Enemy {
@@ -76,6 +77,7 @@ class Spinner extends Enemy {
             }
             this.bobbing();
         } else {
+            //als de boss HP 0 is, dan wordt de sterf animatie afgespeeld
             emptyBullets();
             this.cTimer++;
             this.dTimer++;
@@ -97,6 +99,7 @@ class Spinner extends Enemy {
         }
     }
 
+    //laat model een beetje op een neer bewegen
     bobbing() {
         if (true) {
             if (this.bobdirection) this.mesh.position.z += 0.04;
@@ -109,10 +112,11 @@ class Spinner extends Enemy {
         }
     }
     
+    //de boss wisselt af tussen drie aanvalspatronen die naarmate worden uitgebreid
     onFire() {
         this.reload++;
         switch (this.phase) {
-            //homing attack
+            //achtervolgende kogels
             case 0: {
                 if (this.reload > (30) && this.subPhase == 0) {
                     var lBullet = new EnemyBullet(this, 2, 0, -15, 0, 0);
@@ -325,11 +329,6 @@ class Spinner extends Enemy {
                     this.subPhase++;
                 }
                 else if (this.subPhase == 6) {
-                    /**var nextPhase = getRndNext(0, 3);
-                    while (nextPhase == this.phase) {
-                        var nextPhase = getRndNext(0, 3);
-                    }
-                    this.phase = nextPhase;**/
                     this.subPhase = 0;
                     this.reload = 0;
                     if (this.down) {
@@ -340,6 +339,7 @@ class Spinner extends Enemy {
                 }
                 break;
             }
+            //wijd schot
             case 2: {
                 if (this.reload > 60 && this.subPhase == 0) {
                     for (var i = 0; i < (35 * aggression); i++) {
@@ -384,6 +384,7 @@ class Spinner extends Enemy {
                 }
                 break;
             }
+            //tracking laser
             case 1: {
                 if (this.reload >= 60 && this.reload < 120) {
                     var pBullet = new EnemyBullet(this, 1, 0, 0, 0, 5);
@@ -439,6 +440,7 @@ class Spinner extends Enemy {
                 }
                 break;
             }
+            //boss gaat naar beneden
             case 3: {
                 if (this.mesh.position.z < 30) {
                     this.mesh.position.z += 0.4;
@@ -451,6 +453,7 @@ class Spinner extends Enemy {
                 }
                 break;
             }
+            //boss gaat naar boven
             case 4: {
                 if (this.mesh.position.z > -26) {
                     this.mesh.position.z -= 0.4;
