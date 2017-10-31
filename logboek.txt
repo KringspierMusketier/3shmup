@@ -71,3 +71,13 @@ De achtergrond is uitgebreid om vanaf de ruimte te beginnen, daarnaast zijn de k
 //30-10-2017
 Achtergrondmuziek toegevoegd, geluiden worden nu afgespeeld als er bepaalde acties zoals schieten en sterven worden gedaan
 De style van de pagina is geupdate. Heeft nu een achtergrond en een padding. Knoppen zijn ook meer in het centrum.
+Boss-vijand toegevoegd, de boss heeft drie aanvalspatronen waardoor hij wisselt, en die worden over tijd ook moeilijker naarmate de boss meer schade krijgt.
+Er is nu ook een win-conditie voor het spel. 
+Elke 100000 punten krijg je een extra leven zodat je wel aangemoedigd wordt om de orbs te pakken door niet te schieten.
+Het level is ook wat aangepast met wat meer vijanden, daarnaast is de behavior voor de kogels zelf wel wat aangepast om makkelijker te zijn.
+Er is een aparte explosion-effect voor wanneer de boss doodgaat.
+
+
+//31-10-2017
+Instructies zijn bijgewerkt.
+Een ander liedje speelt af wanneer de boss in het spel komt.
