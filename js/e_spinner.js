@@ -15,7 +15,7 @@ class Spinner extends Enemy {
         this.cTimer = 0;
         this.dTimer = 0;
         this.eTimer = 0;
-        this.orbs = 500;
+        this.orbs = 400;
         this.bob = 0;
         this.bobdirection = false;
 

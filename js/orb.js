@@ -7,18 +7,23 @@ function orbUpdate() {
 }
 
 class Orb {
-    constructor(posX, posZ) {
+    constructor(posX, posZ, mega) {
         this.geometry = new THREE.SphereGeometry(0.8, 6, 6);
         this.material = new THREE.MeshBasicMaterial({color: 0xFFBF00, wireframe: true});
         this.mesh = new THREE.Mesh(this.geometry, this.material);
         this.mesh.position.x = posX;
         this.mesh.position.z = posZ;
         this.isHoming = false;
+        this.mega = mega;
 
         this.direction = new THREE.Vector3();
         this.s3 = new THREE.Vector3();
         this.vX = getRndNext(-0.8, 0.8);
         this.vZ = getRndNext(-0.8, 0.8);
+        if (this.mega) {
+            this.vX = getRndNext(-2.0, 2.0);
+            this.vZ = getRndNext(-2.0, 2.0);
+        }
         this.hitbox = new THREE.Box3();
         this.timer = 0;
         this.speed = 1.5;
@@ -36,7 +41,11 @@ class Orb {
         this.timer++;
         this.hitbox.setFromObject(this.mesh);
 
-        if (this.timer < 20) {
+        if (this.timer < 20 && !this.mega) {
+            this.mesh.position.x += this.vX;
+            this.mesh.position.z += this.vZ;
+        }
+        else if (this.timer < 60 && this.mega) {
             this.mesh.position.x += this.vX;
             this.mesh.position.z += this.vZ;
         }
