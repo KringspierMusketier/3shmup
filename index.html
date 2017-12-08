@@ -11,9 +11,13 @@
 		<script type="text/javascript" src="js/req/stats.js"></script>
 		<script type="text/javascript" src="js/req/OrbitControls.js"></script>
 		<script type="text/javascript" src="js/req/THREEx.KeyboardState.js"></script>
+		<script type="text/javascript" src="js/req/Tween.js"></script>
 
 		<!-- javascripts, main.js moet altijd als de laatste geladen worden -->
 		<script type="text/javascript" src="js/functions.js"></script>
+        <script type="text/javascript" src="js/backgroundPreload.js"></script>
+        <script type="text/javascript" src="js/backgroundManager.js"></script>
+        <script type="text/javascript" src="js/audioManager.js"></script>
 		<script type="text/javascript" src="js/preload.js"></script>
         <script type="text/javascript" src="js/enemyBullets.js"></script>
         <script type="text/javascript" src="js/playerBullet.js"></script>
@@ -22,8 +26,11 @@
 		<script type="text/javascript" src="js/enemy.js"></script>
 		<script type="text/javascript" src="js/e_cube.js"></script>
 		<script type="text/javascript" src="js/e_triangle.js"></script>
-		<script type="text/javascript" src="js/collision.js"></script>
+		<script type="text/javascript" src="js/e_spinner.js"></script>
+		<script type="text/javascript" src="js/e_cone.js"></script>
+		<script type="text/javascript" src="js/orb.js"></script>
 		<script type="text/javascript" src="js/particles.js"></script>
+		<script type="text/javascript" src="js/intro.js"></script>
 		<script type="text/javascript" src="js/gui.js"></script>
 		<script type="text/javascript" src="js/game.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
@@ -32,26 +39,47 @@
 		<div id="canvas_outer">
 			<div class="row">
 				<div class="col-sm-3 hud">
-					<p>test</p>
-					<div id="hud" class="hide">
-						<div id="lives"></div>
-						<div id="score"></div>
-					</div>
 				</div>
-				<div class="col-sm-6">
-					<div id="mainMenu" class="hide">
-						<h1>3shmup</h1>
-						<button type="button" id="btn_startgame" class="btn btn-alert" onclick="gui.startGame()">Start Game</button>
+				<div class="col-sm-6" id="field">
+					<div id="mainMenu" class="hide menu">
+						<h1 class="menuHeader">Descrysis</h1>
+						<button type="button" class="btn btn-alert btn_startgame" onclick="gui.startGame()">Start Game</button>
+						<button type="button" class="btn btn-alert btn_startgame" onclick="gui.showHelp()">Instructions</button>
+					</div>
+					<div id="help" class="hide menu">
+						<h1 class="menuHeader">Instructions</h1>
+						<h6 id="hText" style="margin-left: 20px;">Press the arrow keys to move around. <br>
+						Hold Z to shoot.<br>
+						Shoot the enemies before they shoot you.<br />
+                        Enemies release yellow orbs on death, which you can pick up for points.<br />
+                        Let go of Z to attract all yellow orbs towards you.<br />
+                        Every 100000 points you will gain an extra life.</h6>
+						<button type="button" class="btn btn-alert btn_startgame" onclick="gui.returnMenu()">Return to Menu</button>
+					</div>
+					<div id="hud" class="hide">
+						<h6 id="score"></h6>
+						<h6 id="lives"></h6>
 					</div>
 					<div id="positions" class="hide">
-						<h5 id="posX"></h5>
-						<h5 id="posZ"></h5>
+						<h6 id="posX"></h6>
+						<h6 id="posZ"></h6>
+                        <h6 id="timer"></h6>
 					</div>
+					<div id="gameover" class="hide">
+						<h2>GAME OVER</h2>
+						<h2 id="endScore"></h2>;
+                        <h2 style="font-size:15px; margin-top:50px;">Press F5 to try again</h2>
+					</div>
+                    <div id="gamewon" class="hide">
+                        <h2>YOU WON!</h2>
+                        <h2 id="endScore"></h2>;
+                        <h2 style="font-size:15px; margin-top:50px;">Press F5 to try again</h2>
+                    </div>
 					<div id="canvas_inner">
 					</div>
 				</div>
 				<div class="col-sm-3 hud">
-					<p>test</p>
+					
 				</div>
 			</div>
 			<div id="statsBox"></div>

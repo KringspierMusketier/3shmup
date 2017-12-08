@@ -1,7 +1,7 @@
 function getRndNext(min, max) {
     return Math.random() * (max - min) + min;
   }
-
+//De volgende functies zorgen ervoor dat alle bullets, enemies en particles worden geupdate.
 function playerBulletMovement() {
     for (var i = 0; i < playerBulletList.length; i++) {
         playerBulletList[i].movement();
@@ -23,10 +23,224 @@ function particleUpdate() {
         particles[i].update();
 }
 
+//Dit haalt elke bullet van het scherm. Dit wordt gebruikt in de invincibility phase als de speler geraakt wordt.
+function emptyBullets() {
+    for (var i = 0; i < eBullList.length; i++) {
+        eBullList[i].destroy();
+    }
+}
+
+//Dit controleert of iets out of bound is. if(outOfBound(mesh)) Destroy(); is een populaire.
 function outOfBound(mesh) {
     if (mesh.position.x < -30 || mesh.position.x > 30 || mesh.position.z < -40 || mesh.position.z > 40) {
         return true;
     } else {
         return false;
+    }
+}
+
+function rndColor() {
+
+}
+//legacy
+function restart() {
+    location = location;
+}
+//Dit is de timeline voor de enemies die aanvallen. We probeerden dit in een aparte tijdlijn te zetten, net als de achtergrond, maar Javascript vond dat het alleen
+//goed zou moeten kunnen werken als het hier stond, dus we moesten er maar mee door.
+
+function timeline(timer) {
+    switch (timer) {
+        case 120: {
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            break;
+        }
+        case 160: {
+            enemies.push(new Triangle());
+            break;
+        }
+        case 320: {
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            break;
+        }
+        case 360: {
+            enemies.push(new Triangle());
+            enemies.push(new Triangle());
+            break;
+        }
+        case 480: {
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(-20));
+            break;
+        }
+        case 520: {
+            enemies.push(new Triangle(-16));
+            enemies.push(new Triangle(16));
+            break;
+        }
+        case 560: {
+            enemies.push(new Triangle(-12));
+            enemies.push(new Triangle(12));
+            break;
+        }
+        case 600: {
+            enemies.push(new Triangle(-8));
+            enemies.push(new Triangle(8));
+            break;
+        }
+        case 640: {
+            enemies.push(new Triangle(-4));
+            enemies.push(new Triangle(4));
+            break;
+        }
+        case 760: {
+            enemies.push(new Cube(0));
+            break;
+        }
+        case 880: {
+            enemies.push(new Cube(-15));
+            enemies.push(new Cube(15));
+            break;
+        }
+        case 1080: {
+            enemies.push(new Cube(0));
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-15));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(20));
+            break;
+        }
+
+        case 1260: {
+            enemies.push(new Cube(20));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(-15));
+            enemies.push(new Cube(-20));
+            break;
+        }
+
+        case 1340: {
+            enemies.push(new Cube(21));
+            enemies.push(new Cube(13));
+            enemies.push(new Cube(4));
+            break;
+        }
+        case 1400: {
+            enemies.push(new Cube(17));
+            enemies.push(new Cube(12));
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-15));
+            break;
+        }
+        case 1430: {
+            enemies.push(new Triangle(-17));
+            break;
+        }
+
+        case 1630: {
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(10));
+            break;
+        }
+        case 1650: {
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(5));
+            enemies.push(new Triangle(-15));
+            enemies.push(new Triangle(-5));
+            break;
+        }
+        case 1710: {
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-10));
+            break;
+        }
+
+        case 1840: {
+            enemies.push(new Triangle(-5));
+            enemies.push(new Triangle(5));
+            break;
+        }
+
+        case 1860: {
+            enemies.push(new Cube(-5));
+            enemies.push(new Cube(5));
+            break;
+        }
+
+        case 2200: {
+            enemies.push(new Cone(0));
+            break;
+        }
+
+        case 2320: {
+            enemies.push(new Cone(-15));
+            enemies.push(new Cone(15));
+            break;
+        }
+
+        case 2560: {
+            enemies.push(new Cone(-20));
+            enemies.push(new Triangle(25));
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(10));
+            break;
+        }
+        case 2600: {
+            enemies.push(new Triangle(12));
+            enemies.push(new Triangle(17));
+            enemies.push(new Triangle(21));
+            break;
+        }
+        case 2640: {
+            enemies.push(new Triangle(25));
+            enemies.push(new Triangle(20));
+            enemies.push(new Triangle(15));
+            enemies.push(new Triangle(10));
+            break;
+        }
+        case 2680: {
+            enemies.push(new Triangle(12));
+            enemies.push(new Triangle(17));
+            enemies.push(new Triangle(21));
+            break;
+        }
+        case 2800: {
+            enemies.push(new Cone(20));
+            enemies.push(new Cube(-25));
+            enemies.push(new Cube(-15));
+            break;
+        }
+
+        case 2980: {
+            enemies.push(new Cone(0));
+            break;
+        }
+
+        case 3040: {
+            enemies.push(new Cone(-15));
+            enemies.push(new Cone(15));
+            break;
+        }
+
+        case 3200: {
+            enemies.push(new Triangle(-20));
+            enemies.push(new Triangle(-10));
+            enemies.push(new Triangle(10));
+            enemies.push(new Triangle(20));
+            break;
+        }
+
+        case 3620: {
+            audio.boss();
+            break;
+        }
+        case 3660: {
+            enemies.push(new Spinner(1, -60));
+            break;
+        }
     }
 }

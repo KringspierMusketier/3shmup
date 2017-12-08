@@ -18,10 +18,12 @@ Gui.removeClass = function (el, className) {
     }
 };
 
+//laat HTML elementen zien
 Gui.prototype.show = function (node) {
     Gui.removeClass(node, 'hide');
 };
 
+//verberg HTML elementen
 Gui.prototype.hide = function (node) {
     Gui.addClass(node, 'hide');
 };
@@ -30,22 +32,19 @@ Gui.prototype.startGame = function() {
     this.hide(document.getElementById('mainMenu'));
     this.show(document.getElementById('hud'));
     this.show(document.getElementById('positions'));
+    audio.menuClick();
     game = new Game();
     draw();
 }
 
-Gui.prototype.showHighscore = function() {
-
+Gui.prototype.showHelp = function() {
+    this.hide(document.getElementById('mainMenu'));
+    this.show(document.getElementById('help'));
+    audio.menuClick();
 }
 
-Gui.prototype.updateLives = function() {
-
-}
-
-Gui.prototype.updateScore = function() {
-
-}
-
-Gui.prototype.gameOver = function() {
-
+Gui.prototype.returnMenu = function() {
+    this.hide(document.getElementById('help'));
+    this.show(document.getElementById('mainMenu'));
+    audio.menuClick();
 }
