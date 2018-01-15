@@ -1,13 +1,5 @@
 class Player {
     constructor(posX, posZ) {
-<<<<<<< HEAD
-        this.ship = models[0];
-        this.ship.add(models[1]);
-        this.ship.scale.set(0.1,0.1,0.1);
-        
-        this.speed = 0.02;
-        this.speed = 0.8;
-=======
         this.ship = models[0].clone();
         this.ship.add(models[1].clone());
         this.basecolor = 0xDD4444;
@@ -33,7 +25,6 @@ class Player {
 
         this.ship.scale.set(0.1, 0.1, 0.1);
         this.speed = 0.7;
->>>>>>> ca56be2771cdd3df86db5816dd572dedb868c631
         this.reload = 0;
         this.god = false;
         this.hit = false;
